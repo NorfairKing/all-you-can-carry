@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \author{Tom Sydney Kerckhove}
 \title{Oefeningen Numerieke Wiskunde:\\ Oefenzitting 2}
 \begin{document}
@@ -36,5 +37,109 @@ Hier zitten dus $2^m-1=2^{52}-1$ getallen tussen.
 \[9 = .10010\ldots00 \cdot 2^4\]
 Hier zitten dus $2^{50}+2^{49}-1$ getallen tussen.
 \end{itemize}
+
+\section{Probleem 3}
+Het laatste zinvolle getal in deze rij is $1000$. De overgang van $999$ naar $1000$ resulteert niet in een fout want $1000$ wordt als volgt voorgesteld.
+\[0.100 \cdot 10^4\]
+Als we hier echter nog $1$ bij optellen gebeurt er een absolute afrondingsfout van precies $-1$. Vanaf dan is de beschreven rij dus constant ($1000$).
+
+\section{Probleem 4}
+\begin{itemize}
+\item
+\begin{itemize}
+\item \textbf{bepaal\_b}
+We beginnen met $A=1$, dan vermenigvuldigen we $A$ met $2$ tot er een afrondingsfout gebeurd wanneer je $(A+1)-A=1$ evalueert. 
+$A$ is nu gelijk aan $2^{10}$. Vervolgens initialiseren we $i$ op $1$ en hogen $i$ op tot $(A+i)=A$ geen afrondingsfout meer geeft. Dit is wanneer $i$ $6$ wordt. $b$ is dus $.103\cdot 10^4-.102\cdot 10^4=10$.
+\item \textbf{bepaal\_p}
+We initialiseren $p$ op $1$ en $z$ op $10$. Nu hogen we $p$ en de exponent van $10^1$ op tot $(z+1)-z=1$ een afrondingsfout geeft.
+Dit is wanneer $p=3$ geldt. 
+\end{itemize}
+\item
+\begin{itemize}
+\item \textbf{bepaal\_b}\\
+\textbf{Te Bewijzen}
+\begin{proof}
+TODO
+\end{proof}
+\item \textbf{bepaal\_p}\\
+\textbf{Te Bewijzen}
+\begin{proof}
+TODO
+\end{proof}
+\end{itemize}
+\end{itemize}
+
+\section{Probleem 5}
+\[
+\overline{y} =
+fl\left(
+\frac{x}{fl\left(fl\left(\sqrt{fl\left(x+1\right)}\right)+1\right)}
+\right)
+\]
+\[
+=
+\frac{x(1+\epsilon_1)}{\left(\left(\sqrt{\left(x+1\right)(1+\epsilon_4)}\right)(1+\epsilon_3)+1\right)(1+\epsilon_2)}
+\]
+\[
+\overline{y} = F(0,0,0,0) + \sum_{i=1}^4\epsilon_i\frac{\delta F}{\delta\epsilon_i}(0,0,0,0)
+\]
+\[
+\frac{\delta F}{\delta \epsilon_1}(\epsilon_1,0,0,0)
+= \frac{x\epsilon_1}{\sqrt{x+1}+1}
+\]
+\[
+\frac{\delta F}{\delta \epsilon_2}(0,\epsilon_2,0,0)
+= \frac{-x}{\left(\sqrt{x+1}+1\right)(1+\epsilon_2)^2}
+\]
+\[
+\frac{\delta F}{\delta \epsilon_3}(0,0,\epsilon_3,0)
+...
+\]
+TODO\\
+Oplossing:
+\[
+\frac{\overline{y}-y}{y} \approx -\frac{1}{2}\frac{\sqrt{1+x}}{\sqrt{1+x}+1}\epsilon_1 - \frac{\sqrt{1+x}}{\sqrt{1+x}+1}\epsilon_2 - \epsilon_3+\epsilon_4
+\]
+
+\section{Probleem 6}
+\[
+\overline{y}
+=
+fl
+\left(
+\frac{
+fl\left(
+1-fl(\cos(x))
+\right)}
+{fl(x^2)}
+\right)
+\]
+\[
+=
+\left(
+\frac{
+\left(
+1-(\cos(x)(1+\epsilon_3))
+\right)(1+\epsilon_2)}
+{(x^2)(1+\epsilon_4)}
+\right)(1+\epsilon_1)
+\]
+TODO
+
+\section{Probleem 7}
+\[
+\overline{S} = fl(fl(...fl(fl(fl(fl(a_1+a_2)+a_3)+a_4)...)+a_n)
+\]
+\[
+= ((...((((a_1+a_2)(1+\epsilon_2))+a_3)(1+\epsilon_3))...)+a_n)(1+\epsilon_n)
+\]
+\[
+\overline{S}-S = \sum_{i=1}^na_i - ((...((((a_1+a_2)(1+\epsilon_2))+a_3)(1+\epsilon_3))...)+a_n)(1+\epsilon_n)
+\]
+\[
+\approx 
+\]
+TODO hoe
+
 
 \end{document}
