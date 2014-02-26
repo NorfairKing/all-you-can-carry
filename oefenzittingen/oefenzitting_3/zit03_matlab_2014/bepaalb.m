@@ -3,11 +3,11 @@ function b = bepaalb
 a = 1;
 while ((a+1) -a) == 1,
    a = a*2;
-%    fprintf('a: %16i\n',a)
+    fprintf('a: %16i\n',a)
 end
 i = 1;
 while (a == (a+i)),
    i = i + 1;
-%    fprintf('i: %16i\n',i)
+    fprintf('i: %16i\n',i)
 end
 b = (a + i) -a;
