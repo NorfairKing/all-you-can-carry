@@ -5,6 +5,8 @@
 *.*~*
 *.bak
 
+*.bin
+
 *.acn
 *.acr
 *.alg
