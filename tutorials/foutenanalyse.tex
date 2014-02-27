@@ -1,0 +1,131 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\author{Tom Sydney Kerckhove}
+\title{Foutenanalyse Tutorial}
+\date{27 februari 2014}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\pagebreak
+
+\section{Theorie}
+\subsection{Absolute en relatieve fout}
+De absolute fout is gedefinieerd als het verschil tussen de berekende waarde en de echte waarde.
+\[
+err_{abs} = \Delta y = \overline{y} - y
+\]
+De relatieve fout is de absolute fout relatief ten opzichte van het echte resultaat.
+\[
+err_{rel} = \frac{\Delta y}{y} = \frac{\overline{y} - y}{y}
+\]
+
+\subsection{$\overline{y}$ exact berekenen}
+Bij elke bewerking maakt de machine een afrondingsfout, begrensd door de machine precisie.
+\[
+\epsilon_i \le \epsilon_{mach}
+\]
+Zij $\circ$ een elementaire bewerking, dan geldt het volgende.
+\[
+fl(a\circ b) = (a\circ b)(1+\epsilon_{\circ})
+\]
+
+\subsection{Maclaurin reeks}
+Een Maclaurin reeks rond is een reeks die een functie benadert in de buurt van $0$. Zij $f(x)$ de te benaderen functie met $x$ een variabele.
+\[
+f(x) = \sum_{i=0}^\infty\frac{f^{(i)}(0)}{i!}x^i = f(0) + f'(0)x + \frac{1}{2}f''(0)x^2 + ...
+\]
+Of nog algemener, met $n$ variabelen $x_1,...,x_n$.
+\[
+f(x_1,...,x_n) = \sum_{i=0}^\infty\sum_{j=0}^{n}\frac{x_j^i}{i!}\frac{\delta f}{\delta x_j}(0,...,0)
+\]
+
+\subsection{$\overline{y}$ benaderen met een Maclaurin reeks}
+Eens we $\overline{y}$ exact berekent hebben kunnen we $\overline{y}$ (vrij goed) benaderen zodat de vergelijking eenvoudiger wordt. Zij $n$ het aantal berekeningen om $\overline{y}$ te bekomen. $\overline{y}$ is dus een functie in $\epsilon_1,...,\epsilon_n$ met $x$ als parameter. We gebruiken een Maclaurin reeks om $\overline{y}$ te benaderen.
+\[
+\overline{y} = y + \sum_{i=1}^{n}\frac{\delta\overline{y}}{\delta\epsilon_i}(0,...,0)\epsilon_i
+\]
+We laten de hogere orde termen weg, omdat een term met $\epsilon_{i}^2$ een verwaarloosbare invloed heeft. 
+
+\section{Algoritme}
+Gegeven een getal $y$ dat we berekenen met een machine zodat we $\overline{y}$ bekomen. We berekenen nu de absolute en relatieve fout op deze berekening.
+\begin{enumerate}
+\item Bereken $\overline{y}$ exact.
+\begin{itemize}
+\item Duid de bewerkingen aan.
+\item Zet rond elke bewerking $fl( ... )$.
+\item Voeg aan het resultaat van elke bewerking $(1+\epsilon_i)$ toe.
+\end{itemize}
+
+\item Bepaal de waarde van de parti\"ele afgeleide van $\overline{y}$ naar elke $\epsilon_i$ en evalueer deze in $(0,...,0)$. Hint: de variabelen naar dewelke u niet afleidt kan u meteen invullen.
+
+\item Benader $\overline{y}$ met een Maclaurin reeks.
+
+\item Benader $err_{abs}$ en $err_{rel}$.
+\end{enumerate}
+
+\section{Voorbeeld}
+\[
+y = \frac{1-\cos(x)}{x^2}
+\]
+\begin{enumerate}
+\item
+\[
+\overline{y} = fl\left(\frac{fl(1-fl(\cos(x)))}{fl(x^2)}\right)
+\]
+\[
+\overline{y} = \frac{(1-(\cos(x))(1+\epsilon_1))(1+\epsilon_2)}{(x^2)(1+\epsilon_3)}(1+\epsilon_4)
+\]
+
+\item
+\[
+\frac{\delta \overline{y}}{\delta \epsilon_1}(\epsilon_1,0,0,0)
+= \frac{\delta}{\delta \epsilon_1}\frac{1-(\cos(x))(1+\epsilon_1)}{x^2} 
+= -\frac{\cos(x)}{x^2}
+\]
+\[
+\frac{\delta \overline{y}}{\delta \epsilon_2}(0,\epsilon_2,0,0)
+= \frac{\delta}{\delta \epsilon_2}\frac{(1-\cos(x))(1+\epsilon_2)}{x^2}
+= \frac{(1-\cos(x))}{x^2}
+\]
+\[
+\frac{\delta \overline{y}}{\delta \epsilon_3}(0,0,\epsilon_3,0)
+= \frac{\delta}{\delta \epsilon_3}\frac{1-\cos(x)}{(x^2)(1+\epsilon_3)} = \frac{1-\cos(x)}{(x^2)}\frac{-1}{(1+\epsilon_3)^2}
+\]
+\[
+\frac{\delta \overline{y}}{\delta \epsilon_3}(0,0,0,0) = -\frac{1-\cos(x)}{x^2}
+\]
+\[
+\frac{\delta \overline{y}}{\delta \epsilon_4}(0,0,0,\epsilon_4)
+= \frac{\delta}{\delta \epsilon_4}\frac{(1-\cos(x))(1+\epsilon_4)}{x^2}
+= \frac{1 - \cos(x)}{x^2}
+\]
+
+\item
+\[
+\overline{y} \approx y -\frac{\cos(x)}{x^2}\epsilon_1
++ \frac{(1-\cos(x))}{x^2}\epsilon_2
+- \frac{1-\cos(x)}{x^2}\epsilon_3
++ \frac{1 - \cos(x)}{x^2}\epsilon_4
+\]
+\[
+\overline{y} \approx y - \frac{\cos(x)}{x^2}\epsilon_1 + y\epsilon_2 - y\epsilon_3 + y\epsilon_4
+\]
+
+\item
+\[
+\overline{y}-y \approx - \frac{\cos(x)}{x^2}\epsilon_1 + y\epsilon_2 - y\epsilon_3 + y\epsilon_4
+\]
+\[
+\frac{\overline{y}-y}{y} \approx - \frac{\cos(x)}{x(1-\cos(x))}\epsilon_1 + \epsilon_2 - \epsilon_3 + \epsilon_4
+\]
+
+\end{enumerate}
+
+\end{document}
