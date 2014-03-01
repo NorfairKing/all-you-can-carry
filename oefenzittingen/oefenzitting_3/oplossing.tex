@@ -75,7 +75,14 @@ De benadering convergeert beter, maar is ongeveer even goed.
 \begin{enumerate}[(a)]
 \item Zie matlab voor illustratie.
 \item Nee, de relatieve fout is van de grootteorde $10^{-10}$.
-\item TODO
+\item Ja.
+\[
+\overline{S}-S \approx \sum_{k=2}^n\epsilon_k\sum_{i=1}^ka_i
+\]
+\[
+= \sum_{k=2}^n\epsilon_k\sum_{i=1}^k \frac{x^n}{n!}
+\]
+Zoals we zien is de absolute fout in het begin heel groot omdat het even duur voordat $x^n$ kleiner wordt dan $n!$.
 \end{enumerate}
 
 
@@ -108,16 +115,177 @@ TODO
 
 \section{Probleem 8}
 \begin{enumerate}
-\item
+\item $0.1$ wordt naar het volgende getal afgekapt:
 {\scriptsize \begin{verbatim}
 +0.00011001100110011001100
 \end{verbatim}}
+\[
+= 0.09999990463256835937
+\]
+De absolute fout is dus de volgende uitdrukking
+{\scriptsize \begin{verbatim}
++0.00000000000000000000000110011001100110011...
+=
+9.536743164617612e-8
+\end{verbatim}}
+De relatieve fout is dus de volgende.
+{\scriptsize \begin{verbatim}
+9.536743164617612e-7
+\end{verbatim}}
+
+\item Vermenigvuldigen we de relatieve fout met 100 uur ($60*60*100$), dan krijgen we de fout op de berekende tijd.
+\[
+0.343
+\]
 
 \item
-
-\item
-
+\[
+0.343 * 1676 = 574.868m
+\]
 \end{enumerate}
 
+\section{Probleem 9}
+\begin{enumerate}[(a)]
+\item
+\begin{enumerate}
+\item Wortels\\
+\[
+y = \sqrt[2^{40}]{x}
+\]
+\begin{enumerate}
+\item
+\[
+\overline{y} = fl\left(\sqrt{...fl\left(\sqrt{fl(\sqrt{x})}\right)...}\right)
+\]
+\[
+\overline{y}
+= (1+\epsilon_{40})\sqrt{...(1+\epsilon_2)\sqrt{(1+\epsilon_1)\sqrt{x}}}
+\]
+\[
+= (1+\epsilon_{40})(1+\epsilon_{39})^\frac{1}{2}(1+\epsilon_{38})^\frac{1}{4}...(1+\epsilon_{2})^{\frac{1}{2^{38}}}(1+\epsilon_{1})^{\frac{1}{2^{39}}}\sqrt[2^{40}]{x}
+\]
+\[
+= \sqrt[2^{40}]{x}\prod_{i=1}^{40}(1+\epsilon_{i})^{\frac{1}{2^{40-i}}}
+\]
+
+\item
+\[
+\frac{\delta \overline{y}}{\delta\epsilon_i}(0,...,\epsilon_i,...,0)
+= \frac{\delta}{\delta\epsilon_i}\sqrt[2^{40}]{x}(1+\epsilon_{i})^{\frac{1}{2^{40-i}}}
+= \sqrt[2^{40}]{x}\frac{(1+\epsilon_{i})^{\frac{1}{2^{40-i}}-1}}{2^{40-i}}
+\]
+\[
+\frac{\delta \overline{y}}{\delta\epsilon_i}(0,...,0) = \frac{\sqrt[2^{40}]{x}}{2^{40-i}}
+\]
+
+\item 
+\[
+\overline{y} \approx y +
+\sum_{i=1}^{40}
+\frac{\sqrt[2^{40}]{x}}{2^{40-i}}
+\epsilon_i
+\]
+\[
+\overline{y} \approx y +
+\sum_{i=1}^{40}
+\frac{y}{2^{40-i}}
+\epsilon_i
+\]
+
+\item
+\[
+\overline{y}-y \approx
+\sum_{i=1}^{40}
+\frac{y}{2^{40-i}}
+\epsilon_i
+\]
+\[
+\frac{\overline{y}-y}{y} \approx
+\sum_{i=1}^{40}
+\frac{1}{2^{40-i}}
+\epsilon_i
+\le \left(\frac{2^{40}-1}{2^{40}}+1\right)\epsilon_{mach}
+\]
+
+\end{enumerate}
+\item Kwadraten\\
+\[
+y = x^{2^{40}}
+\]
+\begin{enumerate}
+\item
+\[
+\overline{y} = fl\left(fl\left(fl\left(fl\left( fl\left(x^2\right)^2 \right)^2 \right)^2 \right)^2 \right)
+\]
+\[
+\overline{y} = (1+\epsilon_{40})\left(...(1+\epsilon_3)\left((1+\epsilon_2)\left((1+\epsilon_1)x^2\right)^2\right)^2...\right)^2
+\]
+\[
+\overline{y} = x^{2^{40}} \sum_{i=1}^{40}(1+\epsilon_{i})^{2^{40-i}}
+\]
+
+\item
+\[
+\frac{\delta \overline{y}}{\delta\epsilon_i}(0,...,\epsilon_i,...,0)
+= \frac{\delta}{\delta\epsilon_i}
+x^{2^{40}} (1+\epsilon_{i})^{2^{40-i}}
+= x^{2^{40}} 2^{40-i}(1+\epsilon_{i})^{2^{40-i}-1}
+\]
+\[
+\frac{\delta \overline{y}}{\delta\epsilon_i}(0,...,0)
+= x^{2^{40}} 2^{40-i}
+\]
+
+\item
+\[
+\overline{y} \approx y +
+\sum_{i=1}^{40} x^{2^{40}} 2^{40-i} \epsilon_i
+= x^{2^{40}} \sum_{i=1}^{40} 2^{40-i} \epsilon_i
+\]
+\[
+\overline{y} \approx y +
+y \sum_{i=1}^{40} 2^{40-i} \epsilon_i
+\]
+
+\item
+\[
+\overline{y}-y \approx
+y \sum_{i=1}^{40} 2^{40-i} \epsilon_i
+\]
+\[
+\frac{\overline{y}-y}{y} \approx
+\sum_{i=1}^{40} 2^{40-i} \epsilon_i
+\le \left(2_{40}-1\right)\epsilon_{mach}
+\]
+
+\end{enumerate}
+\end{enumerate}
+We kunnen nu de fout berekenen.
+\[
+y = x \text{ maar } \overline{y} \neq x
+\]
+\[
+\overline{y} = 
+x
+\left(
+1+\sum_{i=1}^{40}
+\frac{1}{2^{40-i}}
+\epsilon_i
+\right)
+\left(
+1+
+\sum_{j=1}^{40}
+2^{40-j} \epsilon_j
+\right)
+\]
+
+\item
+
+\item
+
+\item
+
+
+\end{enumerate}
 
 \end{document}

@@ -122,60 +122,57 @@ fl\left(
 \frac{\delta \overline{y}}{\delta \epsilon_4}(0,0,0,0)
 = \frac{-x(x+1)}{2\sqrt{x+1}\left(\sqrt{x+1}+1\right)^2}
 \]
+\[
+= \frac{-x(x+1)}{(2\sqrt{(x+1)^3}+ 4(x+1)+2\sqrt{x+1})}
+\]
 \end{itemize}
 \item
 \[
-\overline{y} =
+\overline{y} \approx y +
 \frac{x}{\sqrt{x+1}+1} \epsilon_1
 +
 \frac{-x}{\sqrt{x+1}+1} \epsilon_2
+\]\[
 +
 \frac{-x\sqrt{1+x}}{\left(\sqrt{1+x}+1\right)^2} \epsilon_3
 +
-\frac{-x(x+1)}{2\sqrt{x+1}\left(\sqrt{x+1}+1\right)^2} \epsilon_4
+\frac{-x(x+1)}{(2\sqrt{(x+1)^3}+ 4(x+1)+2\sqrt{x+1})} \epsilon_4
 \]
 \[
+\overline{y}
+\approx
+y+
+y \epsilon_1
+-
+y \epsilon_2
++
+y \frac{\sqrt{1+x}}{\sqrt{1+x}+1} \epsilon_3
+-
+y \frac{1}{2}\frac{\sqrt{1+x}}{\sqrt{1+x}+1} \epsilon_4
+\]
+\[
+\overline{y}-y
 = 
 y \epsilon_1
 -
 y \epsilon_2
 +
-y\frac{-\sqrt{1+x}}{\sqrt{1+x}+1} \epsilon_3
-+
-y
-\frac{-(x+1)}{2\sqrt{x+1}\left(\sqrt{x+1}+1\right)} \epsilon_4
-\]
-\[
-\overline{y}-y
-= 
-\epsilon_1
+y \frac{\sqrt{1+x}}{\sqrt{1+x}+1} \epsilon_3
 -
-\epsilon_2
-+
-\frac{-\sqrt{1+x}}{\sqrt{1+x}+1} \epsilon_3
-+
-\frac{-(x+1)}{2\sqrt{x+1}\left(\sqrt{x+1}+1\right)} \epsilon_4
+y \frac{1}{2}\frac{\sqrt{1+x}}{\sqrt{1+x}+1} \epsilon_4
 \]
 \[
 \frac{\overline{y} - y}{y}
 =
-\frac{\sqrt{x+1}+1}{x}
 \epsilon_1
 -
-\frac{\sqrt{x+1}+1}{x}
 \epsilon_2
 +
-\frac{-\sqrt{1+x}}{x} \epsilon_3
-+
-\frac{-(x+1)}{2x\sqrt{x+1}} \epsilon_4
+\frac{\sqrt{1+x}}{\sqrt{1+x}+1} \epsilon_3
+-
+\frac{1}{2}\frac{\sqrt{1+x}}{\sqrt{1+x}+1} \epsilon_4
 \]
 \end{enumerate}
-
-TODO\\
-Oplossing:
-\[
-\frac{\overline{y}-y}{y} \approx -\frac{1}{2}\frac{\sqrt{1+x}}{\sqrt{1+x}+1}\epsilon_1 - \frac{\sqrt{1+x}}{\sqrt{1+x}+1}\epsilon_2 - \epsilon_3+\epsilon_4
-\]
 
 \section{Probleem 6}
 
@@ -269,7 +266,7 @@ S = \sum_{i=1}^na_i
 
 \item
 \[
-\overline{S}-S \approx \sum_{i=2}^n\epsilon_i\sum_{j=1}^na_j
+\overline{S}-S \approx \sum_{k=2}^n\epsilon_k\sum_{i=1}^ka_i
 \]
 \end{enumerate}
 
@@ -505,30 +502,30 @@ y= (1+x)^{\frac{1}{x}}
 \begin{itemize}
 \item
 \[
-\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,0,0)
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,0)
 = \frac{\delta\overline{y}}{\delta\epsilon_1}
 (1+x)^{\left(\frac{1}{x}\right)(1+\epsilon_1)}
 = \frac{(x+1)^{\frac{\epsilon_1+1}{x}}ln(x+1)}{x}
 \]
 \[
-\frac{\delta\overline{y}}{\delta\epsilon_1}(0,0,0,0)
+\frac{\delta\overline{y}}{\delta\epsilon_1}(0,0,0)
 = \frac{(x+1)^{\frac{1}{x}}ln(x+1)}{x}
 \]
 \item
 \[
-\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2,0,0)
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2,0)
 = \frac{\delta\overline{y}}{\delta\epsilon_2}
 ((1+x)(1+\epsilon_2))^{\frac{1}{x}}
 = \frac{(1+x)}{a}((1+x)(1+\epsilon_2))^{\frac{1}{x}-1}
 \]
 \[
-\frac{\delta\overline{y}}{\delta\epsilon_2}(0,0,0,0)
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,0,0)
 = \frac{(1+x)}{a}(1+x)^{\frac{1}{x}-1}
 =\frac{(1+x)^{\frac{1}{x}}}{a}
 \]
 \item
 \[
-\frac{\delta\overline{y}}{\delta\epsilon_3}(0,0,\epsilon_3,0)
+\frac{\delta\overline{y}}{\delta\epsilon_3}(0,0,\epsilon_3)
 = \frac{\delta\overline{y}}{\delta\epsilon_3}
 \left((1+x)^{\frac{1}{x}}\right)(1+\epsilon_3)
 = \left((1+x)^{\frac{1}{x}}\right)
@@ -565,15 +562,97 @@ y= (1+x)^{\frac{1}{x}}
 \]
 \end{enumerate}
 
-TODO
 \item
 \[
-y= 
+y= \sqrt{e^x -1}
 \]
 \begin{enumerate}[1.]
 \item
 \[
-\overline{y} = ...
+\overline{y} = fl\left(\sqrt{fl(fl(e^x) - 1)}\right)
+\]
+\[
+\overline{y} = \left(\sqrt{((e^x)(1+\epsilon_1) -1)(1+\epsilon_2)}\right)(1+\epsilon_3)
+\]
+\item
+\begin{itemize}
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_1}
+\sqrt{(e^x)(1+\epsilon_1) -1}
+= 
+\frac{e^x}{2\sqrt{(e^x)(1+\epsilon_1) -1}}
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(0,0,0)
+= \frac{e^x}{2\sqrt{e^x -1}}
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_2}
+\sqrt{(e^x -1)(1+\epsilon_2)}
+= \frac{e^x -1}{2\sqrt{(e^x -1)(1+\epsilon_2)}}
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,0,0)
+= \frac{e^x -1}{2\sqrt{e^x -1}} = \frac{1}{2}\sqrt{e^x -1}
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_3}(0,0,\epsilon_3)
+= \frac{\delta\overline{y}}{\delta\epsilon_3}
+(1+\epsilon_3)\sqrt{e^x -1}
+= \sqrt{e^x -1}
+\]
+
+\end{itemize}
+\item
+\[
+\overline{y} \approx y +
+\frac{e^x}{2\sqrt{e^x -1}} \epsilon_1
++
+\frac{1}{2}\sqrt{e^x -1} \epsilon_2
++
+\sqrt{e^x -1} \epsilon_3
+\]
+\[
+\overline{y} \approx y +
++
+y \frac{e^x}{2e^x -2} \epsilon_1
++
+y \frac{1}{2} \epsilon_2
++
+y \epsilon_3
+\]
+\item
+\[
+\overline{y} - y \approx 
+y \frac{e^x}{2e^x -2} \epsilon_1
++
+y \frac{1}{2} \epsilon_2
++
+y \epsilon_3
+\]
+\[
+\frac{\overline{y}-y}{y} \approx 
+\frac{e^x}{2e^x -2} \epsilon_1
++
+\frac{1}{2} \epsilon_2
++
+\epsilon_3
+\]
+\end{enumerate}
+
+\item
+\[
+y= \sin\left(\frac{1}{x}\right)
+\]
+\begin{enumerate}[1.]
+\item
+\[
+\overline{y} = \left( \sin\left(\frac{(1+\epsilon_1)}{x}\right) \right)(1+\epsilon_2)
 \]
 \[
 \overline{y} = ...
@@ -582,61 +661,339 @@ y=
 \begin{itemize}
 \item
 \[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_1}
+\sin\left(\frac{(1+\epsilon_1)}{x}\right)
+= \frac{1}{x}\cos\left(\frac{(1+\epsilon_1)}{x}\right)
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(0,0)
+= \frac{1}{x}\cos\left(\frac{1}{x}\right)
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2)
+= \frac{\delta\overline{y}}{\delta\epsilon_2}
+\left(\sin\left(\frac{1}{x}\right)\right)(1+\epsilon_2)
+= \sin\left(\frac{1}{x}\right)
+\]
+
+\end{itemize}
+\item
+\[
+\overline{y} \approx y +
+\frac{1}{x}\cos\left(\frac{1}{x}\right) \epsilon_1
++
+\sin\left(\frac{1}{x}\right) \epsilon_2
+\]
+\[
+\overline{y} \approx y +
+y \frac{1}{x}\cot\left(\frac{1}{x}\right)\epsilon_1
++
+y \epsilon_2
+\]
+\item
+\[
+\overline{y} - y \approx 
+y \frac{1}{x}\cot\left(\frac{1}{x}\right)\epsilon_1
++
+y \epsilon_2
+\]
+\[
+\frac{\overline{y}-y}{y} \approx 
+\frac{1}{x}\cot\left(\frac{1}{x}\right)\epsilon_1
++
+\epsilon_2
+\]
+\end{enumerate}
+
+\item
+\[
+y= (1+x^2)^{x^{2}}
+\]
+\begin{enumerate}[1.]
+\item
+\[
+\overline{y} = fl \left( \left(fl(1+fl(x^2))\right)^{fl(x^{2})} \right)
+\]
+\[
+\overline{y} = \left( \left((1+(x^2)(1+\epsilon_2))(1+\epsilon_3)\right)^{(x^{2})(1+\epsilon_1)} \right)(1+\epsilon_4)
+\]
+\item
+\begin{itemize}
+\item
+\[
 \frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,0,0)
 = \frac{\delta\overline{y}}{\delta\epsilon_1}
-...
-= 
+(1+x^2)^{(x^{2})(1+\epsilon_1)}
+= x^2(x^2+1)^{x^2(1+\epsilon_1)}ln(x^2+1)
 \]
 \[
 \frac{\delta\overline{y}}{\delta\epsilon_1}(0,0,0,0)
-= ...
+= x^2(x^2+1)^{x^2}ln(x^2+1)
 \]
 \item
 \[
 \frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2,0,0)
 = \frac{\delta\overline{y}}{\delta\epsilon_2}
-...
-= 
+(1+(x^2)(1+\epsilon_2))^{x^{2}}
+= x^4(1+(x^2)(1+\epsilon_2))^{x^{2}-1}
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,0,0,0)
+= x^4(1+x^2)^{x^{2}-1}
 \]
 \item
 \[
 \frac{\delta\overline{y}}{\delta\epsilon_3}(0,0,\epsilon_3,0)
 = \frac{\delta\overline{y}}{\delta\epsilon_3}
-...
-= 
+((1+x^2)(1+\epsilon_3))^{x^{2}}
+\]
+\[
+= (1+x^2)x^2((1+x^2)(1+\epsilon_3))^{x^{2}-1}
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_3}(0,0,0,0)
+= (1+x^2)x^2(1+x^2)^{x^{2}-1}
 \]
 
 \item
 \[
 \frac{\delta\overline{y}}{\delta\epsilon_4}(0,0,0,\epsilon_4)
 = \frac{\delta\overline{y}}{\delta\epsilon_4}
-...
-= 
+\left((1+x^2)^{x^{2}}\right)(1+\epsilon_4)
+= (1+x^2)^{x^{2}}
 \]
 \end{itemize}
 \item
 \[
 \overline{y} \approx y +
-...
+x^2(x^2+1)^{x^2}ln(x^2+1) \epsilon_1
++
+x^4(1+x^2)^{x^{2}-1} \epsilon_2
+\]
+\[
++
+(1+x^2)x^2(1+x^2)^{x^{2}-1} \epsilon_3
++
+(1+x^2)^{x^{2}} \epsilon_4
+\]
+\[
+y= (1+x^2)^{x^{2}}
 \]
 \[
 \overline{y} \approx y +
-...
+x^2yln(x^2+1) \epsilon_1
++
+\frac{x^4y}{1+x^2} \epsilon_2
++
+yx^2 \epsilon_3
++
+y \epsilon_4
 \]
 \item
 \[
 \overline{y} - y \approx 
-...
+x^2yln(x^2+1) \epsilon_1
++
+\frac{x^4y}{1+x^2} \epsilon_2
++
+yx^2 \epsilon_3
 \]
 \[
 \frac{\overline{y}-y}{y} \approx 
-...
+x^2ln(x^2+1) \epsilon_1
++
+\frac{x^4}{1+x^2} \epsilon_2
++
+x^2 \epsilon_3
 \]
+\end{enumerate}
+
+\item
+\[
+y= \frac{e^{x^{2}}-e^{-x^{2}}}{2x^{2}}
+\]
+\begin{enumerate}[1.]
+\item
+\[
+\overline{y} = fl\left( \frac{fl\left( fl\left(e^{fl(x^{2})}\right)-fl\left(e^{fl(-fl(x^{2}))}\right) \right)}{fl(2fl(x^{2}))} \right)
+\]
+\[
+\overline{y} = 
+\frac
+{\left(e^{(x^{2})(1+\epsilon_1)}-e^{(-(x^{2})(1+\epsilon_1))(1+\epsilon_2)}\right)(1+\epsilon_4)}
+{(2(x^{2})(1+\epsilon_1))(1+\epsilon_3)}
+(1+\epsilon_5)
+\]
+\item
+\begin{itemize}
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,0,0,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_1}
+\frac{e^{(x^{2})(1+\epsilon_1)}-e^{-(x^{2})(1+\epsilon_1)}}{2(x^{2})(1+\epsilon_1)}
+\]
+\[
+= 
+\frac
+{e^{-x^2(\epsilon_1+1)}
+\left( x^2 (\epsilon_1+1) \left(e^{2x^2(\epsilon_1+1)}+1\right)\right) 
+- 
+e^{2x^2(\epsilon_1+1)}
++1}
+{2x^2(\epsilon_1+1)^2}
+\]
+AWW HELL NAW
+\end{itemize}
 \end{enumerate}
 
 \end{enumerate}
 
 \section{Probleem 9}
+\begin{itemize}
+\item Product\\
+\[
+y = \prod_{i=1}^{n}
+\]
+\begin{enumerate}
+\item
+\[
+\overline{y} = fl(fl(...fl(fl(fl(a_1 a_2) a_3) a_4)... a_{n-1}) a_{n})
+\]
+\[
+\overline{y} = ((...((a_1 a_2)(1+\epsilon_2) a_3)(1+\epsilon_3)...a_{n-1})(1+\epsilon_{n-1}) a_n)(1+\epsilon_n)
+\]
+\[
+= \left(\prod_{i=1}^{n} a_{i} \right) \left( \prod_{i=2}^n(1+\epsilon_i) \right)
+\]
+\item
+\begin{itemize}
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,...,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_1}
+= \left(\prod_{i=1}^{n} a_{i} \right) (1+\epsilon_1)
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(0,...,0)
+= \prod_{i=1}^{n} a_{i}
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2,...,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_2}
+= \left(\prod_{i=1}^{n} a_{i} \right) (1+\epsilon_2)
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,...,0)
+= \prod_{i=1}^{n} a_{i}
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_j}(0,...,\epsilon_j,...,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_j}
+= \left(\prod_{i=1}^{n} a_{i} \right) (1+\epsilon_j)
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_j}(0,...,0)
+= \prod_{i=1}^{n} a_{i}
+\]
+\end{itemize}
+
+\item
+\[
+\overline{y} \approx y
++ \sum_{j=1}^{n} \epsilon_j \prod_{i=1}^{n} a_{i}
+\]
+\[
+\overline{y} \approx y
++ \sum_{j=1}^{n} \epsilon_j y
+\]
+
+\item
+\[
+\overline{y} - y
+\approx
+\sum_{j=1}^{n} \epsilon_j y
+\]
+\[
+\frac{\overline{y} - y}{y}
+\approx
+\sum_{j=1}^{n} \epsilon_j
+\]
+
+\end{enumerate}
+
+\item Scalair Product\\
+TODO
+\[
+y = \sum_{i=1}^{n}a_{i}b_{i}
+\]
+\begin{enumerate}
+\item
+\[
+\overline{y} = 
+\]
+\[
+\overline{y} = ...
+\]
+\item
+\begin{itemize}
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,...,0)
+= ...
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(0,...,0)
+= ..
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2,...,0)
+= ...
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,...,0)
+= ...
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_j}(0,...,\epsilon_j,...,0)
+= ...
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_j}(0,...,0)
+= ...
+\]
+\end{itemize}
+
+\item
+\[
+\overline{y} \approx y
++ ...
+\]
+\[
+\overline{y} \approx y
++ ...
+\]
+
+\item
+\[
+\overline{y} - y
+\approx
+...
+\]
+\[
+\frac{\overline{y} - y}{y}
+\approx
+...
+\]
+\end{enumerate}
+\end{itemize}
+
+
 \section{Probleem 10}
 \section{Probleem 11}
 
