@@ -5,6 +5,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{enumerate}
 \author{Tom Sydney Kerckhove}
 \title{Oefeningen Numerieke Wiskunde:\\ Oefenzitting 2}
 \date{19 februari 2014}
@@ -72,6 +73,8 @@ TODO
 \end{itemize}
 
 \section{Probleem 5}
+\begin{enumerate}
+\item
 \[
 \overline{y} =
 fl\left(
@@ -83,20 +86,91 @@ fl\left(
 \frac{x(1+\epsilon_1)}{\left(\left(\sqrt{\left(x+1\right)(1+\epsilon_4)}\right)(1+\epsilon_3)+1\right)(1+\epsilon_2)}
 \]
 \[
-\overline{y} = F(0,0,0,0) + \sum_{i=1}^4\epsilon_i\frac{\delta F}{\delta\epsilon_i}(0,0,0,0)
+\overline{y} = y + \sum_{i=1}^4\epsilon_i\frac{\delta F}{\delta\epsilon_i}(0,0,0,0)
 \]
+\item
+\begin{itemize}
+\item
 \[
-\frac{\delta F}{\delta \epsilon_1}(\epsilon_1,0,0,0)
-= \frac{x\epsilon_1}{\sqrt{x+1}+1}
+\frac{\delta \overline{y}}{\delta \epsilon_1}(\epsilon_1,0,0,0)
+= \frac{x}{\sqrt{x+1}+1}
 \]
+\item
 \[
-\frac{\delta F}{\delta \epsilon_2}(0,\epsilon_2,0,0)
+\frac{\delta \overline{y}}{\delta \epsilon_2}(0,\epsilon_2,0,0)
 = \frac{-x}{\left(\sqrt{x+1}+1\right)(1+\epsilon_2)^2}
 \]
 \[
-\frac{\delta F}{\delta \epsilon_3}(0,0,\epsilon_3,0)
-...
+\frac{\delta \overline{y}}{\delta \epsilon_2}(0,0,0,0)
+= \frac{-x}{\sqrt{x+1}+1}
 \]
+\item
+\[
+\frac{\delta \overline{y}}{\delta \epsilon_3}(0,0,\epsilon_3,0)
+= \frac{-x\sqrt{1+x}}{\left((\sqrt{1+x})(1+\epsilon_3)+1\right)^2}
+\]
+\[
+\frac{\delta \overline{y}}{\delta \epsilon_3}(0,0,0,0)
+= \frac{-x\sqrt{1+x}}{\left(\sqrt{1+x}+1\right)^2}
+\]
+\item
+\[
+\frac{\delta \overline{y}}{\delta \epsilon_4}(0,0,0,\epsilon_4)
+= \frac{-x(x+1)}{2\sqrt{(x+1)(1+\epsilon_4)}\left(\sqrt{(x+1)(1+\epsilon_4)}+1\right)^2}
+\]
+\[
+\frac{\delta \overline{y}}{\delta \epsilon_4}(0,0,0,0)
+= \frac{-x(x+1)}{2\sqrt{x+1}\left(\sqrt{x+1}+1\right)^2}
+\]
+\end{itemize}
+\item
+\[
+\overline{y} =
+\frac{x}{\sqrt{x+1}+1} \epsilon_1
++
+\frac{-x}{\sqrt{x+1}+1} \epsilon_2
++
+\frac{-x\sqrt{1+x}}{\left(\sqrt{1+x}+1\right)^2} \epsilon_3
++
+\frac{-x(x+1)}{2\sqrt{x+1}\left(\sqrt{x+1}+1\right)^2} \epsilon_4
+\]
+\[
+= 
+y \epsilon_1
+-
+y \epsilon_2
++
+y\frac{-\sqrt{1+x}}{\sqrt{1+x}+1} \epsilon_3
++
+y
+\frac{-(x+1)}{2\sqrt{x+1}\left(\sqrt{x+1}+1\right)} \epsilon_4
+\]
+\[
+\overline{y}-y
+= 
+\epsilon_1
+-
+\epsilon_2
++
+\frac{-\sqrt{1+x}}{\sqrt{1+x}+1} \epsilon_3
++
+\frac{-(x+1)}{2\sqrt{x+1}\left(\sqrt{x+1}+1\right)} \epsilon_4
+\]
+\[
+\frac{\overline{y} - y}{y}
+=
+\frac{\sqrt{x+1}+1}{x}
+\epsilon_1
+-
+\frac{\sqrt{x+1}+1}{x}
+\epsilon_2
++
+\frac{-\sqrt{1+x}}{x} \epsilon_3
++
+\frac{-(x+1)}{2x\sqrt{x+1}} \epsilon_4
+\]
+\end{enumerate}
+
 TODO\\
 Oplossing:
 \[
@@ -104,46 +178,464 @@ Oplossing:
 \]
 
 \section{Probleem 6}
+
 \[
-\overline{y}
-=
-fl
-\left(
-\frac{
-fl\left(
-1-fl(\cos(x))
-\right)}
-{fl(x^2)}
-\right)
+y = \frac{1-\cos(x)}{x^2}
+\]
+\begin{enumerate}
+\item
+\[
+\overline{y} = fl\left(\frac{fl(1-fl(\cos(x)))}{fl(x^2)}\right)
 \]
 \[
-=
-\left(
-\frac{
-\left(
-1-(\cos(x)(1+\epsilon_3))
-\right)(1+\epsilon_2)}
-{(x^2)(1+\epsilon_4)}
-\right)(1+\epsilon_1)
+\overline{y} = \frac{(1-(\cos(x))(1+\epsilon_1))(1+\epsilon_2)}{(x^2)(1+\epsilon_3)}(1+\epsilon_4)
 \]
-TODO
+
+\item
+\[
+\frac{\delta \overline{y}}{\delta \epsilon_1}(\epsilon_1,0,0,0)
+= \frac{\delta}{\delta \epsilon_1}\frac{1-(\cos(x))(1+\epsilon_1)}{x^2} 
+= -\frac{\cos(x)}{x^2}
+\]
+\[
+\frac{\delta \overline{y}}{\delta \epsilon_2}(0,\epsilon_2,0,0)
+= \frac{\delta}{\delta \epsilon_2}\frac{(1-\cos(x))(1+\epsilon_2)}{x^2}
+= \frac{(1-\cos(x))}{x^2}
+\]
+\[
+\frac{\delta \overline{y}}{\delta \epsilon_3}(0,0,\epsilon_3,0)
+= \frac{\delta}{\delta \epsilon_3}\frac{1-\cos(x)}{(x^2)(1+\epsilon_3)} = \frac{1-\cos(x)}{(x^2)}\frac{-1}{(1+\epsilon_3)^2}
+\]
+\[
+\frac{\delta \overline{y}}{\delta \epsilon_3}(0,0,0,0) = -\frac{1-\cos(x)}{x^2}
+\]
+\[
+\frac{\delta \overline{y}}{\delta \epsilon_4}(0,0,0,\epsilon_4)
+= \frac{\delta}{\delta \epsilon_4}\frac{(1-\cos(x))(1+\epsilon_4)}{x^2}
+= \frac{1 - \cos(x)}{x^2}
+\]
+
+\item
+\[
+\overline{y} \approx y -\frac{\cos(x)}{x^2}\epsilon_1
++ \frac{(1-\cos(x))}{x^2}\epsilon_2
+- \frac{1-\cos(x)}{x^2}\epsilon_3
++ \frac{1 - \cos(x)}{x^2}\epsilon_4
+\]
+\[
+\overline{y} \approx y - \frac{\cos(x)}{x^2}\epsilon_1 + y\epsilon_2 - y\epsilon_3 + y\epsilon_4
+\]
+\item
+\[
+\overline{y}-y \approx - \frac{\cos(x)}{x^2}\epsilon_1 + y\epsilon_2 - y\epsilon_3 + y\epsilon_4
+\]
+\[
+\frac{\overline{y}-y}{y} \approx - \frac{\cos(x)}{x(1-\cos(x))}\epsilon_1 + \epsilon_2 - \epsilon_3 + \epsilon_4
+\]
+\end{enumerate}
 
 \section{Probleem 7}
+\[
+S = \sum_{i=1}^na_i
+\]
+\begin{enumerate}
+\item 
 \[
 \overline{S} = fl(fl(...fl(fl(fl(fl(a_1+a_2)+a_3)+a_4)...)+a_n)
 \]
 \[
 = ((...((((a_1+a_2)(1+\epsilon_2))+a_3)(1+\epsilon_3))...)+a_n)(1+\epsilon_n)
 \]
+
+\begin{itemize}
+\item
 \[
-\overline{S}-S = \sum_{i=1}^na_i - ((...((((a_1+a_2)(1+\epsilon_2))+a_3)(1+\epsilon_3))...)+a_n)(1+\epsilon_n)
+\frac{\delta\overline{y}}{\delta \epsilon_2}(\epsilon_2,0,...,0)= a_1 + a_2
 \]
+\item
 \[
-\approx 
+\frac{\delta\overline{y}}{\delta \epsilon_3}(0,\epsilon_3,0,...,0)= a_1 + a_2 + a_3 
 \]
-TODO hoe
+\item
+\[
+\frac{\delta\overline{y}}{\delta \epsilon_i}(0,...,0,\epsilon_i,0,...,0) = \sum_{j=1}^ia_j
+\]
+\end{itemize}
+
+\item
+\[
+\overline{S} \approx y + \sum_{k=2}^n\epsilon_k\sum_{i=1}^ka_i
+\]
+
+\item
+\[
+\overline{S}-S \approx \sum_{i=2}^n\epsilon_i\sum_{j=1}^na_j
+\]
+\end{enumerate}
 
 \section{Probleem 8}
+\begin{enumerate}[(a)]
+\item
+\[
+y=x\sin(x)
+\]
+\begin{enumerate}[1.]
+\item
+\[
+\overline{y} = fl(xfl(\sin(x)))
+\]
+\[
+\overline{y} = (x\sin(x)(1+\epsilon_1))(1+\epsilon_2)
+\]
+\item
+\begin{itemize}
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0) = x\sin(x)
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2) = x\sin(x)
+\]
+\end{itemize}
+\item
+\[
+\overline{y} \approx y + x\sin(x)\epsilon_1 + x\sin(x)\epsilon_2
+\]
+\[
+\overline{y} \approx y + y\epsilon_2 + y\epsilon_3
+\]
+\item
+\[
+\overline{y} - y = y\epsilon_1 + y\epsilon_2
+\]
+\[
+\frac{\overline{y}-y}{y} = \epsilon_1 + \epsilon_2
+\]
+\end{enumerate}
+
+
+\item
+\[
+y= \frac{1-\cos(x)}{\sin(x)}
+\]
+\begin{enumerate}[1.]
+\item
+\[
+\overline{y} = fl\left(\frac{fl(1-fl(\cos(x)))}{fl(\sin(x))}\right)
+\]
+\[
+\overline{y} = \left(\frac{(1-(\cos(x))(1+\epsilon_1))(1+\epsilon_2)}{(\sin(x))(1+\epsilon_3)}\right)(1+\epsilon_4)
+\]
+\item
+\begin{itemize}
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,0,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_1}
+\frac{1-\cos(x)(1+\epsilon_1)}{\sin(x)}
+= \frac{-\cos(x)}{\sin(x)}
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2,0,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_2}
+\frac{(1-\cos(x))(1+\epsilon_2)}{\sin(x)}
+= \frac{1-\cos(x)}{\sin(x)}
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_3}(0,0,\epsilon_3,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_3} 
+\frac{1-\cos(x)}{(\sin(x))(1+\epsilon_3)}
+= \frac{\cos(x)-1}{\sin(x)(1+\epsilon_3)^2}
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_3}(0,0,0,0)
+= \frac{\cos(x)-1}{\sin(x)}
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_4}(0,0,0,\epsilon_4)
+= \frac{\delta\overline{y}}{\delta\epsilon_4} 
+\left(\frac{1-\cos(x)}{\sin(x)}\right)(1+\epsilon_4)
+= \frac{1-\cos(x)}{\sin(x)}
+\]
+\end{itemize}
+\item
+\[
+\overline{y} \approx y +
+\frac{-\cos(x)}{\sin(x)} \epsilon_1
++
+\frac{1-\cos(x)}{\sin(x)} \epsilon_2
++
+\frac{\cos(x)-1}{\sin(x)} \epsilon_3
++
+\frac{1-\cos(x)}{\sin(x)} \epsilon_4
+\]
+\[
+\overline{y} \approx y +
+\frac{-\cos(x)}{\sin(x)} \epsilon_1
++ y \epsilon_2
+- y \epsilon_3
++ y \epsilon_4
+\]
+\item
+\[
+\overline{y} - y \approx 
+\frac{-\cos(x)}{\sin(x)} \epsilon_1
++ y \epsilon_2
+- y \epsilon_3
++ y \epsilon_4
+\]
+\[
+\frac{\overline{y}-y}{y} \approx 
+\frac{-\cos(x)}{1-\cos(x)} \epsilon_1
++ \epsilon_2
+- \epsilon_3
++ \epsilon_4
+\]
+\end{enumerate}
+
+\item
+\[
+y= \frac{1-e^{-2x}}{x}
+\]
+\begin{enumerate}[1.]
+\item
+\[
+\overline{y} = fl\left(\frac{fl\left(1-fl(e^{fl(-2x)})\right)}{x}\right)
+\]
+\[
+\overline{y} = \left(\frac{\left(1-((e^{(-2x)(1+\epsilon_1)})(1+\epsilon_2))\right)(1+\epsilon_3)}{x}\right)(1+\epsilon_4)
+\]
+\item
+\begin{itemize}
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,0,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_1}
+\frac{1-e^{(-2x)(1+\epsilon_1)}}{x}
+= \frac{2xe^{(-2x)(1+\epsilon_1)}}{x}
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(0,0,0,0)
+= \frac{2xe^{-2x}}{x}
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2,0,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_2}
+\frac{1-(e^{-2x})(1+\epsilon_2)}{x}
+= \frac{-e^{-2x}}{x}
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_3}(0,0,\epsilon_3,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_3}
+\frac{(1-e^{-2x})(1+\epsilon_3)}{x}
+= \frac{1-e^{-2x}}{x}
+\]
+
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_4}(0,0,0,\epsilon_4)
+= \frac{\delta\overline{y}}{\delta\epsilon_4}
+\left(\frac{1-e^{-2x}}{x}\right)(1+\epsilon_4)
+= \frac{1-e^{-2x}}{x}
+\]
+\end{itemize}
+\item
+\[
+\overline{y} \approx y +
+\frac{2xe^{-2x}}{x}
++
+\frac{-e^{-2x}}{x}
++
+\frac{1-e^{-2x}}{x}
++
+\frac{1-e^{-2x}}{x}
+\]
+\[
+\overline{y} \approx y +
+\frac{2xe^{-2x}}{x} \epsilon_1
++
+\frac{-e^{-2x}}{x} \epsilon_2
++
+y \epsilon_3
++
+y \epsilon_4
+\]
+\item
+\[
+\overline{y} - y \approx 
+\frac{2xe^{-2x}}{x} \epsilon_1
++
+\frac{-e^{-2x}}{x} \epsilon_2
++
+y \epsilon_3
++
+y \epsilon_4
+\]
+\[
+\frac{\overline{y}-y}{y} \approx 
+\frac{2xe^{-2x}}{1-e^{-2x}}\epsilon_1
++
+\frac{-e^{-2x}}{1-e^{-2x}}\epsilon_2
++
+\epsilon_3
++
+\epsilon_4
+\]
+\end{enumerate}
+
+\item
+\[
+y= (1+x)^{\frac{1}{x}}
+\]
+\begin{enumerate}[1.]
+\item
+\[
+\overline{y} = fl\left((1+x)^{\frac{1}{x}}\right)
+\]
+\[
+\overline{y} = \left(((1+x)(1+\epsilon_2))^{\left(\frac{1}{x}\right)(1+\epsilon_1)}\right)(1+\epsilon_3)
+\]
+\item
+\begin{itemize}
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,0,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_1}
+(1+x)^{\left(\frac{1}{x}\right)(1+\epsilon_1)}
+= \frac{(x+1)^{\frac{\epsilon_1+1}{x}}ln(x+1)}{x}
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(0,0,0,0)
+= \frac{(x+1)^{\frac{1}{x}}ln(x+1)}{x}
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2,0,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_2}
+((1+x)(1+\epsilon_2))^{\frac{1}{x}}
+= \frac{(1+x)}{a}((1+x)(1+\epsilon_2))^{\frac{1}{x}-1}
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,0,0,0)
+= \frac{(1+x)}{a}(1+x)^{\frac{1}{x}-1}
+=\frac{(1+x)^{\frac{1}{x}}}{a}
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_3}(0,0,\epsilon_3,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_3}
+\left((1+x)^{\frac{1}{x}}\right)(1+\epsilon_3)
+= \left((1+x)^{\frac{1}{x}}\right)
+\]
+
+\end{itemize}
+\item
+\[
+\overline{y} \approx y +
+\frac{(x+1)^{\frac{1}{x}}ln(x+1)}{x} \epsilon_1
++
+\frac{(1+x)^{\frac{1}{x}}}{a}\epsilon_2
++
+\left((1+x)^{\frac{1}{x}}\right) \epsilon_3
+\]
+\[
+\overline{y} \approx y +
+\frac{ln(x+1)}{x}y \epsilon_1
++ \frac{1}{a}y \epsilon_2
++ y \epsilon_3
+\]
+\item
+\[
+\overline{y} - y \approx 
+\frac{ln(x+1)}{x}y \epsilon_1
++ \frac{1}{a}y \epsilon_2
++ y \epsilon_3
+\]
+\[
+\frac{\overline{y}-y}{y} \approx 
+\frac{ln(x+1)}{x} \epsilon_1
++ \frac{1}{a} \epsilon_2
++ \epsilon_3
+\]
+\end{enumerate}
+
+TODO
+\item
+\[
+y= 
+\]
+\begin{enumerate}[1.]
+\item
+\[
+\overline{y} = ...
+\]
+\[
+\overline{y} = ...
+\]
+\item
+\begin{itemize}
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,0,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_1}
+...
+= 
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(0,0,0,0)
+= ...
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2,0,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_2}
+...
+= 
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_3}(0,0,\epsilon_3,0)
+= \frac{\delta\overline{y}}{\delta\epsilon_3}
+...
+= 
+\]
+
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_4}(0,0,0,\epsilon_4)
+= \frac{\delta\overline{y}}{\delta\epsilon_4}
+...
+= 
+\]
+\end{itemize}
+\item
+\[
+\overline{y} \approx y +
+...
+\]
+\[
+\overline{y} \approx y +
+...
+\]
+\item
+\[
+\overline{y} - y \approx 
+...
+\]
+\[
+\frac{\overline{y}-y}{y} \approx 
+...
+\]
+\end{enumerate}
+
+\end{enumerate}
+
 \section{Probleem 9}
 \section{Probleem 10}
 \section{Probleem 11}

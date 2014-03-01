@@ -135,13 +135,121 @@ Bovengrens:
 \]
 \end{defi}
 \begin{defi}
+Norm $\Vert \cdot \Vert$.\\
+De norm van een mathematisch object geeft de `grootte` ervan aan.
+\end{defi}
+\begin{defi} Gegevens en resultaten.\\
+Exact gegeven $g$.\\
+Gewijzigd gegeven $\overline{g}$.\\
+Absoluut verschil in gegevens $\Delta g$.
+\[
+\Delta g = \overline{g} - g
+\]
+Relatief verschil in gegevens $\delta g$.
+\[
+\delta g
+= \frac{\overline{g} - g}{\Vert g \Vert}
+= \frac{\Delta g}{\Vert g \Vert}
+\]
+Exact resultaat $r$.
+\[
+r = F(g)
+\]
+Berekend resultaat $\overline{r}$
+\[
+\overline{r} = F(\overline{g})
+\]
+Absoluut verschil in resultaat $\Delta r$
+\[
+\Delta r
+= F(\overline{g}) - r
+= \overline{r} - r
+\]
+Relatief verschil in resultaat $\delta r$
+\[
+\delta r
+= \frac{F(\overline{g}) - r}{\Vert r \Vert}
+= \frac{\Delta r}{\Vert r \Vert}
+\]
+\end{defi}
+\begin{defi}
 Conditie van een probleem.\\
 Absoluut Conditiegetal $k_A$.
-TODO
+\[
+k_A =
+\lim_{\epsilon \rightarrow}\sup_{\Vert \Delta g\Vert \le \epsilon} \frac{\Vert r\Vert}{\Vert g \Vert}
+\]
 Relatief Conditiegetal $k_R$
+\[
+k_R =
+\lim_{\epsilon \rightarrow}\sup_{\Vert \Delta g\Vert \le \epsilon} \frac{\Vert r\Vert}{\Vert g \Vert}
+\]
+Het conditiegetal van een probleem geeft aan hoeveel een fout op de gegevens wordt opgeblazen in de resultaten.
 \end{defi}
+\noindent Voorbeeld: Als het relatieve conditiegetal van een probleem $F$ $a$ is, dan worden fouten op de gegevens met een factor $a$ opgeblazen.
+\begin{defi} Benaderingen.\\
+De exacte berekening van een resultaat $F$.
+\[
+r = F(g)
+\]
+De exacte berekening van het resultaat gebaseerd op een gewijzigd gegeven $\overline{g}$.
+\[
+\overline{r} = F(\overline{g})
+\]
+Eindige discretisatie van $F$, exact berekend: $\widetilde{F}$. Discretisatiefout $err_{dis} = \widetilde{F} - F$.
+\[
+\widetilde{F} = F + err_{dis}
+\]
+\[
+\widetilde{r} = \widetilde{F}(\overline{g})
+\]
+Implementatie van $\widetilde{F}$ in eindige precisie.
+\[
+\overline{\widetilde{r}} = \overline{F}(\overline{g})
+\]
+De waarde van de gegevens als $\overline{\widetilde{r}}$ een exacte berekening zou zijn: $\overline{\overline{g}}$.
+\[
+\overline{F}(\overline{g}) = \overline{\widetilde{r}} = \widetilde{F}(\overline{\overline{g}})
+\]
+\end{defi}
+\begin{defi}
+Stabiliteit van een methode\\
+\begin{itemize}
+\item Voorwaartse/Sterke Stabiliteit.\\
+Absolute voorwaartse stabiliteit:
+De absolute grootte van het verschil tussen het berekende resultaat van de methode toegepast op een gewijzigd resultaat $\overline{g}$ in eindige precisie: $\overline{F}(\overline{g})$ en het exacte resultaat van de methode toegepast op een gewijzigd resultaat $\overline{g}$: $\widetilde{F}(\overline{g})$.
+\[
+\Vert \overline{F}(\overline{g}) - \widetilde{F}(\overline{g}) \Vert
+\]
+Relatieve voorwaartse stabiliteit:
+De relatieve grootte van het verschil tussen het berekende resultaat van de methode toegepast op een gewijzigd resultaat $\overline{g}$ in eindige precisie: $\overline{F}(\overline{g})$ en het exacte resultaat van de methode toegepast op een gewijzigd resultaat $\overline{g}$: $\widetilde{F}(\overline{g})$.
+\[
+\frac{\Vert \overline{F}(\overline{g}) - \widetilde{F}(\overline{g}) \Vert}{\Vert \widetilde{F}(\overline{g}) \Vert}
+\]
+Kleine waarde(n) $\Rightarrow$ Voorwaarts stabiele methode $\widetilde{F}$.
 
+\item Achterwaartse Stabiliteit.\\
+Absolute achterwaartse stabiliteit: De grootte van het verschil tussen de gegevens zoals ze zouden zijn als $\overline{\widetilde{r}}$ een exact resultaat was $\overline{\overline{g}}$ en de echte (gewijzigde) gegevens $\overline{g}$. 
+\[
+\Vert \overline{\overline{g}} - \overline{g} \Vert
+\]
+Relatieve achterwaartse stabiliteit: De relatieve grootte van het verschil tussen de gegevens zoals ze zouden zijn als $\overline{\widetilde{r}}$ een exact resultaat was $\overline{\overline{g}}$ en de echte (gewijzigde) gegevens $\overline{g}$. 
+\[
+\frac{\Vert \overline{\overline{g}} - \overline{g} \Vert}{\Vert \overline{g} \Vert}
+\]
+Relatieve waarde is $O(\epsilon_{mach})$ $\Rightarrow$ Achterwaarts stabiele methode.
 
+\item Zwakke Stabiliteit.\\
+Het de grootte van het verschil tussen $\overline{\overline{r}}$ en $\widetilde{r}$. ten opzichte van de grootte van het verschil tussen $\overline{\widetilde{r}}$ en $\widetilde{r}$: $S$.
+\[
+S =
+\frac
+{\Vert \overline{\overline{r}} - \widetilde{r} \Vert}
+{\Vert \overline{\widetilde{r}} - \widetilde{r}\Vert}
+\]
+$S \approx 1$ $\Rightarrow$ zwak stabiele methode.
+\end{itemize}
+\end{defi}
 
 
 \end{document}
