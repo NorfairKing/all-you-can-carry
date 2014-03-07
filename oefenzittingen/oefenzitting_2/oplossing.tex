@@ -27,7 +27,11 @@ p 1-\log_{b}(2\epsilon_{mach})
 \[
 p = 1-\log_{2}(2\cdot 2^{-24}) = 23
 \]
-Volgens dezelfde redenering vinden we dat het aantal bits voor het teken, de mantisse en de exponent bij de dubbele-nauwkeurigheidsgetallen respectievelijk $1$, $11$ en $52$ zijn.
+Volgens dezelfde redenering vinden we dat het aantal bits voor het teken, de mantisse en de exponent bij de dubbele-nauwkeurigheidsge
+\subsection{Conditie}
+\[
+\overline{y_1} = \left((1+2x)(1+\epsilon_1)-\left(\frac{1}{(1+x)(1+\epsilon_2)}\right)(1+\epsilon_3)\right)(1+\epsilon_4)
+\]tallen respectievelijk $1$, $11$ en $52$ zijn.
 
 \section{Probleem 2}
 \begin{itemize}
@@ -933,68 +937,94 @@ y = \sum_{i=1}^{n}a_{i}b_{i}
 \begin{enumerate}
 \item
 \[
-\overline{y} = 
+\overline{y} = fl(fl(...fl(fl(fl(a_1b_1)+fl(a_2b_2))+fl(a_3+b_3))...)+fl(a_nb_n))
 \]
 \[
-\overline{y} = ...
+\overline{y} = (((a_1b_1(1+\epsilon_{1.})+a_2b_2(1+\epsilon_{2.}))(1+\epsilon_{2+}) + a_3b_3(1+\epsilon_{3.})(1+\epsilon_{3+})...)(1+\epsilon_{n+})
 \]
 \item
 \begin{itemize}
 \item
 \[
-\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,...,0)
-= ...
+\frac{\delta\overline{y}}{\delta\epsilon_{1.}}(0,...,\epsilon_{1.},...,0)
+= a_1b_1
 \]
 \[
-\frac{\delta\overline{y}}{\delta\epsilon_1}(0,...,0)
-= ..
+\frac{\delta\overline{y}}{\delta\epsilon_{2.}}(0,...,\epsilon_{2.},...,0)
+= a_2b_2
 \]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_{i.}}(0,...,\epsilon_{i.},...,0)
+= a_ib_i
+\]
+
 \item
 \[
-\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2,...,0)
-= ...
+\frac{\delta\overline{y}}{\delta\epsilon_{2+}}(0,...,\epsilon_{2+},...,0)
+= a_1b_1 + a_2b_2
 \]
 \[
-\frac{\delta\overline{y}}{\delta\epsilon_2}(0,...,0)
-= ...
-\]
-\item
-\[
-\frac{\delta\overline{y}}{\delta\epsilon_j}(0,...,\epsilon_j,...,0)
-= ...
+\frac{\delta\overline{y}}{\delta\epsilon_{3+}}(0,...,\epsilon_{3+},...,0)
+= a_1b_1 + a_2b_2 + a_3b_3
 \]
 \[
-\frac{\delta\overline{y}}{\delta\epsilon_j}(0,...,0)
-= ...
+\frac{\delta\overline{y}}{\delta\epsilon_{i+}}(0,...,\epsilon_{i+},...,0)
+= \sum_{j=1}^ia_jb_j
 \]
+
 \end{itemize}
 
 \item
 \[
 \overline{y} \approx y
-+ ...
-\]
-\[
-\overline{y} \approx y
-+ ...
-\]
-
-\item
-\[
-\overline{y} - y
-\approx
-...
-\]
-\[
-\frac{\overline{y} - y}{y}
-\approx
-...
++ \sum_{i=1}^na_ib_i\epsilon_{i.}
++ \sum_{i=2}^n\epsilon_{i+}\sum_{j=1}^ia_jb_j
 \]
 \end{enumerate}
 \end{itemize}
 
 
 \section{Probleem 10}
+\[
+y = \sum_{i=1}^{n}a_i
+\]
+\begin{proof}
+Bewijs door volledige inductie op $n$\\
+Voor $n=1$ is de stelling triviaal.\\
+Stel dat de stelling klopt voor een bepaalde $n=k$, dan bewijzen we nu dat de stelling geldt voor $n=k+1$.\\
+\begin{enumerate}[1.]
+\item
+\[
+\overline{y} = 
+fl\left(
+fl\left(
+fl\left(
+...
+\right)
++
+fl\left(
+...
+\right)
+\right)
++
+fl\left(
+fl\left(
+...
+\right)
++
+fl\left(
+...
+\right)
+\right)
+\right)
+\]
+LOLNOPE
+
+\end{enumerate}
+\end{proof}
+
 \section{Probleem 11}
+Een vermenigvuldiging met $2$ geeft bijna geen fout in een computer. Een vermenigvuldiging met $10$ daarentegen geeft wel degelijk een fout zoals we zien in de tweede grafiek. De machine werkt duidelijk met basis $2$. De machine werkt met ongeveer $8$ beduidende cijfers.
+
 
 \end{document}

@@ -1,0 +1,56 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\author{Tom Sydney Kerckhove}
+\title{Tutorial: Singuliere Waarden Ontbinding}
+\date{Started: 5 maart 2014\\Compiled: \today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\pagebreak
+
+\section{Inleiding}
+
+\subsection{Achtergrond}
+\subsubsection{Getransponeerde matrix}
+De getransponeerde matrix $A^T$ van een matrix $A$ wordt bekomen door de matrix te spiegelen ten opzichte van de hoofd diagonaal.
+Met andere woorden: element $a_{ij}$ uit $A$ is element $a_{ji}$ uit $A^T$.\\\\
+De toegevoegd getransponeerde matrix $A^*$ is het elementsgewijze complex toegevoegde van $A^T$.
+
+\subsubsection{Unitaire Matrix}
+Een orthogonale matrix is een re\"ele matrix $A$ waarvoor $A^TA=AA^T=\mathbb{I}$ geldt. $A^T$ is dus de inverse van $A$.
+Een unitaire matrix is een complexe matrix $U$ waarvoor $U^*U=UU^*=\mathbb{I}$ geldt. $U^*$ is dus de inverse van $U$.
+
+\section{Definitie}
+De singuliere waarden ontbinding van een $m\times n$ matrix $M$ is een decompositie van de volgende vorm.
+\[
+M = U \Sigma V^*
+\]
+\begin{itemize}
+\item $U$ is een unitaire $m\times m$ matrix.
+\item $\Sigma$ is een $m\times n$ pseudo-diagonaal matrix met positieve re\"ele getallen op de diagonaal.
+\item $V$ is een unitaire $n\times n$ matrix.
+\end{itemize}
+De singuliere waarden van $M$ staan op de diagonaal van $M$.\\\\
+\[
+M\vec{v} = \sigma\vec{u} \text{ en } M^*\vec{u} = \sigma\vec{v}
+\]
+$\vec{u}$ en $\vec{v}$ worden respectievelijk de linker en rechter-singuliere vectoren genoemd.
+
+\section{Ontbinding}
+\subsection{Theorie}
+TODO
+\subsection{Algoritme}
+TODO
+\subsection{Voorbeeld}
+TODO
+
+\end{document}

@@ -1,0 +1,668 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+
+\author{Tom Sydney Kerckhove}
+\title{Oefeningen Numerieke Wiskunde:\\ Oefenzitting 4}
+\date{5 maart 2014}
+
+\begin{document}
+\maketitle
+
+\section{Probleem 1}
+\[
+y_1 = 1+2x-\frac{1}{1+x}
+ \text{ en } 
+y_2 = \frac{(3+2x)x}{1+x}
+\]
+\[
+\overline{y_1} = fl\left(fl(1+fl(2x))-fl\left(\frac{1}{fl(1+x)}\right)\right)
+ \text{ en } 
+\overline{y_2} = fl\left(\frac{fl((fl(3+fl(2x)))x)}{fl(1+x)}\right)
+\]
+
+\subsection{Conditie}
+\[
+\Delta_cy_1 \approx f'(x)\Delta x
+= 2 + \frac{1}{(1+x)^2}
+\]
+\[
+\Delta_cy_2 \approx f'(x)\Delta x
+= \frac{(1+x)(3+4x)-(3x+2x^2)}{(1+x)^2}
+= \frac{(3+4x+2x^2)}{(1+x)^2}
+\]
+Dit is natuurlijk gelijk.
+\[
+\delta_cy \approx \frac{f'(x)x}{f(x)}\delta x
+= \frac{2x^2+4x+3}{(1+x)(3+2x)}\delta x
+\]
+Slecht geconditioneerd voor $x\approx-1$, $x \approx -\frac{3}{2}$.
+
+\subsection{Stabiliteit}
+
+\begin{enumerate}
+\item
+\[
+\overline{y_1} = \left((1+2x)(1+\epsilon_1)-\left(\frac{1}{(1+x)(1+\epsilon_2)}\right)(1+\epsilon_3)\right)(1+\epsilon_4)
+\]
+\item
+\begin{itemize}
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,0,0)
+= \frac{\delta}{\delta\epsilon_1}(1+2x)(1+\epsilon_1)-\frac{1}{1+x}
+= 1+2x
+\]
+
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2,0,0)
+= \frac{\delta}{\delta\epsilon_2}1+2x-\frac{1}{(1+x)(1+\epsilon_2)}=\frac{1}{1+x}\frac{1}{(1+\epsilon_2)^2}
+\]
+
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,0,0,0)
+= \frac{1}{1+x}
+\]
+
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_3}(0,0,\epsilon_3,0)
+= 1+2x-(\frac{1}{1+x})(1+\epsilon_3)
+= -\frac{1}{1+x}
+\]
+
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_4}(0,0,0,\epsilon_4)
+= \frac{\delta}{\delta\epsilon_4}(1+2x-\frac{1}{1+x})(1+\epsilon_4)
+= 1+2x-\frac{1}{1+x}
+\]
+
+\end{itemize}
+
+\item
+\[
+\overline{y} \approx y
++ (1+2x)\epsilon_1
++ \frac{1}{1+x}\epsilon_2
+- \frac{1}{1+x}\epsilon_3
++ \left(1+2x-\frac{1}{1+x}\right)\epsilon_3
+\]
+\[
+\overline{y} \approx y
++ y\frac{1+2x)(1+x)}{x(3+2x)}\epsilon_1
++ y\frac{1}{(3+2x)x}\epsilon_2
+- y\frac{1}{(3+2x)x}\epsilon_3
++ y\epsilon_4
+\]
+
+\item
+\[
+\overline{y} - y
+\approx
+  (1+2x)\epsilon_1
++ \frac{1}{1+x}\epsilon_2
+- \frac{1}{1+x}\epsilon_3
++ \left(1+2x-\frac{1}{1+x}\right)\epsilon_3
+\]
+\[
+\delta_{s}y_1 =
+\frac{\overline{y} - y}{y}
+\approx
+\overline{y} \approx y
+  \frac{(1+2x)(1+x)}{(3+2x)x}\epsilon_1
++ \frac{1}{(3+2x)x}\epsilon_2
+- \frac{1}{(3+2x)x}\epsilon_3
++ \epsilon_4
+\]
+\item
+\[
+\delta_{s}y_1 \le  \frac{3+3x+4x^2}{(3+2x)x}\epsilon_{mach}
+\]
+Dit algoritme is onstabiel voor $x\approx 0$ maar stabiel voor andere $x$.
+
+\end{enumerate}
+
+
+\begin{enumerate}
+\item
+\[
+\frac{(3+2x)x}{1+x}
+\]
+\[
+\overline{y_2} = \left(\frac{(3+2x)(1+\epsilon_1)x}{(1+x)(1+\epsilon_2)}\right)(1+\epsilon_3)
+\]
+
+
+\item
+\begin{itemize}
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,0)
+= \frac{\delta}{\delta\epsilon_1}\frac{(3+2x)(1+\epsilon_1)x}{1+x}
+= \frac{(3+2x)x}{1+x}
+\]
+
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2,0)
+= \frac{\delta}{\delta\epsilon_2}\frac{(3+2x)x}{(1+x)(1+\epsilon_2)}
+= \frac{(3+2x)x}{1+x}\frac{1}{(1+\epsilon_2)^2}
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,...,0)
+= \frac{(3+2x)x}{1+x}
+\]
+
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_3}(0,0,\epsilon_3)
+= \frac{\delta}{\delta\epsilon_3}\frac{(3+2x)x}{1+x}(1+\epsilon_3)
+= \frac{(3+2x)x}{1+x}
+\]
+
+\end{itemize}
+\item
+\[
+\overline{y} \approx y
++ \frac{(3+2x)x}{1+x}\epsilon_1
++ \frac{(3+2x)x}{1+x}\epsilon_2
++ \frac{(3+2x)x}{1+x}\epsilon_3
+\]
+\[
+\overline{y} \approx y
++ y\epsilon_1
++ y\epsilon_2
++ y\epsilon_3
+\]
+
+\item
+\[
+\overline{y} - y
+\approx
+  y\epsilon_1
++ y\epsilon_2
++ y\epsilon_3
+\]
+\[
+\delta_{s}y_1
+= \frac{\overline{y} - y}{y}
+\approx
+  \epsilon_1
++ \epsilon_2
++ \epsilon_3
+\]
+\item
+\[
+\delta_{s}y_1 \le  3\epsilon_{mach}
+\]
+Dit algoritme is overal even stabiel en voorwaarts stabiel.
+\end{enumerate}
+
+
+\section{Probleem 2}
+\subsection*{(a)}
+\[
+y = x\sin(x)
+\]
+
+\subsubsection*{Conditie}
+\[
+f'(x) = \sin(x) + x\cos(x)
+\]
+\[
+\delta_cy \approx \frac{f'(x)x}{f(x)}\delta x
+= \frac{x\sin(x) + x^2\cos(x)}{x\sin(x)}
+= 1+\frac{x\cos(x)}{\sin(x)}
+\]
+Slecht geconditioneerd bij $x=k\pi$.
+Bij $x=0$ gaat $f'(x)$ naar $2$.
+
+\subsubsection*{Stabiliteit}
+\begin{enumerate}
+\item
+\[
+\overline{y} = fl(xfl(\sin(x))
+\]
+\[
+\overline{y} = (x(sin(x))(1+\epsilon_1))(1+\epsilon_2)
+\]
+
+\item 
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1} = \frac{\delta}{\delta\epsilon_1}
+= x(sin(x))(1+\epsilon_1)
+= x(sin(x))
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2} = \frac{\delta}{\delta\epsilon_2}
+= x(sin(x))(1+\epsilon_2)
+= x(sin(x))
+\]
+
+\item 
+\[
+\overline{y} \approx y
++ x(sin(x))\epsilon_1
++ x(sin(x))\epsilon_2
+\]
+\[
+\overline{y} \approx y
++ y\epsilon_1
++ y\epsilon_2
+\]
+
+\item
+\[
+\overline{y}-y \approx
+  x(sin(x))\epsilon_1
++ x(sin(x))\epsilon_2
+\]
+\[
+\delta_sy=
+\frac{\overline{y}-y}{y} \approx
+ \epsilon_1
++\epsilon_2
+\] 
+
+\item
+\[
+\delta_sy \le 2\epsilon_{mach}
+\]
+Dit algoritme is overal even stabiel en voorwaarts stabiel.
+\end{enumerate}
+
+\subsection*{(b)}
+\subsubsection*{Conditie}
+\[
+\frac{\delta f}{\delta a} = \frac{1}{2\sqrt{a}}
+\]
+\[
+\frac{\delta f}{\delta b} = -\frac{1}{2\sqrt{b}}
+\]
+\[
+\delta_cy
+= \frac{\frac{a}{2\sqrt{a}}}{\sqrt{a}-\sqrt{b}}\delta a
+- \frac{\frac{b}{2\sqrt{b}}}{\sqrt{a}-\sqrt{b}}\delta b
+=\frac{\sqrt{a}}{2(\sqrt{a}-\sqrt{b})}\delta a
+- \frac{\sqrt{b}}{2(\sqrt{a}-\sqrt{b})}\delta b
+\]
+Dit probleem is slecht geconditioneerd voor $a \approx b$.
+
+\subsubsection*{Stabiliteit}
+\[
+y = \sqrt{a}-\sqrt{b}
+\]
+
+\begin{enumerate}
+\item
+\[
+\overline{y_1} = fl(fl(\sqrt{a}) - fl(\sqrt{b}))
+\]
+\[
+\overline{y_1} = ((\sqrt{a})(1+\epsilon_1) - (\sqrt{b})(1+\epsilon_2))(1+\epsilon_3)
+\]
+
+\item
+\[
+\frac{\delta\overline{y_1}}{\delta\epsilon_1}(\epsilon_1,0,0)
+= \frac{\delta}{\delta\epsilon_1} \left( \sqrt{a}(1+\epsilon_1)-\sqrt{b} \right)
+= \sqrt{a}
+\]
+\[
+\frac{\delta\overline{y_1}}{\delta\epsilon_2}(0,\epsilon_2,0)
+= \frac{\delta}{\delta\epsilon_2} \left( \sqrt{a}-\sqrt{b}(1+\epsilon_2) \right)
+= -\sqrt{b}
+\]
+\[
+\frac{\delta\overline{y_1}}{\delta\epsilon_3}(0,0,\epsilon_3)
+= \frac{\delta}{\delta\epsilon_3} \left( \sqrt{a}-\sqrt{b} \right)(1+\epsilon_3)
+= \sqrt{a}-\sqrt{b}
+\]
+
+\item
+\[
+\overline{y} \approx y
++ \sqrt{a}\epsilon_1
+- \sqrt{b}\epsilon_2
++ (\sqrt{a}-\sqrt{b}) \epsilon_3
+\]
+\[
+\overline{y} \approx y
++ y\frac{\sqrt{a}}{\sqrt{a}-\sqrt{b}}\epsilon_1
+- y\frac{\sqrt{b}}{\sqrt{a}-\sqrt{b}}\epsilon_2
++ y \epsilon_3
+\]
+
+\item
+\[
+\delta_sy_1 = 
+\overline{y} - y \approx
+\sqrt{a}\epsilon_1
+- \sqrt{b}\epsilon_2
++ (\sqrt{a}-\sqrt{b}) \epsilon_3
+\]
+\[
+\frac{\overline{y}-y}{y} \approx
+  \frac{\sqrt{a}}{\sqrt{a}-\sqrt{b}}\epsilon_1
+- \frac{\sqrt{b}}{\sqrt{a}-\sqrt{b}}\epsilon_2
++ \epsilon_3
+\]
+
+\item
+\[
+\delta_sy_1 \le \frac{2\sqrt{a}+2\sqrt{b}}{\sqrt{a}-\sqrt{b}}\epsilon_{mach}
+\]
+Dit algoritme is onstabiel wanneer $a \approx b$ geldt.
+
+\end{enumerate}
+
+\[
+y = \frac{a-b}{\sqrt{a}+\sqrt{b}}
+\]
+
+\begin{enumerate}
+\item
+\[
+\overline{y_2} = fl\left(\frac{fl(a-b)}{fl(fl(\sqrt{a}) + fl(\sqrt{b}))}\right)
+\]
+\[
+\overline{y_2} =
+\frac{(a-b)(1+\epsilon_4)}
+{((\sqrt{a})(1+\epsilon_1) + (\sqrt{b})(1+\epsilon_2))(1+\epsilon_3)}
+(1+\epsilon_5)
+\]
+
+\item
+\[
+\frac{\delta\overline{y_1}}{\delta\epsilon_1}(\epsilon_1,0,0,0,0)
+= \frac{\delta}{\delta\epsilon_1} \frac{a-b}{\sqrt{a}(1+\epsilon_1)+\sqrt{b}}
+= \frac{\sqrt{a}(a-b)}{(\sqrt{a}(1+\epsilon_1)+\sqrt{b})^2}
+\]
+\[
+\frac{\delta\overline{y_1}}{\delta\epsilon_1}(0,0,0,0,0)
+= \frac{\sqrt{a}(a-b)}{(\sqrt{a}+\sqrt{b})^2}
+\]
+\[
+\frac{\delta\overline{y_1}}{\delta\epsilon_2}(0,\epsilon_2,0,0,0)
+= \frac{\delta}{\delta\epsilon_2} \frac{a-b}{\sqrt{a}+\sqrt{b}(1+\epsilon_2)}
+= \frac{\sqrt{b}(a-b)}{(\sqrt{a}+\sqrt{b}(1+\epsilon_2))^2}
+\]
+\[
+\frac{\delta\overline{y_1}}{\delta\epsilon_2}(0,0,0,0,0)
+= \frac{\sqrt{b}(a-b)}{(\sqrt{a}+\sqrt{b})^2}
+\]
+\[
+\frac{\delta\overline{y_1}}{\delta\epsilon_3}(0,0,\epsilon_3,0,0)
+= \frac{\delta}{\delta\epsilon_3} \frac{a-b}{(\sqrt{a}+\sqrt{b})(1+\epsilon_3)}
+= \frac{(a-b)(\sqrt{a}+\sqrt{b})}{((\sqrt{a}+\sqrt{b})(1+\epsilon_3))^2}
+\]
+\[
+\frac{\delta\overline{y_1}}{\delta\epsilon_3}(0,0,0,0,0)
+= \frac{(a-b)(\sqrt{a}+\sqrt{b})}{(\sqrt{a}+\sqrt{b})^2}
+= \frac{a-b}{\sqrt{a}+\sqrt{b}}
+\]
+\[
+\frac{\delta\overline{y_1}}{\delta\epsilon_4}(0,0,0,\epsilon_4,0)
+= \frac{\delta}{\delta\epsilon_4} \frac{(a-b)(1+\epsilon_4)}{\sqrt{a}+\sqrt{b}}
+= \frac{a-b}{\sqrt{a}+\sqrt{b}}
+\]
+\[
+\frac{\delta\overline{y_1}}{\delta\epsilon_5}(0,0,0,0,\epsilon_5)
+= \frac{\delta}{\delta\epsilon_5} \frac{a-b}{\sqrt{a}+\sqrt{b}}(1+\epsilon_5)
+= \frac{a-b}{\sqrt{a}+\sqrt{b}}
+\]
+
+\item
+\[
+\overline{y} \approx y
++ \frac{\sqrt{a}(a-b)}{(\sqrt{a}+\sqrt{b})^2}\epsilon_1
++ \frac{\sqrt{b}(a-b)}{(\sqrt{a}+\sqrt{b})^2}\epsilon_2
++ \frac{a-b}{\sqrt{a}+\sqrt{b}}\epsilon_3
++ \frac{a-b}{\sqrt{a}+\sqrt{b}}\epsilon_4
++ \frac{a-b}{\sqrt{a}+\sqrt{b}}\epsilon_5
+\]
+
+\[
+\overline{y} \approx y
++ \frac{y \sqrt{a}}{(\sqrt{a}+\sqrt{b})}\epsilon_1
++ \frac{y \sqrt{b}}{(\sqrt{a}+\sqrt{b})}\epsilon_2
++ y \epsilon_3
++ y \epsilon_4
++ y \epsilon_5
+\]
+
+\item
+\[
+\overline{y} - y \approx
++ \frac{\sqrt{a}(a-b)}{(\sqrt{a}+\sqrt{b})^2}\epsilon_1
++ \frac{\sqrt{b}(a-b)}{(\sqrt{a}+\sqrt{b})^2}\epsilon_2
++ \frac{a-b}{\sqrt{a}+\sqrt{b}}\epsilon_3
++ \frac{a-b}{\sqrt{a}+\sqrt{b}}\epsilon_4
++ \frac{a-b}{\sqrt{a}+\sqrt{b}}\epsilon_5
+\]
+\[
+\delta_sy_2=
+\frac{\overline{y}-y}{y} \approx
++ \frac{\sqrt{a}}{(\sqrt{a}+\sqrt{b})}\epsilon_1
++ \frac{\sqrt{b}}{(\sqrt{a}+\sqrt{b})}\epsilon_2
++ \epsilon_3
++ \epsilon_4
++ \epsilon_5
+\]
+
+\item
+\[
+\delta_sy_2
+\le \frac{4(a-b)}{(\sqrt{a}+\sqrt{b})}\epsilon_{mach}
+\]
+Dit algoritme is stabiel.
+
+\end{enumerate}
+
+\section{Probleem 3}
+
+
+\section{Probleem 4}
+Zij $y_1$ en $y_1$ de wortels van deze vergelijking.
+\[
+y_1 = \frac{2 + \sqrt{4 -4t}}{2}
+y_2 = \frac{2 - \sqrt{4 -4t}}{2}
+\]
+\[
+\frac{dy_1}{dt} = \frac{1}{\sqrt{4-4t}}
+\text{ en }
+\frac{dy_2}{dt} = -\frac{1}{\sqrt{4-4t}}
+\]
+\[
+\delta_cy_2 \approx
+\frac{y_1't}{y_1}\delta t
+= (2\sqrt{1-t} + 2 -2t) \delta t
+\]
+\[
+\delta_cy_2 \approx
+\frac{y_2't}{y_2}\delta t
+= (-2\sqrt{1-t} + 2 -2t) \delta t
+\]
+REDO, foutje!
+
+\section{Probleem 5}
+\subsection{(a)}
+\subsubsection{Conditie}
+\[
+y' = 2x
+\]
+\[
+\delta_cy = \frac{2x^2}{2x+x^2}\delta x = (x + 2)\delta x
+\]
+Dit probleem is goed geconditioneerd voor kleine $x$.
+
+\subsubsection{Stabiliteit}
+Eval1:
+\begin{enumerate}
+\item
+\[
+\overline{y} = fl\left(fl\left(fl(1+x)^2\right)-1\right)
+\]
+\[
+\overline{y} = (((1+x)(1+\epsilon_1))^2(1+\epsilon_2) - 1)(1+\epsilon_3)
+\]
+
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,0)
+= \frac{\delta}{\delta\epsilon_1}(((1+x)(1+\epsilon_1))^2-1)
+= 2(1+x)^2(1+\epsilon_1)
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(0,0,0)
+= 2(1+x)^2 
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2,0)
+= \frac{\delta}{\delta\epsilon_2}((1+\epsilon_2)(1+x)^2-1)
+= (1+x)^2 
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_3}(0,0,\epsilon_3)
+= \frac{\delta}{\delta\epsilon_3}((1+x)^2-1)(1+\epsilon_3)
+= (1+x)^2-1
+\]
+
+\item
+\[
+\overline{y} \approx y
++ 2(1+x)^2  \epsilon_1
++ (1+x)^2   \epsilon_2
++ (1+x)^2-1 \epsilon_3
+\]
+\[
+\overline{y} \approx y
++ y\frac{2(1+x)^2}{(1+x)^2-1}  \epsilon_1
++ y\frac{(1+x)^2}{(1+x)^2-1}   \epsilon_2
++ y \epsilon_3
+\]
+
+\item
+\[
+\overline{y} - y \approx
+  2(1+x)^2  \epsilon_1
++ (1+x)^2   \epsilon_2
++ (1+x)^2-1 \epsilon_3
+\]
+\[
+\frac{\overline{y}-y}{y} \approx
++ \frac{2(1+x)^2}{(1+x)^2-1}  \epsilon_1
++ \frac{(1+x)^2}{(1+x)^2-1}   \epsilon_2
++ \epsilon_3
+\]
+
+\item
+Dit algoritme is onstabiel voor $x\approx 0$
+
+\end{enumerate}
+
+
+Eval2:
+\begin{enumerate}
+\item
+\[
+\overline{y} = fl(xfl(2+x))
+\]
+\[
+\overline{y} = x(2+x)(1+\epsilon_1)(1+\epsilon_2)
+\]
+
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0)
+= \frac{\delta}{\delta\epsilon_1} x(2+x)(1+\epsilon_1)
+= x(2+x)
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2)
+= \frac{\delta}{\delta\epsilon_2} x(2+x)(1+\epsilon_2)
+= x(2+x)
+\]
+
+\item
+\[
+\overline{y} \approx y
++ x(2+x)\epsilon_1
++ x(2+x)\epsilon_2
+\]
+\[
+\overline{y} \approx y
++ y\epsilon_1
++ y\epsilon_2
+\]
+\item
+\[
+\overline{y} -y \approx
++ x(2+x)\epsilon_1
++ x(2+x)\epsilon_2
+\]
+\[
+\frac{\overline{y}-y}{y} \approx
+\epsilon_1 + \epsilon_2
+\]
+\item
+Dit algoritme is overal even stabiel en voorwaarts stabiel.
+\end{enumerate}
+
+\subsection{(b)}
+\[
+y = \frac{1}{e^x-1}-\frac{1}{e^x+1} = \frac{2}{e^{2x}-1}
+\]
+
+\subsubsection{Conditie}
+\[
+y' = \frac{-4e^{2x}}{(e^{2x}-1)^2}
+\]
+\[
+\delta_cy \approx \frac{-4xe^{2x}}{(e^{2x}-1)^2}\frac{e^{2x}-1}{2}
+= \frac{-2xe^{2x}}{e^{2x}-1}
+\]
+Dit probleem is slecht geconditioneerd voor $x\approx 0$.
+
+\subsubsection{Stabiliteit}
+Eval1
+\begin{enumerate}
+\item
+\[
+\overline{y} = fl\left(\frac{1}{fl(fl(e^x)-1)}\right) - fl\left(\frac{1}{fl(fl(e^x)+1)}\right)
+\]
+\[
+\overline{y} 
+=
+\left(
+\frac{1+\epsilon_3}{(e^x(1+\epsilon_1) - 1)(1+\epsilon_2)}
+- \frac{1+\epsilon_5}{(e^x(1+\epsilon_1) + 1)(1+\epsilon_4)}
+\right)
+(1+\epsilon_6)
+\]
+LOL NOPE
+\end{enumerate}
+
+\noindent Eval2
+\begin{enumerate}
+\item
+\[
+\overline{y} = fl\left(2fl\left(\frac{1}{fl\left(fl\left(e^{fl(2x)}\right)-1\right)}\right)\right)
+\]
+\[
+\overline{y} = \frac{2(1+\epsilon_4)(1+\epsilon_5)}{\left((1+\epsilon_2)e^{2x(1+\epsilon_1)} -1\right)(1+\epsilon_3)}
+\]
+LOL NOPE
+\end{enumerate}
+
+
+
+
+\end{document}
