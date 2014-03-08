@@ -1,0 +1,40 @@
+\documentclass[samenvatting.tex]{subfiles}
+\begin{document}
+
+\chapter{Stelsels Lineaire Vergelijkingen}
+
+\section{Algoritmes voor oplossen}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Methode & Complexiteit\\
+\hline
+Terugsubstitutie & $O(n^2)$\\
+Eliminatie & $O(n^3)$\\
+Eenvoudige Gauseliminatie & $O(n^3)$\\
+Methode van Cramer & $O(n^4)$\\
+Gauseliminatie met pivotering & $O(n^3)$\\
+Determinant berekenen & $O(n^3)$\\
+Gauseliminatie met pivotering en factorizatie & $O(n^3)$\\
+
+\hline
+\end{tabular}
+\end{center}
+
+\section{Conditie van een stelsel lineaire vergelijkingen}
+Norm van een matrix $A$: $\Vert A \Vert$
+\[
+\Vert A \Vert = \underset{X \neq 0}{max}\frac{\Vert AX \Vert}{\Vert X \Vert}
+\]
+Het conditiegetal van een matrix $A$: $\kappa(A)$
+\[
+\kappa(A) = \Vert A \Vert \Vert A^{-1} \Vert
+\]
+Residu van een stelsel lineaire vergelijkingen $AX=B$: $R$
+\[
+R = AX - B
+\]
+
+
+
+\end{document}
