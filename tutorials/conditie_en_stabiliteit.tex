@@ -1,0 +1,109 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\author{Tom Sydney Kerckhove}
+\title{Tutorial: Conditie en Stabiliteit}
+\date{Started: 9 maart 2014\\Compiled: \today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\pagebreak
+
+\section{Theorie}
+\subsection{Conditie van een probleem}
+De conditie van een probleem is een maat voor hoe gevoelig de oplossing is aan veranderingen in de gegevens.
+\[
+\delta_c y = \frac{y'x}{y}\delta x
+\]
+De conditie van een probleem is inherent. Als een probleem slecht geconditioneerd is valt daar niets aan te doen.
+
+\subsection{Stabiliteit van een algoritme}
+De stabiliteit van een algoritme is een maat voor hoe hard fouten in de gegevens worden opgeblazen doorheen het algoritme.
+\[
+\delta_s y = \frac{\overline{y}-y}{y}
+\]
+
+\subsection{Conclusie}
+\begin{itemize}
+\item Instabiel:\\
+$\delta_s y$ is groot, maar $\delta_c y$ is klein. Het probleem is goed geconditioneerd, maar toch kunnen er relatief grote fouten zijn in de oplossing.
+\item Zwak stabiel:\\
+$\delta_s y$ en $\delta_c y$ zijn ongeveer even groot.
+\item Voorwaarts Stabiel:
+$\delta_s y$ is klein (ten opzichte van de machine precisie).
+\end{itemize}
+
+\section{Onderzoek}
+\subsection{Algoritme}
+\subsubsection{Gegeven}
+$y$ en een algoritme om $\overline{y}$ te berekenen.
+\subsubsection{Stappenplan}
+\begin{enumerate}
+\item Conditie: $\delta_c y$
+\begin{enumerate}
+\item Leidt $y$ af, bereken $y'$.
+\item Bereken $\delta_c y$
+\[
+\delta_c y = \frac{y'x}{y}\delta x
+\]
+\item Bepaal eventueel de waarden voor $x$ waarvoor $\delta_c y$ groot kan worden.
+\end{enumerate}
+
+\item Stabiliteit: $\delta_s y$
+\begin{enumerate}
+\item Maak een foute analyse. (Zie Tutorial)
+\item Bereken de relatieve fout
+\item Bepaal eventueel de waarden voor $x$ waarvoor $\delta_s y$ groot kan worden
+\end{enumerate}
+
+\item Conclusie
+\end{enumerate}
+
+\subsection{Voorbeeld}
+\subsubsection{Opgave}
+\[
+y = \frac{1-\cos(x)}{x^2}
+\]
+Eval1:
+\begin{enumerate}
+\item $y \leftarrow \cos(x)$
+\item $y \leftarrow 1-y$
+\item $z \leftarrow x$
+\item $z \leftarrow zx$
+\item $y \leftarrow \frac{y}{z}$
+\end{enumerate}
+
+\subsubsection{Oplossing}
+\begin{enumerate}
+\item Conditie
+\begin{enumerate}
+\item Afgeleide
+\[
+\frac{dy}{dx} = \frac{x^2\sin(x) - 2x(1-cos(x))}{x^2}
+\]
+\item $\delta_c y$
+\[
+\delta_c y = \frac{y'x}{y}\delta x = \frac{x^3\sin(x) - 2x^2(1-cos(x))}{1-\cos(x)}\delta_x
+\]
+\item $\delta_c y$ kan groot worden als $x\approx k\pi$. Daar is het probleem dus slecht geconditioneerd.
+\end{enumerate}
+\item Stabiliteit
+\item
+Zie het voorbeeld uit de tutorial over foutenanalyse.
+\[
+\delta_s y = -\frac{\cos(x)}{x(1-\cos(x))}\epsilon_1 + \epsilon_2 - \epsilon_3 + \epsilon_4
+\]
+\item $\delta_s y$ wordt groot voor $x \approx k\pi$. Daar is het algoritme dus onstabiel.
+\item Conclusie
+Dit algoritme is voorwaarts stabiel voor alle $x \not\approx 0$. Voor $x\approx 0$ is het algoritme onstabiel (of zwak stabiel).
+\end{enumerate}
+
+\end{document}
