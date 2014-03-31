@@ -2,7 +2,44 @@
 \begin{document}
 
 \chapter{Veelterminterpolatie}
+\begin{defi}
+Gegeven $n+1$ punten $(x_i,f(x_i)$ is de veelterm van graaf $n$: $y_n(x)$ de interpolerende veelterm.
+\[
+y_n(x) = a_0 + a_1x+ \cdots + a_nx^n = \sum_{i=0}^na_ix^i
+\]
+Voor $y_n$ geldt:
+\[
+y_n(x_i) = f_i
+\]
+\end{defi}
+Het vinden van de waarde van de interpolerende veelterm kan via de co\"efficienten en een evaluatie of rechtstreeks.
 
+\section{Interpolatie volgens Lagrange (co\"efficienten)}
+\[
+y_n(x)
+= l_0(x)f(x_0) + l_1(x)f_1(x_1) + \cdots + l_n(x)f(x_n)
+= \sum_{i=0}^{n}l_i(x)f(x_i)
+\]
+Hierbij is $l_0$ de lagrange veelterm van graad $n$.
+\[
+l_{i} = \prod_{j=0,j\neq i}^{n}\frac{x-x_j}{x_i-x_j} = \frac{\pi(x)}{\pi'(x_i)(x-x_i)}
+\]
+Deze veelterm kan ge\"evalueerd worden in $O(n^2)$ tijd.
+Deze vorm van interpolatie is geschikt als oplossing voor het co\"efficientenprobleem, maar niet voor het waardeprobleem.
+\section{Interpolatie volgens Newton (waarden)}
+\[
+y_n(x) = \sum_{i=0}^{n} f[x_0,x_1,...,x_i] \prod_{j=0}^{i-1}(x-x_j)
+\]
 
+\subsection{Gedeelde differenties}
+\begin{defi}
+Een gedeelde differentie is een waarde die de verandering van een functie voorstelt per afstand tussen opeenvolgende interpolatiepunten.
+\[
+f[x_i] = f(x_i)
+\]
+\[
+f[x_i,x_{i+1},...,x_{j}] = \frac{f[x_{i+1},...,x_j] - f[x_i,...,x_{j-1}]}{x_j-x_i}
+\]
+\end{defi}
 
 \end{document}

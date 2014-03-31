@@ -4,19 +4,128 @@
 \chapter{Stelsels Lineaire Vergelijkingen}
 
 \section{Algoritmes voor oplossen}
+\subsection{Voorwaartse substitutie}
+\subsubsection*{Input}
+Een bovendriehoekig stelsel $A \in \mathbb{R}^{n\times n}$ en een vector $b \in \mathbb{B}^{n}$.
+\[
+A =
+\begin{pmatrix}
+a_{11} & 0 & \cdots & 0\\
+a_{21} & a_{22} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{pmatrix}
+\ { }\ 
+b =
+\begin{pmatrix}
+b_{1}\\b_{2}\\\vdots\\b_{n}
+\end{pmatrix}
+\]
+\subsubsection*{Output}
+Een vector $X$, als oplossing voor het stelsel $AX=b$.
+
+\subsection{Voorwaarte substitutie}
+\subsubsection*{Input}
+Een bovendriehoekig stelsel $A \in \mathbb{R}^{n\times n}$ en een vector $b \in \mathbb{B}^{n}$.
+\[
+A =
+\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n}\\
+0 & a_{22} & \cdots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & a_{nn}
+\end{pmatrix}
+\ { }\ 
+b =
+\begin{pmatrix}
+b_{1}\\b_{2}\\\vdots\\b_{n}
+\end{pmatrix}
+\]
+\subsubsection*{Output}
+Een vector $X$, als oplossing voor het stelsel $AX=b$.
+
+\subsection{Eliminatie}
+\subsubsection*{Input}
+Een matrix $A \in \mathbb{R}^{n\times m}$ met $m>n$.
+\subsubsection*{Output}
+Een boventrapeziummatrix $C$.
+Merk op dat $c_{ij}$ de volgende waarde heeft.
+\[
+c_{ij} = c_{ji} - \sum_{l=i+1}^m c_{jl}\frac{c_{ji}}{c_{ii}}
+\]
+
+\subsection{Eenvoudige Gauseliminatie}
+\subsubsection*{Input}
+Een matrix $A \in \mathbb{R}^{n\times m}$ met $m>n$ en een vector $b \in \mathbb{B}^{n}$.\\
+We beschouwen de matrix $C = [A|b]$.
+\subsubsection*{Output}
+Een vector $X$, als oplossing voor het stelsel $AX=b$.
+\subsubsection*{Procedure}
+Voer Eliminatie uit op de uitgebreide matrix $C$. Voer daarna voorwaartse substitutie uit op het resultaat om de vector $X$ te bekomen.
+
+\subsection{Gaus-Jordan}
+\subsubsection*{Input}
+Een matrix $A \in \mathbb{R}^{n\times m}$ met $m>n$ en een vector $b \in \mathbb{B}^{n}$.\\
+We beschouwen de matrix $C = [A|b]$.
+\subsubsection*{Output}
+Een vector $X$, als oplossing voor het stelsel $AX=b$.
+\subsubsection*{Procedure}
+Voer de eliminatie en substitutie tegelijk uit. Ga zo kolom per kolom af tot de originele $A$ in een (pseudo-)eenheidsmatrix is veranderd.
+
+\subsection{Gauss met pivotering}
+\subsubsection*{Input}
+Een matrix $A \in \mathbb{R}^{n\times m}$ met $m>n$ en een vector $b \in \mathbb{B}^{n}$.\\
+We beschouwen de matrix $C = [A|b]$.
+\subsubsection*{Output}
+Een vector $X$, als oplossing voor het stelsel $AX=b$.
+\subsubsection*{Procedure}
+Voer de methode van Gauss uit, maar verwissel rijen zodat het spilelement niet nul is.
+
+\subsection{Determinant berekenen}
+\subsubsection*{Input}
+Een vierkante matrix $A\in\mathbb{R}^{n\times n}$.
+\subsubsection*{Output}
+De determinant van $A$.
+\subsubsection*{Procedure}
+Voer de eliminatiemethode uit op $A$, en bereken het product van de spilelement.
+
+\subsection{Gauseliminatie met pivotering en factorizatie}
+\subsubsection*{Input}
+Een matrix $C = [A|B|l]$ met $ l = \left(1 2 \cdots n\right)$:
+\[
+C = 
+\left(
+\begin{array}{ccc|c|c}
+ & & & &1\\
+ &A& &B&\vdots\\
+ & & & &n\\ 
+\end{array}
+\right)
+\]
+
+\subsubsection*{Output}
+Een benedendriehoeksmatrix $L$, een boventrapeziummatrix $R$ en een vector $Y$ zodat $AX=B$ equivalent is met $RX = Y$. Ook nog een matrix $P$ zodat $PA = LR$ en $PB = LY$.
+
+\subsection{Gauseliminatie met optimale pivotering}
+Als spilelement kiezen we elke keer het grootste element op die kolom en verwisselen dan die rijen. Zo wordt de stabiliteit van dit algoritme verhoogt.
+
+\subsection*{Samenvatting}
 \begin{center}
 \begin{tabular}{|c|c|}
 \hline
 Methode & Complexiteit\\
 \hline
-Terugsubstitutie & $O(n^2)$\\
+Voorwaartse substitutie & $O(n^2)$\\
+Achterwaartse substitutie & $O(n^2)$\\
 Eliminatie & $O(n^3)$\\
 Eenvoudige Gauseliminatie & $O(n^3)$\\
+Gaus-Jordan & $O(n^3)$.\\
 Methode van Cramer & $O(n^4)$\\
 Gauseliminatie met pivotering & $O(n^3)$\\
 Determinant berekenen & $O(n^3)$\\
 Gauseliminatie met pivotering en factorizatie & $O(n^3)$\\
-
+Oplossen van meerdere stelsels met&$O(n)$\\ dezelfde co\"efficienten na factorisatie & Per vector\\
+Gauseliminatie met optimale pivotering & $O(n^4)$\\
 \hline
 \end{tabular}
 \end{center}
@@ -35,6 +144,54 @@ Residu van een stelsel lineaire vergelijkingen $AX=B$: $R$
 R = AX - B
 \]
 
+\subsubsection*{Onthoudt:}
+\[
+\Vert A\Vert\Vert A^{-1}\Vert
+\]
+Bovenstaande uitdrukking is het conditiegetal van een matrix $A$.
 
+\section{Nullen Cre\"eren in een matrix}
+\subsection{Givens Transformatie}
+\[
+G = 
+\begin{pmatrix}
+c & s\\
+s & -c\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+\cos\theta & \sin\theta\\
+\sin\theta & -\cos\theta\\
+\end{pmatrix}
+\]
+Zoek $y$ en $y$ zodat:
+\[
+\begin{pmatrix}
+c & s\\
+s & -c\\
+\end{pmatrix}
+\begin{pmatrix}
+x\\y\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+z\\0
+\end{pmatrix}
+\]
+Oplossing:
+\[
+\left\{
+\begin{array}{c c}
+c &= \frac{x}{\pm \sqrt{x^2+y^2}}\\
+s &= \frac{y}{\pm \sqrt{x^2+y^2}}\\
+\end{array}
+\right.
+\]
+
+\subsection{Householder Transformatie}
+\[
+P =\mathbb{I} - \frac{2vv^T}{v^Tv}
+\]
+TODO
 
 \end{document}
