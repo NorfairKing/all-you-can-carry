@@ -6,10 +6,12 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgfplots}
 
 \author{Tom Sydney Kerckhove}
 \title{Oefeningen Numerieke Wiskunde:\\ Oefenzitting 6}
-\date{19 maart 2014}
+\date{31 maart 2014}
 
 \begin{document}
 \maketitle
@@ -20,14 +22,33 @@
 f(-1) = -7 \text{ en } f(1) = 1
 \]
 \subsubsection*{Lagrange}
-We zoeken een veelterm van de volgende vorm.
+Bereken eerste de lagrange basis.
 \[
-y_1(x) = a_0 + a_1x
+l_0(x) = \prod_{j=0,j\neq 0}^{1}\frac{x-x_j}{x_0-x_j} = \frac{x-1}{-1-1} = -\frac{1}{2}x + \frac{1}{2}
 \]
-Hiervoor lossen we volgend stelsel op.
-
+\[
+l_1(x) = \prod_{j=0,j\neq 1}^{1}\frac{x-x_j}{x_1-x_j} = \frac{x+1}{1+1} = \frac{1}{2}x + \frac{1}{2}
+\]
+De interpolerende veelterm is dan de volgende:
+\[
+y_{1}(x) = \sum_{i=0}^{1}l_{i}(x)f(x_i)
+= \left(-\frac{1}{2}x + \frac{1}{2}\right)(-7)
++ \left(\frac{1}{2}x + \frac{1}{2}\right)(1)
+= 4x-3
+\]
 
 \subsubsection*{Newton}
+Bereken eerst de newton basis.
+\[
+b_{0} = f[x_0] = f(x_{0}) = -7
+\]
+\[
+b_{1} = f[x_0,x_1] = \frac{f(x_1)-f(x_0)}{x_1-x_0} = 4
+\]
+De interpolerende veelterm is dan de volgende:
+\[
+y_{1}(x) = \sum_{i=0}^1b_i\prod_{j=0}^{i}(x-x_j) = b_0 + b_1(x-x_0) = -7 + 4(x+1) = 4x-3
+\]
 
 
 \subsection*{(b)}
@@ -40,26 +61,134 @@ a_0 +  a_2 &= 1\\
 \end{array}
 \right.
 \]
+Test:
+\[
+\left\{
+\begin{array}{r l}
+-3 - 4 &= -7\\
+-3 + 4 &= 1\\
+\end{array}
+\right.
+\rightarrow OK
+\]
 \subsection*{(c)}
+\[
+E_1(x) = \frac{f^{(2)}(\zeta)}{2!}(x-x_0)(x-x_1)
+\]
+We weten dat $f_{(2)}(x) = 4$ constant is.
+\[
+E_1(x) = \frac{4}{2}(x+1)(x-1) = 2x^2-2
+\]
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+        axis x line=middle, 
+        axis y line=middle, 
+        ymax=6, ylabel=$E_1(x)$, 
+        xlabel=$x$
+        ]
+    \addplot[domain=-5:5, ] {2*x^2 - 2};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+Buiten $[-1,1]$ gedraagt $E_1(x)$ zicht als iets van $O(x^2)$.
 
 \section{Probleem 2}
+De tabel del gedeelde differentiaties:
+\[
+\begin{array}{c|c c c}
+-1 & -7 & &\\
+ 0 & -5 & \frac{-5+7}{0+1} = 2 &\\
+ 1 &  1 & \frac{1+5}{1+0}  = 6 & \frac{6-2}{1+1} = 2\\
+\end{array}
+\]
+\[
+y_2(x) = \sum_{i=0}^{2}f[x_0,...,x_i]\prod_{j=0}^{i-1}(x-x_j)
+= -7 + 2(x+1) + 2(x+1)(x-0)
+= 2x^2+4x-5
+\]
+Alternatieve tabel:
+\[
+\begin{array}{c|c c c}
+-1 & -7 & &\\
+ 0 & -5 & \frac{-5+7}{0+1} = 2 &\\
+ 1 &  1 & \frac{1+7}{1+1}  = \frac{8}{2} & = 2\\
+\end{array}
+\]
+$E_2(x) = 0$ omdat $y$ en $y_2$ beide van graad twee zijn en $y_2$ uniek is.
+
 \section{Probleem 3}
+\[
+\begin{array}{c|c c c c}
+-1 & -7 & &\\
+ 0 & -5 & 2 &\\
+0.5&-2.5& 5 & 2\\
+ 1 &  1 & 7 & 2 & 0\\
+\end{array}
+\]
+\[
+y_3(x) = \sum_{i=0}^{3}f[x_0,...,x_i]\prod_{j=0}^{i-1}(x-x_j)
+\]
+\[
+= -7 + 2(x+1) + 2(x+1)(x-0) + 0(x+1)(x-0)(x-0.5)
+= 2x^2+4x-5
+\]
+Alternatieve tabel:
+\[
+\begin{array}{c|c c c c}
+-1 & -7 & &\\
+ 0 & -5 & 2 &\\
+0.5&-2.5& 3 & 2\\
+ 1 &  1 & 4 & 2 & 0\\
+\end{array}
+\]
+We zien dat deze veelterm van graad twee is.
+We kunnen immers geen interpolerende veelterm opstellen van graad drie voor een veelterm van graad twee.
+
 \section{Probleem 4}
 \section*{1.}
 \[
 \sum_{i=1}^{n}\prod_{j=0,j\neq i}^{n}\frac{x-x_j}{x_i-x_j}=1
 \]
+Niet zomaar beginnen uitrekenen, dat wordt een hel.
 \begin{proof}
-
+Stel de interpolerende veelterm (van graad $n$) op van de constante functie $y = 1$.
+\[
+y_n = \sum_{i=0}^{n}l_{i}(x)f(x_i)
+\]
+We weten dat $f(x_i) = 1$ geldt voor elke $i$.
+\[
+y_n = \sum_{i=0}^{n}l_{i}(x) \text{ en } y_n(x) = 1
+\]
+We weten dat $y_n$ $y$ exact benadert omdat $y$ van graad $0$ is en $n\ge 0$. 
+\[
+y_n = \sum_{i=0}^{n}l_{i}(x) = 1
+\]
 \end{proof}
 
 \section*{2.}
 \[
-\sum_{i=1}^{n}\prod_{j=0,j\neq i}^{n}\frac{x-x_j}{x_i-x_j}x_{i}^{k}=x^{k}
+\sum_{i=1}^{n}l_i(x)x_{i}^{k}=x^{k} \text{ met } k \le n
 \]
 \begin{proof}
-
+Als we de interpolerende veelterm opstellen van $y=x^k$ wordt deze exact benaderd omdat $k\le n$.
 \end{proof}
+
+\section{Probleem 5}
+TODO...
+
+\section{Probleem 10}
+We weten dat de nauwkeurigheidsgraad van de trapeziumregel $1$ is, dus integralen van graad $k\le n$ worden exact benaderd.
+\[
+\left\{ 
+\begin{array}{cccc}
+H_0 &+ H_1 &= \int_{-1}^{1}dx &= 2\\
+-\frac{1}{2}H_0 &+ \frac{1}{2}H_1 &= \int_{-1}^{1}xdx &= 0\\
+\end{array}
+\right.
+\]
+We vinden voor $H_0$ en $H_1$ beide $1$.
 
 
 \end{document}
