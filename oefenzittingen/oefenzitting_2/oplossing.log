@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Arch Linux) (format=pdflatex 2014.3.13)  8 APR 2014 15:46
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Arch Linux) (format=pdflatex 2014.3.13)  16 APR 2014 15:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -443,6 +443,33 @@ LaTeX Info: Redefining \addtolength on input line 77.
 (/usr/share/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 \@enLab=\toks41
+)
+(/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count125
+\Gm@cntv=\count126
+\c@Gm@tempcnt=\count127
+\Gm@bindingoffset=\dimen163
+\Gm@wd@mp=\dimen164
+\Gm@odd@mp=\dimen165
+\Gm@even@mp=\dimen166
+\Gm@layoutwidth=\dimen167
+\Gm@layoutheight=\dimen168
+\Gm@layouthoffset=\dimen169
+\Gm@layoutvoffset=\dimen170
+\Gm@dimlist=\toks42
 ) (./oplossing.aux)
 \openout1 = `oplossing.aux'.
 
@@ -461,17 +488,17 @@ LaTeX Font Info:    ... okay on input line 14.
 
 (/usr/share/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count125
-\scratchdimen=\dimen163
+\scratchcounter=\count128
+\scratchdimen=\dimen171
 \scratchbox=\box39
-\nofMPsegments=\count126
-\nofMParguments=\count127
-\everyMPshowfont=\toks42
-\MPscratchCnt=\count128
-\MPscratchDim=\dimen164
-\MPnumerator=\count129
-\makeMPintoPDFobject=\count130
-\everyMPtoPDFconversion=\toks43
+\nofMPsegments=\count129
+\nofMParguments=\count130
+\everyMPshowfont=\toks43
+\MPscratchCnt=\count131
+\MPscratchDim=\dimen172
+\MPnumerator=\count132
+\makeMPintoPDFobject=\count133
+\everyMPtoPDFconversion=\toks44
 ) ABD: EveryShipout initializing macros
 (/usr/share/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -480,10 +507,6 @@ Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 (/usr/share/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
-)
-(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -521,8 +544,41 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for U+msa on input line 15.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69687pt
+* \textheight=731.23584pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+LaTeX Font Info:    Try loading font information for U+msa on input line 15.
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -580,27 +636,17 @@ Overfull \hbox (6.31775pt too wide) in paragraph at lines 71--71
 [][][][]\OT1/cmr/m/n/12 bewijs 
  []
 
-[2] [3] [4] [5] [6] [7] [8] [9] [10] [11]
+[2] [3] [4] [5] [6] [7] [8]
 Underfull \hbox (badness 10000) in paragraph at lines 856--857
 
  []
 
-[12]
+[9]
 Underfull \hbox (badness 10000) in paragraph at lines 929--930
 
  []
 
-
-Overfull \hbox (29.80351pt too wide) detected at line 940
-[] \OT1/cmr/m/n/12 = (((\OML/cmm/m/it/12 a[]b[]\OT1/cmr/m/n/12 (1 + \OML/cmm/m/
-it/12 ^^O[]\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 a[]b[]\OT1/cmr/m/n/12 (1 + \OML
-/cmm/m/it/12 ^^O[]\OT1/cmr/m/n/12 ))(1 + \OML/cmm/m/it/12 ^^O[]\OT1/cmr/m/n/12 
-) + \OML/cmm/m/it/12 a[]b[]\OT1/cmr/m/n/12 (1 + \OML/cmm/m/it/12 ^^O[]\OT1/cmr/
-m/n/12 )(1 + \OML/cmm/m/it/12 ^^O[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 :::\OT1/cm
-r/m/n/12 )(1 + \OML/cmm/m/it/12 ^^O[]\OT1/cmr/m/n/12 )
- []
-
-[13]
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 988--991
 
  []
@@ -609,15 +655,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 988--991
 \tf@tdo=\write4
 \openout4 = `oplossing.tdo'.
 
- [14] (./oplossing.aux) ) 
+ [11] (./oplossing.aux) ) 
 Here is how much of TeX's memory you used:
- 13323 strings out of 493308
- 256776 string characters out of 6143616
- 307067 words of memory out of 5000000
- 16497 multiletter control sequences out of 15000+600000
+ 13799 strings out of 493308
+ 263713 string characters out of 6143616
+ 324235 words of memory out of 5000000
+ 16964 multiletter control sequences out of 15000+600000
  12443 words of font info for 48 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 62i,9n,76p,441b,969s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,9n,76p,501b,969s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
 sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf
@@ -629,10 +675,10 @@ xmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti1
 2.pfb>
-Output written on oplossing.pdf (14 pages, 151912 bytes).
+Output written on oplossing.pdf (11 pages, 150129 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 72 compressed objects within 1 object stream
+ 91 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
