@@ -20,13 +20,13 @@ Een andere manier om dit resultaat te bekomen is de formule voor de machine prec
 \[
 \epsilon_{mach} = \frac{b^{1-p}}{2}
 \]
-Hierin is $b$ de basis en $p$ het aantal juiste beduidende cijfers.
+Hierin is $b$ de basis en $p$ het aantal juiste cijfers na de komma.
 Uit deze formule halen we de $p$.
 \[
-p 1-\log_{b}(2\epsilon_{mach})
+1-p=\log_{b}(2\epsilon_{mach})
 \]
 \[
-p = 1-\log_{2}(2\cdot 2^{-24}) = 23
+p = 1-\log_{2}(2\cdot 2^{-24}) = 24 \text{ (waarvan 1 tekenbit, dus) } p = 23
 \]
 Volgens dezelfde redenering vinden we dat het aantal bits voor het teken, de mantisse en de exponent bij de dubbele-nauwkeurigheidsgetallen.
 
