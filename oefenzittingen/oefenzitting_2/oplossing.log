@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.14)  18 MAY 2014 20:03
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.23)  23 MAY 2014 09:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -462,18 +462,18 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 (./oplossing.aux)
 \openout1 = `oplossing.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
  (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count128
@@ -566,76 +566,76 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 15.
+LaTeX Font Info:    Try loading font information for U+msa on input line 16.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 15.
+LaTeX Font Info:    Try loading font information for U+msb on input line 16.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 35.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 36.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 35.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 36.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (6.31775pt too wide) in paragraph at lines 66--66
+Overfull \hbox (6.31775pt too wide) in paragraph at lines 69--69
 [][][][]\OT1/cmr/m/n/12 bewijs 
  []
 
 
-Overfull \hbox (6.31775pt too wide) in paragraph at lines 66--66
+Overfull \hbox (6.31775pt too wide) in paragraph at lines 69--69
 [][][][]\OT1/cmr/m/n/12 bewijs 
  []
 
 
-Overfull \hbox (6.31775pt too wide) in paragraph at lines 66--66
+Overfull \hbox (6.31775pt too wide) in paragraph at lines 69--69
 [][][][]\OT1/cmr/m/n/12 bewijs 
  []
 
 
-Overfull \hbox (6.31775pt too wide) in paragraph at lines 66--66
+Overfull \hbox (6.31775pt too wide) in paragraph at lines 69--69
 [][][][]\OT1/cmr/m/n/12 bewijs 
  []
 
 
-Overfull \hbox (6.31775pt too wide) in paragraph at lines 71--71
+Overfull \hbox (6.31775pt too wide) in paragraph at lines 74--74
 [][][][]\OT1/cmr/m/n/12 bewijs 
  []
 
 
-Overfull \hbox (6.31775pt too wide) in paragraph at lines 71--71
+Overfull \hbox (6.31775pt too wide) in paragraph at lines 74--74
 [][][][]\OT1/cmr/m/n/12 bewijs 
  []
 
 
-Overfull \hbox (6.31775pt too wide) in paragraph at lines 71--71
+Overfull \hbox (6.31775pt too wide) in paragraph at lines 74--74
 [][][][]\OT1/cmr/m/n/12 bewijs 
  []
 
 
-Overfull \hbox (6.31775pt too wide) in paragraph at lines 71--71
+Overfull \hbox (6.31775pt too wide) in paragraph at lines 74--74
 [][][][]\OT1/cmr/m/n/12 bewijs 
  []
 
 [2] [3] [4] [5] [6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 856--857
+Underfull \hbox (badness 10000) in paragraph at lines 859--860
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 929--930
+Underfull \hbox (badness 10000) in paragraph at lines 932--933
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 988--991
+Underfull \hbox (badness 10000) in paragraph at lines 991--994
 
  []
 
@@ -647,7 +647,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 988--991
 Here is how much of TeX's memory you used:
  12280 strings out of 494424
  221425 string characters out of 6165346
- 286228 words of memory out of 5000000
+ 286261 words of memory out of 5000000
  15250 multiletter control sequences out of 15000+600000
  12443 words of font info for 48 fonts, out of 8000000 for 9000
  372 hyphenation exceptions out of 8191
@@ -664,7 +664,7 @@ t/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmti12.pfb>
-Output written on oplossing.pdf (11 pages, 150179 bytes).
+Output written on oplossing.pdf (11 pages, 150358 bytes).
 PDF statistics:
  91 PDF objects out of 1000 (max. 8388607)
  65 compressed objects within 1 object stream

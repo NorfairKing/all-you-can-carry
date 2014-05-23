@@ -7,7 +7,8 @@
 \usepackage{amsthm}
 \usepackage{todonotes}
 \usepackage{enumerate}\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
-\author{Tom Sydney Kerckhove}
+\author{Tom Sydney Kerckhove\\
+		Verbeteringen door Ward Schodts}
 \title{Oefeningen Numerieke Wiskunde:\\ Oefenzitting 2}
 \date{19 februari 2014}
 
@@ -35,9 +36,11 @@ Volgens dezelfde redenering vinden we dat het aantal bits voor het teken, de man
 \item We weten dat $1$ en $2$ respectievelijk als volgt voorgesteld worden.
 \[1 = .100\ldots00 \cdot 2^1\]
 \[2 = .100\ldots00 \cdot 2^2\]
+We hebben hier weer een mantisse van 52 cijfers.\\
 Hier zitten dus $2^m-1=2^{52}-1$ getallen tussen.
-\item We weten dat $7$ en $9$ respectievelijk als volgt voorgesteld worden.
+\item Voor de gemakkelijkheid bereken we eerst van 7 tot 8, en dan van 8 tot 9. We weten dat $7$, $8$ en $9$ respectievelijk als volgt voorgesteld worden.
 \[7 = .11100\ldots00 \cdot 2^3\]
+\[8 = .10000\ldots00 \cdot 2^4\]
 \[9 = .10010\ldots00 \cdot 2^4\]
 Hier zitten dus $2^{50}+2^{49}-1$ getallen tussen.
 \end{itemize}
