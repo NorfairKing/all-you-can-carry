@@ -56,7 +56,7 @@ Als we hier echter nog $1$ bij optellen gebeurt er een absolute afrondingsfout v
 \begin{itemize}
 \item \textbf{bepaal\_b}
 We beginnen met $A=1$, dan vermenigvuldigen we $A$ met $2$ tot er een afrondingsfout gebeurd wanneer je $(A+1)-A=1$ evalueert. 
-$A$ is nu gelijk aan $2^{10}$. Vervolgens initialiseren we $i$ op $1$ en hogen $i$ op tot $(A+i)=A$ geen afrondingsfout meer geeft. Dit is wanneer $i$ $6$ wordt. $b$ is dus $.103\cdot 10^4-.102\cdot 10^4=10$.
+$A$ is nu gelijk aan $2^{10}$. Vervolgens initialiseren we $i$ op $1$ en hogen $i$ op zolang $(A+i)=A$. $i$ is dus net groot genoeg om A op de volgende afronding te laten stoppen. Dit is wanneer $i$ $6$ wordt. $b$ is dus $.103\cdot 10^4-.102\cdot 10^4=10$.
 \item \textbf{bepaal\_p}
 We initialiseren $p$ op $1$ en $z$ op $10$. Nu hogen we $p$ en de exponent van $10^1$ op tot $(z+1)-z=1$ een afrondingsfout geeft.
 Dit is wanneer $p=3$ geldt. 
