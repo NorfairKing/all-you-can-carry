@@ -45,8 +45,8 @@ De fout is dus $fl(0.1)-0.1$.
 \[
 \Delta(0.1) = (1.00110011..)_{2} \cdot 2^{-56}
 \]
-
-\section{Probleem 3}
+\section{Taylorreeks van $e^x$}
+\subsection{Probleem 3}
 \begin{enumerate}[(a)]
 \item
 De waarde van $k$ verandert niet meer na een bepaalde iteratie omdat de component die nog toegevoegd wordt kleiner is dan voorstelbaar.
@@ -62,20 +62,21 @@ Zie matlab voor illustratie.
 
 \end{enumerate}
 
-\section{Probleem 4}
+\subsection{Probleem 4}
 Voor grote $n$ delen we door een voorgestelde nul in de machine.
 De benadering convergeert beter, maar is ongeveer even goed.
-\section{Probleem 5}
+\subsection{Probleem 5}
 \begin{enumerate}[(a)]
 \item Voor grote $x$ duurt het langer voor $x^k$ kleiner wordt dan $k!$.
 \item Zie matlab voor illustratie.
 \item Ja, de relatieve fout is van de grootteorde $10^{-15}$.
+\item De absolute fout is van grootteorde $10^{-7}$. Aangezien een de bovengrens voor de som van $n$ getallen deels gegeven wordt door: $\epsilon_{mach} \cdot \sum_i^n a_i$. Bij deze waarden is de grootste waarde van t al reeds $10^8$. We weten ook dat de machine precisie gelijk is aan $1.110223024625157e^{-16}$. Dus we zien dat de fout groter wordt als de bovengrens want $10^{-16} \cdot 10^8 = 10^{-8} < 10^{-7}$
 \end{enumerate}
 
-\section{Probleem 6}
+\subsection{Probleem 6}
 \begin{enumerate}[(a)]
 \item Zie matlab voor illustratie.
-\item Nee, de relatieve fout is van de grootteorde $10^{-10}$.
+\item Nee, de relatieve fout is van de grootteorde $10^{1}$.
 \item Ja.
 \[
 \overline{S}-S \approx \sum_{k=2}^n\epsilon_k\sum_{i=1}^ka_i
