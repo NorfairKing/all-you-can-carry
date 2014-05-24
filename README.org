@@ -1,5 +1,14 @@
 * All You Can Carry
 Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
-** Contents
-   - Oplossingen Oefenzittingen
-   
+
+** WAARSCHUWING
+   - De inhoud van deze repository is nog niet geschikt voor gebruik.
+     De repository is publiek zodat er aan meegewerkt kan worden.
+
+** Inhoud
+    - Samenvatting
+    - Oplossingen Oefenzittingen
+    - Tutorials
+      - Foutenanalyse
+      - Conditie en Stabiliteit
+        
