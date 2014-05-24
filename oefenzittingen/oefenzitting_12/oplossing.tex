@@ -1,0 +1,41 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\setlength{\parindent}{0pt}
+
+\author{Tom Sydney Kerckhove}
+\title{Oefeningen Numerieke Wiskunde:\\ Oefenzitting 12}
+\date{23 april 2014}
+
+\begin{document}
+\maketitle
+
+\section{Probleem 1}
+Te Bewijzen:
+\[
+\lim_{k\rightarrow\infty}\frac{\epsilon^{(k+1)}}{(\epsilon^{(k)})^{n}} = \rho_{p}
+\]
+\begin{proof}
+\[
+F(x) = x - \frac{-\cos(x)}{-\sin(x)} = x + \cot x
+\]
+Zie p 323 (bewijs)
+\[
+F'(x) = 1  - \csc^{2}(x) \rightarrow F'(x^{*}) = 0
+\]
+\[
+F''(x) = 2\cot(x)\csc^2(x) \rightarrow F''(x^{*})= 0
+\]
+\[
+F'''(x) = -2 (\cos(2x)+2) \csc^4(x) \rightarrow F'''(x^{*}) = -2
+\]
+Het proces is dus van orde $3$.
+\end{proof}
+KOMT OP EXAMEN
+
+\end{document}
