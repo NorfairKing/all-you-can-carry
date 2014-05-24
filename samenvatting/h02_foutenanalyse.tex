@@ -3,23 +3,11 @@
 
 \chapter{Foutenanalyse}
 \begin{defi}
-Absolute fout $\Delta x$.
-\[
-\Delta x = \overline{x} - x
-\]
-\end{defi}
-\begin{defi}
-Relatieve fout $\delta x$.
-\[
-\delta x = \frac{\overline{x} - x}{x}
-\]
-\end{defi}
-\begin{defi}
 Klassieke voorstelling.
 \[
-x = \sum_{i=m}^nc_{i}r^{i}
+x = \sum_{i=m}^nc_{i}r^{i}\ \text{ }\ -\infty \le m \le 0 \le n \le \infty
 \]
-Grondtal (radix) $r$, Getallen voor de komma $n$, Getallen na de komma $m$.
+Grondtal (radix) $r$, Getallen voor de komma $n$, Getallen na de komma $|m|$.
 \end{defi}
 \begin{defi}
 Bewegende kommavoorstelling.
@@ -42,6 +30,21 @@ x = \sum_{i=m}^n\overline{c_{i}}b^{i}
 \]
 Mantisse $m$, Basis $b$, Exponent $e$.
 \end{defi}
+\begin{defi}
+Absolute fout $\Delta x$.
+\[
+\Delta x = \overline{x} - x
+\]
+\end{defi}
+\begin{defi}
+Relatieve fout $\delta x$.
+\[
+\delta x = \frac{\overline{x} - x}{x}
+\]
+\end{defi}
+
+
+
 \begin{defi}
 Juist cijfer $c_i$:
 \[
@@ -71,9 +74,16 @@ Machineprecisie $\epsilon_{mach}$.
 \]
 \end{defi}
 \begin{defi}
+Het getallenbereik $O_{real}$: Alle $y$ zodat:
+\[
+y = mb^r \text{ is voorstelbaar in de machine}
+\]
+Mantisse $m$, basis $b$ en exponent $e$.
+\end{defi}
+\begin{defi}
 Elementaire bewerking $\tau$.
 \[
-fl(x \tau y) = (x \tau y)(1 + \eta)
+fl(x\ \tau\ y) = (x\ \tau\ y)(1 + \eta)
 \]
 $(|\eta| \le \epsilon_{mach}$ en $x,y \in O_{real})$
 \end{defi}
@@ -84,12 +94,13 @@ Absolute fout op een som.
 \]
 Bovengrens:
 \[
-\left|\Delta\left(\sum_{i=1}^nx_i\right)\right|_{max} = n\epsilon_{+}
+\left|\Delta\left(\sum_{i=1}^nx_i\right)\right|_{max} = n\epsilon_{+} \le n \epsilon
 \]
 Relatieve fout op een som.
 \[
 \delta s = \frac{\Delta x + \Delta y}{x+y}
 \]
+Zie p 27 voor meer uitleg.
 \end{defi}
 \begin{defi}
 Zij $\overline{x} = x(1+\delta x)$ en $\overline{y} = x(1+\delta y)$.\\
@@ -103,7 +114,7 @@ Relatieve fout op een vermenigvuldiging.
 \]
 Bovengrens:
 \[
-|\delta(xy)| \le 2\epsilon_{\cdot}
+|\delta(xy)| \le 2\epsilon_{\cdot} \text{ en } \left|\delta\left(\frac{x}{y}\right)\right| \le 2\epsilon_{\cdot}
 \]
 \end{defi}
 \begin{defi}
@@ -118,6 +129,7 @@ Bovengrens:
 \[
 |\Delta f(x_1,...,x_n)|_{max} \approx \sum_{i=1}^n|\Delta x_i|_{max} \underset{t_1,...,t_n}{max}|f_i'(t_1,...,t_n)|
 \]
+Zie p 30 voor voorbeelden.
 \end{defi}
 \begin{defi}
 Norm $\Vert \cdot \Vert$.\\
@@ -162,32 +174,51 @@ Conditie van een probleem.\\
 Absoluut Conditiegetal $k_A$.
 \[
 k_A =
-\lim_{\epsilon \rightarrow}\sup_{\Vert \Delta g\Vert \le \epsilon} \frac{\Vert r\Vert}{\Vert g \Vert}
+\lim_{\epsilon \rightarrow 0}\sup_{\Vert \Delta g\Vert \le \epsilon} \frac{\Vert \Delta r\Vert}{\Vert \Delta g \Vert}
 \]
 Relatief Conditiegetal $k_R$
 \[
 k_R =
-\lim_{\epsilon \rightarrow}\sup_{\Vert \Delta g\Vert \le \epsilon} \frac{\Vert r\Vert}{\Vert g \Vert}
+\lim_{\epsilon \rightarrow 0}\sup_{\Vert \Delta g\Vert \le \epsilon} \frac{\Vert \delta r\Vert}{\Vert \delta g \Vert}
 \]
 Het conditiegetal van een probleem geeft aan hoeveel een fout op de gegevens wordt opgeblazen in de resultaten.
 \end{defi}
-\noindent Voorbeeld: Als het relatieve conditiegetal van een probleem $F$ $a$ is, dan worden fouten op de gegevens met een factor $a$ opgeblazen.
+\noindent Voorbeeld: Als het relatieve conditiegetal van een probleem $F$ $a$ is, dan worden fouten op de gegevens met een factor $a$ opgeblazen in het slechtste geval.
+
 \begin{defi} Benaderingen.\\
-De exacte berekening van een resultaat $F$.
+\begin{itemize}
+\item exacte gegevens: $g$
+
+\item exact resultaat: $r$
+
+\item exact verband: $F$
+
+\item Het exact verband tussen het exact resultaat $r$ van exact $F$ toegepast op exacte gegevens $g$.
 \[
 r = F(g)
 \]
-De exacte berekening van het resultaat gebaseerd op een gewijzigd gegeven $\overline{g}$.
+
+\item Inexacte gegevens: $\overline{g} = g + \Delta g = g(1+\delta g)$
+
+\item De exacte berekening van het resultaat $\overline{r}$(, met ge\"induceerde fout $\Delta r$, $\delta r$,) gebaseerd op een gewijzigd gegeven $\overline{g}$.
 \[
-\overline{r} = F(\overline{g})
+r + \Delta r = F(g + \Delta g) \rightarrow r(1+\delta r) = F(g(1+\delta g)) \rightarrow \overline{r} = F(\overline{g})
 \]
-Eindige discretisatie van $F$, exact berekend: $\widetilde{F}$. Discretisatiefout $err_{dis} = \widetilde{F} - F$.
+
+\item Benaderd resultaat bij eindige discretisatie $\widetilde{r}$
+
+\item Eindige discretisatie van $F$, exact berekend: $\widetilde{F}$. Discretisatiefout $err_{dis} = \widetilde{F} - F$.
 \[
 \widetilde{F} = F + err_{dis}
 \]
 \[
 \widetilde{r} = \widetilde{F}(\overline{g})
 \]
+$\widetilde{F}$ verschilt dus enkel van $F$ in de discretisatie fouten.
+
+\item Resultaat bij een echte berekening $\overline{\widetilde{r}}$ bij een berekening gebaseerd op inexacte gegevens $\overline{g}$.
+
+\item 
 Implementatie van $\widetilde{F}$ in eindige precisie.
 \[
 \overline{\widetilde{r}} = \overline{F}(\overline{g})
@@ -196,7 +227,12 @@ De waarde van de gegevens als $\overline{\widetilde{r}}$ een exacte berekening z
 \[
 \overline{F}(\overline{g}) = \overline{\widetilde{r}} = \widetilde{F}(\overline{\overline{g}})
 \]
+
+\item Het resultaat van het exact verband $F$ toegepast op inexacte gegevens $\overline{g}$: $\overline{\overline{r}}$
+
+\end{itemize}
 \end{defi}
+
 \begin{defi}
 Stabiliteit van een methode\\
 \begin{itemize}
@@ -205,11 +241,15 @@ Absolute voorwaartse stabiliteit:
 De absolute grootte van het verschil tussen het berekende resultaat van de methode toegepast op een gewijzigd resultaat $\overline{g}$ in eindige precisie: $\overline{F}(\overline{g})$ en het exacte resultaat van de methode toegepast op een gewijzigd resultaat $\overline{g}$: $\widetilde{F}(\overline{g})$.
 \[
 \Vert \overline{F}(\overline{g}) - \widetilde{F}(\overline{g}) \Vert
+=
+\Vert \overline{\widetilde{r}}-\widetilde{r} \Vert
 \]
 Relatieve voorwaartse stabiliteit:
 De relatieve grootte van het verschil tussen het berekende resultaat van de methode toegepast op een gewijzigd resultaat $\overline{g}$ in eindige precisie: $\overline{F}(\overline{g})$ en het exacte resultaat van de methode toegepast op een gewijzigd resultaat $\overline{g}$: $\widetilde{F}(\overline{g})$.
 \[
 \frac{\Vert \overline{F}(\overline{g}) - \widetilde{F}(\overline{g}) \Vert}{\Vert \widetilde{F}(\overline{g}) \Vert}
+=
+\frac{\Vert \overline{\widetilde{r}}-\widetilde{r} \Vert}{\Vert \widetilde{r} \Vert}
 \]
 Kleine waarde(n) $\Rightarrow$ Voorwaarts stabiele methode $\widetilde{F}$.
 
@@ -229,11 +269,16 @@ Het de grootte van het verschil tussen $\overline{\overline{r}}$ en $\widetilde{
 \[
 S =
 \frac
+{\Vert F(\overline{g}) - \widetilde{F}(\overline{g}) \Vert}
+{\Vert \overline{F}(\overline{g}) - \widetilde{F}(\overline{g})\Vert}
+=
+\frac
 {\Vert \overline{\overline{r}} - \widetilde{r} \Vert}
 {\Vert \overline{\widetilde{r}} - \widetilde{r}\Vert}
 \]
 $S \approx 1$ $\Rightarrow$ zwak stabiele methode.
 \end{itemize}
+Merk op: dit zou niet zo specifiek gevraagd mogen worden, de tekst is niet duidelijk genoeg.
 \end{defi}
 
 \end{document}
