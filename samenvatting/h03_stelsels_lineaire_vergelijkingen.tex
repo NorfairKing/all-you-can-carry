@@ -4,27 +4,7 @@
 \chapter{Stelsels Lineaire Vergelijkingen}
 
 \section{Algoritmes voor oplossen}
-\subsection{Voorwaartse substitutie}
-\subsubsection*{Input}
-Een beneden driehoekig stelsel $A \in \mathbb{R}^{n\times n}$ en een vector $b \in \mathbb{B}^{n}$.
-\[
-A =
-\begin{pmatrix}
-a_{11} & 0 & \cdots & 0\\
-a_{21} & a_{22} & \cdots & 0\\
-\vdots & \vdots & \ddots & \vdots\\
-a_{n1} & a_{n2} & \cdots & a_{nn}
-\end{pmatrix}
-\ { }\ 
-b =
-\begin{pmatrix}
-b_{1}\\b_{2}\\\vdots\\b_{n}
-\end{pmatrix}
-\]
-\subsubsection*{Output}
-Een vector $X$, als oplossing voor het stelsel $AX=b$.
-
-\subsection{Achterwaartse substitutie}
+\subsection{Achterwaartse substitutie $O(n^2)$}
 \subsubsection*{Input}
 Een bovendriehoekig stelsel $A \in \mathbb{R}^{n\times n}$ en een vector $b \in \mathbb{B}^{n}$.
 \[
@@ -44,9 +24,29 @@ b_{1}\\b_{2}\\\vdots\\b_{n}
 \subsubsection*{Output}
 Een vector $X$, als oplossing voor het stelsel $AX=b$.
 
-\subsection{Eliminatie}
+\subsection{Voorwaartse substitutie $O(n^2)$}
 \subsubsection*{Input}
-Een matrix $A \in \mathbb{R}^{n\times m}$ met $m>n$.
+Een beneden driehoekig stelsel $A \in \mathbb{R}^{n\times n}$ en een vector $b \in \mathbb{B}^{n}$.
+\[
+A =
+\begin{pmatrix}
+a_{11} & 0 & \cdots & 0\\
+a_{21} & a_{22} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{pmatrix}
+\ { }\ 
+b =
+\begin{pmatrix}
+b_{1}\\b_{2}\\\vdots\\b_{n}
+\end{pmatrix}
+\]
+\subsubsection*{Output}
+Een vector $X$, als oplossing voor het stelsel $AX=b$.
+
+\subsection{Eliminatie $O(n^3)$}
+\subsubsection*{Input}
+Een matrix $A \in \mathbb{R}^{n\times m}$ met $m \ge n$.
 \subsubsection*{Output}
 Een boventrapeziummatrix $C$.
 Merk op dat $c_{ij}$ de volgende waarde heeft.
@@ -54,7 +54,7 @@ Merk op dat $c_{ij}$ de volgende waarde heeft.
 c_{ij} = c_{ji} - \sum_{l=i+1}^m c_{jl}\frac{c_{ji}}{c_{ii}}
 \]
 
-\subsection{Eenvoudige Gauseliminatie}
+\subsection{Eenvoudige Gauseliminatie $O(n^3)$}
 \subsubsection*{Input}
 Een matrix $A \in \mathbb{R}^{n\times m}$ met $m>n$ en een vector $b \in \mathbb{B}^{n}$.\\
 We beschouwen de matrix $C = [A|b]$.
@@ -63,7 +63,7 @@ Een vector $X$, als oplossing voor het stelsel $AX=b$.
 \subsubsection*{Procedure}
 Voer Eliminatie uit op de uitgebreide matrix $C$. Voer daarna voorwaartse substitutie uit op het resultaat om de vector $X$ te bekomen.
 
-\subsection{Gaus-Jordan}
+\subsection{Gaus-Jordan $O(n^3)$}
 \subsubsection*{Input}
 Een matrix $A \in \mathbb{R}^{n\times m}$ met $m>n$ en een vector $b \in \mathbb{B}^{n}$.\\
 We beschouwen de matrix $C = [A|b]$.
@@ -72,7 +72,7 @@ Een vector $X$, als oplossing voor het stelsel $AX=b$.
 \subsubsection*{Procedure}
 Voer de eliminatie en substitutie tegelijk uit. Ga zo kolom per kolom af tot de originele $A$ in een (pseudo-)eenheidsmatrix is veranderd.
 
-\subsection{Gauss met pivotering}
+\subsection{Gauss met pivotering $O(n^3)$}
 \subsubsection*{Input}
 Een matrix $A \in \mathbb{R}^{n\times m}$ met $m>n$ en een vector $b \in \mathbb{B}^{n}$.\\
 We beschouwen de matrix $C = [A|b]$.
@@ -81,7 +81,7 @@ Een vector $X$, als oplossing voor het stelsel $AX=b$.
 \subsubsection*{Procedure}
 Voer de methode van Gauss uit, maar verwissel rijen zodat het spilelement niet nul is.
 
-\subsection{Determinant berekenen}
+\subsection{Determinant berekenen $O(n^3)$}
 \subsubsection*{Input}
 Een vierkante matrix $A\in\mathbb{R}^{n\times n}$.
 \subsubsection*{Output}
@@ -89,9 +89,9 @@ De determinant van $A$.
 \subsubsection*{Procedure}
 Voer de eliminatiemethode uit op $A$, en bereken het product van de spilelement.
 
-\subsection{Gauseliminatie met pivotering en factorizatie}
+\subsection{Gauseliminatie met pivotering en factorizatie $O(n^3)$}
 \subsubsection*{Input}
-Een matrix $C = [A|B|l]$ met $ l = \left(1 2 \cdots n\right)$:
+Een matrix $C = [A|B|l]$ met $ l = \left(1\ 2\ \cdots\ n\right)$:
 \[
 C = 
 \left(
@@ -106,8 +106,27 @@ C =
 \subsubsection*{Output}
 Een benedendriehoeksmatrix $L$, een boventrapeziummatrix $R$ en een vector $Y$ zodat $AX=B$ equivalent is met $RX = Y$. Ook nog een matrix $P$ zodat $PA = LR$ en $PB = LY$.
 
-\subsection{Gauseliminatie met optimale pivotering}
+\subsection{Gauseliminatie met optimale pivotering $O(n^4)$}
 Als spilelement kiezen we elke keer het grootste element op die kolom en verwisselen dan die rijen. Zo wordt de stabiliteit van dit algoritme verhoogt.
+
+\subsection{Methode van Crout}
+\subsubsection*{Input}
+Een matrix $A \in \mathbb{R}^{n\times m}$ met $m>n$ en een vector $b \in \mathbb{B}^{n}$.\\
+
+\subsubsection*{Output}
+
+\subsubsection*{Procedure}
+Bereken een LR ontbinding door middel van eliminatie.
+\[
+C = LR
+\]
+\[
+l_{ij} = c_{ij} - \sum_{k=1}^{j-1}l_{ik}r_{kj}
+\]
+\[
+r_{ij} = \frac{c_{ij}-\sum_{k=1}^{i-1}l_{ik}r_{kj}}{l_{ii}} 
+\]
+Los daarna $RX = Y$ op via achterwaartse substitutie.
 
 \subsection*{Samenvatting}
 \begin{center}
@@ -192,6 +211,14 @@ s &= \frac{y}{\pm \sqrt{x^2+y^2}}\\
 \[
 P =\mathbb{I} - \frac{2vv^T}{v^Tv}
 \]
-TODO
+\todo{enigsinds nog iets nuttig over te zeggen?}
+
+\subsection{QR-factorisatie van een matrix}
+Gegeven een matrix $A\in \mathbb{R}^{m\times n}$ zoek $Q$ en $R$ zodat.
+\[
+A = Q \cdot R \text{ en } Q^{T}Q = I
+\]
+met givens en householder transformaties.
+\todo{waarom is dit nuttig? random bij de leerstof?}
 
 \end{document}
