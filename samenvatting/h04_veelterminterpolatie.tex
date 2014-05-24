@@ -3,7 +3,7 @@
 
 \chapter{Veelterminterpolatie}
 \begin{defi}
-Gegeven $n+1$ punten $(x_i,f(x_i)$ is de veelterm van graaf $n$: $y_n(x)$ de interpolerende veelterm.
+Gegeven $n+1$ punten $(x_i,f(x_i))$ is de veelterm van graad $n$: $y_n(x)$ de interpolerende veelterm.
 \[
 y_n(x) = a_0 + a_1x+ \cdots + a_nx^n = \sum_{i=0}^na_ix^i
 \]
@@ -13,6 +13,29 @@ y_n(x_i) = f_i
 \]
 \end{defi}
 Het vinden van de waarde van de interpolerende veelterm kan via de co\"efficienten en een evaluatie of rechtstreeks.
+
+\section{Interpolatie volgens Gauss}
+Los het Vandermonde-stelsel op dat de interpolatievoorwaarden bepalen.
+\[
+\begin{pmatrix}
+1 & x_0 & x_0^2 & \cdots & x_{0}^{n}\\
+1 & x_1 & x_2^2 & \cdots & x_{1}^{n}\\
+\vdots & \vdots & \vdots & \ddots &\vdots\\
+1 & x_n & x_n^2 & \cdots & x_{n}^{n}
+\end{pmatrix}
+\begin{pmatrix}
+a_0\\a_1\\\vdots\\a_n
+\end{pmatrix}
+=
+\begin{pmatrix}
+f(x_0)\\f(x_1)\\\vdots\\f(x_n)
+\end{pmatrix}
+\]
+Dit kan in $O(n^3)$ tijd het co\"effici\"entenprobleem oplossen. We zullen deze methode enkel gebruiken om te tonen dat de interpolerende veelterm uniek is.
+
+\section{Conditie en stabiliteit}
+De conditie van beide problemen kan willekeurig slecht zijn. Wanneer het proces convergeert(, dus wanneer de interpolatiefout naar nul gaat, )zal de afrondingsfout stijgen. We zoeken dus een optimale graad $n$ voor interpolatie zodat de totale fout minimaal is.\\\\
+We zien dat de interpolatiefout kleiner is in het middel van het interpolatieinterval en groter aan de uiteinden.
 
 \section{Interpolatie volgens Lagrange (co\"efficienten)}
 \[
@@ -24,12 +47,15 @@ Hierbij is $l_0$ de lagrange veelterm van graad $n$.
 \[
 l_{i} = \prod_{j=0,j\neq i}^{n}\frac{x-x_j}{x_i-x_j} = \frac{\pi(x)}{\pi'(x_i)(x-x_i)}
 \]
-Deze veelterm kan ge\"evalueerd worden in $O(n^2)$ tijd.
+Deze veelterm kan berekend worden in $O(n^2)$ tijd, daarna kan ze ge\"evalueerd worden in $O(n)$ tijd.
 Deze vorm van interpolatie is geschikt als oplossing voor het co\"efficientenprobleem, maar niet voor het waardeprobleem.
-\section{Interpolatie volgens Newton (waarden)}
+
+\section{Interpolatie volgens Newton (beide)}
+Om het waardenprobleem op te lossen willen we een methode die $y_{n+1}(x)$ makkelijk kan berekenen uit $y_n(x)$.
 \[
 y_n(x) = \sum_{i=0}^{n} f[x_0,x_1,...,x_i] \prod_{j=0}^{i-1}(x-x_j)
 \]
+Het waardeprobleem kan hiermee opgelost worden in $O(n)$ tijd.
 
 \subsection{Gedeelde differenties}
 \begin{defi}
@@ -41,5 +67,6 @@ f[x_i] = f(x_i)
 f[x_i,x_{i+1},...,x_{j}] = \frac{f[x_{i+1},...,x_j] - f[x_i,...,x_{j-1}]}{x_j-x_i}
 \]
 \end{defi}
+We kunnen deze gedeelde differenties berekenen door middel van de tabel der gedeelde differenties. De alternatieve tabel der gedeelde differenties dient om makkelijk de graad te kunnen verhogen.
 
 \end{document}
