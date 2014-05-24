@@ -6,8 +6,9 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{todonotes}
-\usepackage{enumerate}
-\author{Tom Sydney Kerckhove}
+\usepackage{enumerate}\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\author{Tom Sydney Kerckhove\\
+		Verbeteringen door Ward Schodts}
 \title{Oefeningen Numerieke Wiskunde:\\ Oefenzitting 2}
 \date{19 februari 2014}
 
@@ -20,13 +21,13 @@ Een andere manier om dit resultaat te bekomen is de formule voor de machine prec
 \[
 \epsilon_{mach} = \frac{b^{1-p}}{2}
 \]
-Hierin is $b$ de basis en $p$ het aantal juiste beduidende cijfers.
+Hierin is $b$ de basis en $p$ het aantal juiste cijfers na de komma.
 Uit deze formule halen we de $p$.
 \[
-p 1-\log_{b}(2\epsilon_{mach})
+1-p=\log_{b}(2\epsilon_{mach})
 \]
 \[
-p = 1-\log_{2}(2\cdot 2^{-24}) = 23
+p = 1-\log_{2}(2\cdot 2^{-24}) = 24 \text{ (waarvan 1 tekenbit, dus) } p = 23
 \]
 Volgens dezelfde redenering vinden we dat het aantal bits voor het teken, de mantisse en de exponent bij de dubbele-nauwkeurigheidsgetallen.
 
@@ -35,9 +36,11 @@ Volgens dezelfde redenering vinden we dat het aantal bits voor het teken, de man
 \item We weten dat $1$ en $2$ respectievelijk als volgt voorgesteld worden.
 \[1 = .100\ldots00 \cdot 2^1\]
 \[2 = .100\ldots00 \cdot 2^2\]
+We hebben hier weer een mantisse van 52 cijfers.\\
 Hier zitten dus $2^m-1=2^{52}-1$ getallen tussen.
-\item We weten dat $7$ en $9$ respectievelijk als volgt voorgesteld worden.
+\item Voor de gemakkelijkheid bereken we eerst van 7 tot 8, en dan van 8 tot 9. We weten dat $7$, $8$ en $9$ respectievelijk als volgt voorgesteld worden.
 \[7 = .11100\ldots00 \cdot 2^3\]
+\[8 = .10000\ldots00 \cdot 2^4\]
 \[9 = .10010\ldots00 \cdot 2^4\]
 Hier zitten dus $2^{50}+2^{49}-1$ getallen tussen.
 \end{itemize}
@@ -53,7 +56,7 @@ Als we hier echter nog $1$ bij optellen gebeurt er een absolute afrondingsfout v
 \begin{itemize}
 \item \textbf{bepaal\_b}
 We beginnen met $A=1$, dan vermenigvuldigen we $A$ met $2$ tot er een afrondingsfout gebeurd wanneer je $(A+1)-A=1$ evalueert. 
-$A$ is nu gelijk aan $2^{10}$. Vervolgens initialiseren we $i$ op $1$ en hogen $i$ op tot $(A+i)=A$ geen afrondingsfout meer geeft. Dit is wanneer $i$ $6$ wordt. $b$ is dus $.103\cdot 10^4-.102\cdot 10^4=10$.
+$A$ is nu gelijk aan $2^{10}$. Vervolgens initialiseren we $i$ op $1$ en hogen $i$ op zolang $(A+i)=A$. $i$ is dus net groot genoeg om A op de volgende afronding te laten stoppen. Dit is wanneer $i$ $6$ wordt. $b$ is dus $.103\cdot 10^4-.102\cdot 10^4=10$.
 \item \textbf{bepaal\_p}
 We initialiseren $p$ op $1$ en $z$ op $10$. Nu hogen we $p$ en de exponent van $10^1$ op tot $(z+1)-z=1$ een afrondingsfout geeft.
 Dit is wanneer $p=3$ geldt. 
@@ -230,6 +233,7 @@ y = \frac{1-\cos(x)}{x^2}
 \[
 \frac{\overline{y}-y}{y} \approx - \frac{\cos(x)}{x(1-\cos(x))}\epsilon_1 + \epsilon_2 - \epsilon_3 + \epsilon_4
 \]
+Indien x naar nul nadert wordt de factor bij $\epsilon_1$ zodanig groot dat we te maken hebben met een grote absolute en relatieve fout.
 \end{enumerate}
 
 \section{Probleem 7}

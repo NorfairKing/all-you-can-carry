@@ -1,15 +1,26 @@
 
-n = -1:-0.1:-15
-h = 10
+n = 0:-0.1:-15;
+h = 10 .^n;
 
-x = linspace(0,10,1000)
+k1 = 1;
+k2 = 2;
 
-y_1 = (f(x+h) - f(x))/h
-y_2 = (f(x+h) - f(x-h))/(2*h)
+x = zeros(1,length(n));
 
-err_1 = (f(x) - y_1)/y_1
-err_2 = (f(x) - y_2)/y_2
 
-plot(x, err_1)
+y_1 = (f(x+h) - f(x))./h;
+y_2 = (f(x+h) - f(x-h))./(2*h);
+
+err_1 = abs((f(x) - y_1)./y_1)
+err_2 = abs((f(x) - y_2)./y_2)
+
+figure(1)
+loglog(h, err_1)
 hold on
-plot(x, err_2)
+loglog(h, h .^k1,'r--')
+loglog(h, eps./(2.*h),'g')
+figure(2)
+loglog(h, err_2)
+hold on
+loglog(h, h .^k2,'r--')
+loglog(h, eps./(2.*h),'g')
