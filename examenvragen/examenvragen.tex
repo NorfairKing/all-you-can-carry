@@ -4,7 +4,15 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\let\stdsection\section
+\renewcommand\section{\newpage\stdsection}
+
+
+
 \author{Tom Sydney Kerckhove}
 \title{Examenvragen Numerieke Wiskunde}
 
@@ -13,6 +21,9 @@
 \maketitle
 \pagebreak
 
-...
+\chapter{Directe Methodes}
+\input{vraag_verschillende_basis}
+
+\chapter{Iteratieve Methodes}
 
 \end{document}

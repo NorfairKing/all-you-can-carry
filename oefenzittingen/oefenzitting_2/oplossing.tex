@@ -62,6 +62,7 @@ We initialiseren $p$ op $1$ en $z$ op $10$. Nu hogen we $p$ en de exponent van $
 Dit is wanneer $p=3$ geldt. 
 \end{itemize}
 \item
+Extra:
 \begin{itemize}
 \item \textbf{bepaal\_b}\\
 \textbf{Te Bewijzen}
@@ -90,7 +91,7 @@ fl\left(
 \frac{x(1+\epsilon_1)}{\left(\left(\sqrt{\left(x+1\right)(1+\epsilon_4)}\right)(1+\epsilon_3)+1\right)(1+\epsilon_2)}
 \]
 \[
-\overline{y} = y + \sum_{i=1}^4\epsilon_i\frac{\delta F}{\delta\epsilon_i}(0,0,0,0)
+\overline{y} = y + \sum_{i=1}^4\epsilon_i\frac{\delta \overline{y}}{\delta\epsilon_i}(0,0,0,0)
 \]
 \item
 \begin{itemize}
@@ -156,7 +157,7 @@ y \frac{1}{2}\frac{\sqrt{1+x}}{\sqrt{1+x}+1} \epsilon_4
 \]
 \[
 \overline{y}-y
-= 
+\approx
 y \epsilon_1
 -
 y \epsilon_2
@@ -167,7 +168,7 @@ y \frac{1}{2}\frac{\sqrt{1+x}}{\sqrt{1+x}+1} \epsilon_4
 \]
 \[
 \frac{\overline{y} - y}{y}
-=
+\approx
 \epsilon_1
 -
 \epsilon_2
@@ -859,7 +860,7 @@ AWW HELL NAW
 \begin{itemize}
 \item Product\\
 \[
-y = \prod_{i=1}^{n}
+y = \prod_{i=1}^{n}a_i
 \]
 \begin{enumerate}
 \item
