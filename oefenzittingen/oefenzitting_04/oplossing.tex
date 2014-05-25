@@ -6,6 +6,8 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{enumerate}
+\usepackage{todonotes}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 \author{Tom Sydney Kerckhove}
 \title{Oefeningen Numerieke Wiskunde:\\ Oefenzitting 4}
@@ -34,7 +36,8 @@ y_2 = \frac{(3+2x)x}{1+x}
 \[
 \Delta_cy_2 \approx f'(x)\Delta x
 = \frac{(1+x)(3+4x)-(3x+2x^2)}{(1+x)^2}
-= \frac{(3+4x+2x^2)}{(1+x)^2}
+= \frac{(3+4x+2x^2)}{(1+x)^2}\Delta
+x
 \]
 Dit is natuurlijk gelijk.
 \[
@@ -44,7 +47,7 @@ Dit is natuurlijk gelijk.
 Slecht geconditioneerd voor $x\approx-1$, $x \approx -\frac{3}{2}$.
 
 \subsection{Stabiliteit}
-
+eval1:
 \begin{enumerate}
 \item
 \[
@@ -125,14 +128,15 @@ Slecht geconditioneerd voor $x\approx-1$, $x \approx -\frac{3}{2}$.
 \[
 \delta_{s}y_1 \le  \frac{3+3x+4x^2}{(3+2x)x}\epsilon_{mach}
 \]
-Dit algoritme is onstabiel voor $x\approx 0$ maar stabiel voor andere $x$.
+Dit algoritme is onstabiel voor $x\approx 0$ en voor $x\approx x = -\frac{2}{3}$ maar stabiel voor andere $x$.
 
 \end{enumerate}
 
-
+eval2:
 \begin{enumerate}
 \item
 \[
+\overline{y_2}=
 \frac{(3+2x)x}{1+x}
 \]
 \[
@@ -191,7 +195,7 @@ Dit algoritme is onstabiel voor $x\approx 0$ maar stabiel voor andere $x$.
 + y\epsilon_3
 \]
 \[
-\delta_{s}y_1
+\delta_{s}y_2
 = \frac{\overline{y} - y}{y}
 \approx
   \epsilon_1
@@ -200,7 +204,7 @@ Dit algoritme is onstabiel voor $x\approx 0$ maar stabiel voor andere $x$.
 \]
 \item
 \[
-\delta_{s}y_1 \le  3\epsilon_{mach}
+\delta_{s}y_2 \le  3\epsilon_{mach}
 \]
 Dit algoritme is overal even stabiel en voorwaarts stabiel.
 \end{enumerate}
@@ -467,6 +471,75 @@ Dit algoritme is stabiel.
 \end{enumerate}
 
 \section{Probleem 3}
+Voor de duidelijkheid:
+\[
+\overline{g} = g(x) (x+C_2\epsilon)
+\]
+\[
+\overline{g}((x+h)(1+\epsilon)) = g(x+h)(1+C_1\epsilon)
+\]
+Foutenanalyse:
+\begin{enumerate}
+\item
+\[
+\overline{g'}(x) = \overline{y} = \frac{\overline{g}((x+h)(1+\epsilon_1))-\overline{g}(x)}{h}(1+\epsilon_2)(1+\epsilon_3)
+\]
+\[
+= \frac{g(x+h)(1+C_1\epsilon_1) - g(x) (x+C_2\epsilon_4)}{h}(1+\epsilon_2)(1+\epsilon_3)
+\]
+\item
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(0,0,0,0) = \frac{g(x+h)}{h}
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,0,0,0) = -\frac{g(x)}{h}
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_3}(0,0,0,0) = \frac{g(x+h) - g(x)}{h}
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_4}(0,0,0,0) = \frac{g(x+h)-g(x)}{h}
+\]
+\item
+\[
+\overline{y} \approx y+
+\frac{g(x+h)}{h}\epsilon_1
+-\frac{g(x)}{h}\epsilon_2
++\frac{g(x+h) - g(x)}{h}\epsilon_3
++\frac{g(x+h)-g(x)}{h}\epsilon_4
+\]
+\[
+\overline{y} \approx y+
+\frac{g(x+h)}{h}\epsilon_1
+-\frac{g(x)}{h}\epsilon_2
++y\epsilon_3
++y\epsilon_4
+\]
+\item
+\[
+\overline{y} -y \approx
+\frac{g(x+h)}{h}\epsilon_1
+-\frac{g(x)}{h}\epsilon_2
++y\epsilon_3
++y\epsilon_4
+\]
+\[
+\frac{\overline{y} -y}{y} \approx
+\frac{g(x+h)}{g(x+h)-g(x)}\epsilon_1
+-\frac{g(x)}{g(x+h)-g(x)}\epsilon_2
++\epsilon_3
++\epsilon_4
+\]
+Middelwaardestelling
+\[
+\frac{\overline{y} -y}{y} \approx
+\frac{g(x+h)}{g'(\xi)h}\epsilon_1
+-\frac{g(x)}{g'(\xi)h}\epsilon_2
++\epsilon_3
++\epsilon_4
+\]
+De relatieve fout is dus inderdaad van orde $\frac{1}{h}$
+\end{enumerate}
 
 
 \section{Probleem 4}
@@ -490,7 +563,7 @@ y_2 = \frac{2 - \sqrt{4 -4t}}{2}
 \frac{y_2't}{y_2}\delta t
 = (-2\sqrt{1-t} + 2 -2t) \delta t
 \]
-REDO, foutje!
+\todo{REDO, foutje!}
 
 \section{Probleem 5}
 \subsection{(a)}
