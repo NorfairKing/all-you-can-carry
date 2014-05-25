@@ -4,8 +4,10 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{todonotes}
 \usepackage{amsthm}
 \usepackage{enumerate}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 \author{Tom Sydney Kerckhove
 		\\ Verbeteringen door Ward Schodts}
@@ -107,11 +109,18 @@ LogLog werkt het best, omdat zowel $x$ als $abs\_err$ een logaritmisch verloop h
 \item
 De absolute fout is:
 \[
-f(x)-\frac{1}{2} = -\frac{1}{2} + frac{1}{2} - \frac{x^4}{4!} + \frac{x^6}{6!} -... = \sim\frac{x^4}{4!}
+f(x)-\frac{1}{2} = -\frac{1}{2} + \frac{1}{2} - \frac{x^4}{4!} + \frac{x^6}{6!} -... = \sim\frac{x^4}{4!}
 \]
 
 \item
-TODO
+Vervang als volgt:
+\[
+\cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots
+\]
+
+\[
+\delta y \approx y \left( - \frac{1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots}{\frac{x^2}{2!} - \frac{x^4}{4!} + \frac{x^6}{6!} - \cdots}\epsilon_1 + \epsilon_2 - \epsilon_3 + \epsilon_4 \right)  = \sim \frac{1}{x^2}\epsilon_1
+\]
 
 \end{enumerate}
 
@@ -257,7 +266,7 @@ y \sum_{i=1}^{40} 2^{40-i} \epsilon_i
 \[
 \frac{\overline{y}-y}{y} \approx
 \sum_{i=1}^{40} 2^{40-i} \epsilon_i
-\le \left(2_{40}-1\right)\epsilon_{mach}
+\le \left(2^{40}-1\right)\epsilon_{mach}
 \]
 
 \end{enumerate}
@@ -281,13 +290,29 @@ x
 \right)
 \]
 
-\item
-FTS
-\item
-
-\item
+\item Zie matlab
+\item Zie matlab
+\item Ja, op het eerste deel komen vrij weinig fouten.
 
 
 \end{enumerate}
+
+\section{Probleem 10}
+\begin{enumerate}[(a)]
+\item Zie matlab
+\item Zie matlab
+\[
+e^{x^{2}} = \sum_{k=0}^{\infty}\frac{x^{2^{k}}}{k!} \text{, } e^{-x^{2}} = \sum_{k=0}^{\infty}\frac{-x^{2^{k}}}{k!}
+\]
+\[
+f(x) = \frac{e^{x^{2}}-e^{-x^{2}}}{2x^2} = \frac{\sum_{k=0}^{\infty}\frac{x^{2^{k}}}{k!} - \sum_{k=0}^{\infty}\frac{-x^{2^{k}}}{k!}}{2x^2}
+= \frac{\sum_{k=0}^{\infty}\frac{2x^{2+4k}}{\frac{2+4k}{2}!}}{2x^2}
+\]
+\item LOLNOPE
+
+\end{enumerate}
+
+\section{Probleem 11}
+\todo{probleem 11}
 
 \end{document}

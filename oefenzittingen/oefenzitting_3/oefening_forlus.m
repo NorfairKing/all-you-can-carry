@@ -29,8 +29,8 @@ fout = ((orig - x)/orig)
 % tijdens het uitvoeren van de eerste lus bekomen worden:
 load exacte_x
 
-fout1 = opl1 - exacte_x 
-fout2 = opl2 - exacte_x
+fout1 = abs(opl1 - exacte_x);
+fout2 = abs(opl2 - exacte_x);
 
 %% Plot relatieve fout op de tussenresultaten
 
@@ -38,14 +38,13 @@ figure(1)
 % plot
 % semilogx
 % semilogy
-loglog(fout1)
+semilogy(fout1)
 
 figure(2)
 % plot
 % semilogx
 % semilogy
-%loglog
-
+semilogy(fout2)
 
 
 
