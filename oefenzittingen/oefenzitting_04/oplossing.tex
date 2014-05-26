@@ -9,7 +9,8 @@
 \usepackage{todonotes}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
-\author{Tom Sydney Kerckhove}
+\author{Tom Sydney Kerckhove\\
+		Verbeterd door Ward Schodts}
 \title{Oefeningen Numerieke Wiskunde:\\ Oefenzitting 4}
 \date{5 maart 2014}
 
@@ -31,7 +32,7 @@ y_2 = \frac{(3+2x)x}{1+x}
 \subsection{Conditie}
 \[
 \Delta_cy_1 \approx f'(x)\Delta x
-= 2 + \frac{1}{(1+x)^2}
+= 2 + \frac{1}{(1+x)^2}\Delta x
 \]
 \[
 \Delta_cy_2 \approx f'(x)\Delta x
@@ -95,15 +96,9 @@ eval1:
 + (1+2x)\epsilon_1
 + \frac{1}{1+x}\epsilon_2
 - \frac{1}{1+x}\epsilon_3
-+ \left(1+2x-\frac{1}{1+x}\right)\epsilon_3
++ \left(1+2x-\frac{1}{1+x}\right)\epsilon_4
 \]
-\[
-\overline{y} \approx y
-+ y\frac{1+2x)(1+x)}{x(3+2x)}\epsilon_1
-+ y\frac{1}{(3+2x)x}\epsilon_2
-- y\frac{1}{(3+2x)x}\epsilon_3
-+ y\epsilon_4
-\]
+
 
 \item
 \[
@@ -117,8 +112,7 @@ eval1:
 \[
 \delta_{s}y_1 =
 \frac{\overline{y} - y}{y}
-\approx
-\overline{y} \approx y
+\approx 
   \frac{(1+2x)(1+x)}{(3+2x)x}\epsilon_1
 + \frac{1}{(3+2x)x}\epsilon_2
 - \frac{1}{(3+2x)x}\epsilon_3
@@ -226,7 +220,7 @@ f'(x) = \sin(x) + x\cos(x)
 = 1+\frac{x\cos(x)}{\sin(x)}
 \]
 Slecht geconditioneerd bij $x=k\pi$.
-Bij $x=0$ gaat $f'(x)$ naar $2$.
+Bij $x=0$ gaat $\delta_cy$ naar $2$.
 
 \subsubsection*{Stabiliteit}
 \begin{enumerate}
@@ -572,7 +566,7 @@ y_2 = \frac{2 - \sqrt{4 -4t}}{2}
 y' = 2x
 \]
 \[
-\delta_cy = \frac{2x^2}{2x+x^2}\delta x = (x + 2)\delta x
+\delta_cy = \frac{2x^2}{2x+x^2}\delta x = \frac{2x}{x + 2}\delta x
 \]
 Dit probleem is goed geconditioneerd voor kleine $x$.
 
