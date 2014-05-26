@@ -1,0 +1,132 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\author{Tom Sydney Kerckhove}
+\title{Gewichten zodat kwadratuurformule een zo hoog mogelijke nauwkeurigheidsgraad heeft}
+\date{26 mei 2014}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+
+\section{Benodigde Voorkennis}
+\begin{itemize}
+\item Basis lineaire algebra
+\item Veelterm Interpolatie
+\end{itemize}
+
+
+\pagebreak
+\section{Theorie}
+\subsection{Kwadratuurformules}
+De bedoeling is om de integraal van een functie $f$ in tabelvorm te benaderen. We stellen daarvoor eerste de interpolerende veelterm $y_n$ op. Daarbij komt een interpolatiefout $E_n(x)$ kijken.
+\[
+f(x) = y_n(x) + E_n(x)
+\]
+Integreren we deze vergelijking nu aan beide kanten, dan krijgen we het volgende.
+\[
+\int_{a}^{b}f(x)dx = \int_{a}^{b}y_n(x)dx + \int_{a}^{b}E_n(x)dx
+\]
+Bekijk nu enkel de eerste term aan de rechter kant.
+\[
+\int_{a}^{b}y_n(x)dx
+= \int_{a}^{b}\left(\sum_{i=0}^{n}l_i(x)f(x_i)\right)dx
+=\sum_{i=0}^{n}l_i(x)\int_{a}^{b}f(x_i)dx
+\]
+Hierin benoemen we $H_i$, de gewichten en $x_i$ de abscissen van de formule.
+\[
+H_i = \int_a^{b}l_i(x)dx
+\]
+
+\subsection{Nauwkeurigheidsgraad}
+Men zegt dat een kwadratuurformule een nauwkeurigheidsgraad heet van $n$ als alle veeltermen van graad $n$ exact ge\"integreerd worden terwijl er minstens \'e\'en veelterm van graad $n+1$ niet meer exact ge\"integreerd wordt.
+
+\subsection{Berekenen van de gewichten $H_i$}
+De gewichten $H_i$ kunnen we berekenen zoals vermeld, als volgt:
+\[
+H_i = \int_{a}^{b}l_i(x)dx
+\]
+We kunnen deze gewichten echter nog op een andere manier berekenen. Deze methode heet de methode van de onbepaalde co\"effici\"enten. Hierin leggen we een nauwkeurigheids graad $n$ op voor de kwadratuurformule en berekenen we de gewichten $H_i$ door er een voorwaarde op te leggen voor elke $H_i$. We hebben dan $n+1$ voorwaarden nodig.
+
+Om het onzelf niet te moeilijk te maken kiezen we om de \'e\'entermen te gebruiken voor de voorwaarden. Deze zouden immers evenzeer exact ge\"integreerd moeten kunnen worden. We krijgen dan volgend stelsel van lineaire vergelijkingen
+\[
+\left\{
+\begin{array}{ccccccccc}
+H_0 &+& H_1 &+& \cdots &+& H_n &=& \int_{a}^{b}dx\\
+H_0x &+& H_1x &+& \cdots &+& H_nx &=& \int_{a}^{b}xdx\\
+\vdots && \vdots && \ddots && \vdots && \vdots\\
+H_0x^n &+& H_1x^n &+& \cdots &+& H_nx^n &=& \int_{a}^{b}x^ndx\\
+\end{array}
+\right.
+\]
+De integralen aan de rechterkanten zijn bovendien eenvoudig, op voorhand te bepalen.
+\[
+\int_{a}^{b}x^ndx = \frac{b^{k+1}-a^{k+1}}{k+1}
+\]
+(Het beschreven stelsel heeft precies \'e\'en oplossing omdat het een Vandermonde stelsel is.)
+
+\subsection{Alternatieve formules}
+Het zou kunnen dat er in de formule ook nog afgeleiden worden gebruikt (zie het voorbeeld). We kunnen dan dezelfde methode toepassen, alleen moet het stelsel worden aangepast worden.
+Het is dan belangrijk dat u begrijpt waar het stelsel voor staat, en het niet zomaar overschrijft.
+
+\section{Generisch}
+\subsection{Opgave}
+Gegeven een kwadratuurformule voor $\int_{a}^{b}f(x)dx$, zoek de gewichten $H_i$ in de formule zodat ze de grootste nauwkeurigheidsgraad heeft. ($k_i(x)$ zijn evaluaties van $f$ of een afgeleide van $f$)
+\[
+\int_{a}^{b}f(x)dx \approx \sum_{i=0}^{n}H_ik_i(x)
+\]
+
+\subsection{Oplossing}
+\begin{enumerate}
+\item Leg voor de kwadratuurformule een nauwkeurigheidsgraad van $n$ op.
+\item Stel het stelsel op van $n+1$ voorwaarden voor de nauwkeurigheid.
+\[
+\left\{
+\sum_{i=0}^{n}H_ik_i(x) = \int_{a}^{b}x^jdx\ \right|\ j \in \{0..n\}
+\]
+\item Los het stelsel op.
+\end{enumerate}
+
+\section{Voorbeeld}
+\subsection{Opgave}
+Zoek de $H_i$ zodat volgende formule een zo hoog mogelijke nauwkeurigheidsgraad heeft.
+\[
+\int_{-1}^{1}f(x)dx = H_{-1}f(-1) + H_0f(0) + H_1f(1) + H'_{-1}f'(-1) + H'_1f'(1)
+\]
+
+\subsection{Oplossing}
+\begin{enumerate}
+\item We leggen een nauwkeurigheidsgraad van $5$ op.
+
+\item 
+\[
+\left\{
+\begin{array}{c c}
+H_{-1} + H_0 + H_1  &= 2\\
+-H_{-1} + H_1 + H'_{-1} + H'_1 &= 0\\
+H_{-1} + H_1 + -2H'_{-1} + 2H'_1 &= \frac{2}{3}\\
+-H_{-1} + H_1 + 3H'_{-1} + 3H'_1 &= 0\\
+H_{-1} + H_1 + -4H'_{-1} + 4H'_1 &= \frac{2}{5}\\
+\end{array}
+\right.
+\]
+
+\item 
+De oplossing van het stelsel is de volgende vector.
+\[
+\begin{pmatrix}
+\frac{7}{15}&
+\frac{16}{15}&
+\frac{7}{15}&
+\frac{1}{15}&
+-\frac{1}{15}
+\end{pmatrix}^{T}
+\]
+\end{enumerate}
+
+\end{document}

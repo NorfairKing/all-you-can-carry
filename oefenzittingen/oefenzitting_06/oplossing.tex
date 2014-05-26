@@ -8,6 +8,8 @@
 \usepackage{enumerate}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{todonotes}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 \author{Tom Sydney Kerckhove}
 \title{Oefeningen Numerieke Wiskunde:\\ Oefenzitting 6}
@@ -175,13 +177,73 @@ y_n = \sum_{i=0}^{n}l_{i}(x) = 1
 Als we de interpolerende veelterm opstellen van $y=x^k$ wordt deze exact benaderd omdat $k\le n$.
 \end{proof}
 
-\section{Probleem 5}
-TODO...
+\section{Probleem 5 tot 8}
+\todo{extra}
+
+\section{Probleem 9}
+\begin{proof} Bewijs in delen
+\begin{itemize}
+\item (1) $\rightarrow$ (2) Triviaal: als het voor elke functie geldt geldt het ook voor een veelterm.
+\item (2) $\rightarrow$ (3)
+We weten:
+\[
+\int_{a}^{b}p(x)dx = \sum_{i=0}^{n}H_if(x_i)
+\]
+\[
+p(x) = \sum_{i=0}^{n}l_i(x)f(x_i) =
+\]
+\[
+\int_{a}^{b}p(x)dx = \int_{a}^{b}\sum_{i=0}^{n}l_i(x)f(x_i)
+\]
+\[
+= \int_{a}^{b}\sum_{i=0}^{n}l_i(x)f(x_i)dx
+= \sum_{i=0}^{n}f(x_i)\int_{a}^{b}l_i(x)dx
+\]
+\[
+\Rightarrow H_i = \int_{a}^{b}l_i(x)dx
+\]
+\item (3) $\rightarrow$ (1)
+\[
+\sum_{i=0}^{n}H_if(x_i)
+= \sum_{i=0}^{n}f(x_i)\int_{a}^{b}l_i(x)dx
+= \int_{a}^{b}\sum_{i=0}^{n}l_i(x)f(x_i)dx
+= \int_{a}^{b}y_ndx
+\]
+\end{itemize}
+\end{proof}
 
 \section{Probleem 10}
-We weten dat de nauwkeurigheidsgraad van de trapeziumregel $1$ is, dus integralen van graad $k\le n$ worden exact benaderd.
+We weten dat de gewichten $H_i$ de integralen zijn van de lagrange veeltermen $l_i$.
 \[
-\left\{ 
+H_i = \int_{a}^{b}l_idx
+\]
+We kunnen de gewichten dus gewoon berekenen.
+\[
+H_0 = \int_{-1}^{1}l_{0}dx = \int_{-1}^{1}\frac{x - \frac{1}{2}}{-\frac{1}{2}-\frac{1}{2}} = \int_{-1}^{1}\left(\frac{1}{2}-x\right)dx = 1
+\]
+\[
+H_1 = \int_{-1}^{1}l_{1}dx = \int_{-1}^{1}\frac{x + \frac{1}{2}}{\frac{1}{2}+\frac{1}{2}} = \int_{-1}^{1}\left(\frac{1}{2}+x\right)dx = 1
+\]
+
+We kunnen nu nakijken tot welke graad de integraal exact wordt berekend.
+\[
+(d=0):\ 1+1=2=\int_{-1}^{1}dx \rightarrow OK
+\]
+\[
+(d=1):\ -\frac{1}{2}+\frac{1}{2}=0=\int_{-1}^{1}xdx \rightarrow OK
+\]
+\[
+(d=2):\ \frac{1}{4}+\frac{1}{4}=\frac{1}{2}=\int_{-1}^{1}x^2dx \rightarrow NOK
+\]
+De nauwkeurigheidsgraad is dus $1$.
+Nauwkeurigheidsgraad $ = 1 \ge n$ dus interpolerend.
+
+\section{Probleem 11}
+
+\subsection*{Alternatieve methode}
+\todo{waarom werkt dit?}
+\[
+\left\{
 \begin{array}{cccc}
 H_0 &+ H_1 &= \int_{-1}^{1}dx &= 2\\
 -\frac{1}{2}H_0 &+ \frac{1}{2}H_1 &= \int_{-1}^{1}xdx &= 0\\
@@ -189,6 +251,8 @@ H_0 &+ H_1 &= \int_{-1}^{1}dx &= 2\\
 \right.
 \]
 We vinden voor $H_0$ en $H_1$ beide $1$.
+
+
 
 
 \end{document}
