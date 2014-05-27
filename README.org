@@ -5,10 +5,19 @@ Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
    - De inhoud van deze repository is nog niet geschikt voor gebruik.
      De repository is publiek zodat er aan meegewerkt kan worden.
 
+** De bedoeling
+   Deze repository bevat heel veel informatie die het instuderen van numerieke wiskunde zou kunnen vergemakkelijken.
+   Omdat het examen openboek is, kan het bovendien van pas komen om sommige van deze documenten af te drukken.
+
+   De bedoeling is dat alle informatie hier wordt gebundelt.
+   We stellen alle tex code ter beschikking, zodat er verbeterd en verder aangevuld kan worden.
 ** Inhoud
     - Samenvatting
     - Oplossingen Oefenzittingen
     - Tutorials
       - Foutenanalyse
       - Conditie en Stabiliteit
-        
+      - Kwadratuurformules  
+** Andere bronnen:
+   - Oplossingen examenvragen 2012
+     https://github.com/JDevlieghere/NumeriekeWiskunde

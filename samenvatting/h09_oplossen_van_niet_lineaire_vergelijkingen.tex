@@ -1,0 +1,91 @@
+\documentclass[samenvatting.tex]{subfiles}
+\begin{document}
+
+\chapter{Oplossen van niet-lineaire vergelijkingen}
+
+\section{Bissectie-methode}
+\subsection{Voorwaarden}
+\begin{itemize}
+\item $f$ is continu over het gebied dat ons interesseert (noem het $[a,b]$).
+\item $f(a)f(b) <0$, dit betekent dat er een nulpunt ligt in $[a,b]$
+\end{itemize}
+\subsection{methode}
+$x^{(0)}=a$, $x^{(1)}=b$.
+Deel het interval in twee en neem het linkse/rechtste deelinterval als nieuw interval afhankelijk van waar het nulpunt ligt.
+
+\section{Secant-methode}
+Kies $x^{(0)}$ en $x^{(1)}$.
+\[
+x^{(n+1)} = F(x^{(n)}, x^{(n-1)}) \text{ met } F(x,y) = y-\frac{(y-x)f(x)}{f(y)-f(x)}
+\]
+\begin{itemize}
+\item Convergeert niet altijd.
+\item Lineaire interpolatie
+\end{itemize}
+
+\section{Regula-falsi}
+Kies $x^{(0)}$ en $x^{(1)}$.
+\[
+x^{(n+1)} = F(x^{(n)}, x^{(n-1)}) \text{ met } F(x,y) = y-\frac{(y-x)f(x)}{f(y)-f(x)}
+\]
+Kies nu uit $(x^{(0)},x^{(2)})$ en $(x^{(1)},x^{(2)})$ het interval waar de wortel in zit en ga verder.
+\begin{itemize}
+\item Combineert de eerste twee methodes, convergeert altijd.
+\item Lineaire interpolatie
+\end{itemize}
+
+\section{Newton-Raphson}
+\[
+x^{(n+1}) = f(x^{(n)}+\frac{f(x^{(n)})}{f'(x^{(n)})} 
+\]
+\begin{itemize}
+\item Substitutiemethode
+\item Lineaire hermite interpolatie
+\end{itemize}
+
+\section{Whittaker}
+Vervang in Newton-Raphson $f'(x^{(n)})$ door een (andere) benadering voor de afgeleide.
+\begin{itemize}
+\item Substitutiemethode
+\item Lineaire hermite interpolatie
+\item Sneller dan Newton-Raphson
+\end{itemize}
+
+\section{Muller}
+Interpoleer quadratisch, begin met drie startwaarden.
+\[ 
+F(x,y,z) = f(z) + f[z,y](x-z)+ f[z,y,x](x-z)(x-y)
+\]
+Kies het nulpunt dat het dichtst bij $z$ ligt als nieuwe iteratiewaarde.
+
+\begin{itemize}
+\item Quadratische interpolatie
+\end{itemize}
+
+\section{Substitutiemethodes}
+Substitutiemethodes zijn op zoek naar een vast punt.
+
+\section{Convergentiesnelheid}
+\subsection{Convergentiefactor}
+\[
+\epsilon^{(k)} = x^{(k)}-x^{*}
+\]
+\[
+\rho^{(k)} = \frac{e^{(k)}}{e^{(k-1)}}
+\]
+Convergentiefactor: $\rho$
+\[
+\rho = \lim_{k\rightarrow\infty}\rho^{(k)}
+\]
+Het proces convergeert als $\rho < 1$.
+\subsection{Orde van convergentie}
+$p$ zodat het volgende geldt:
+\[
+e^{(k+1)} = O((e^{(k)})^p)
+\]
+Een proces waarbij $p = 1$ geldt, noemt men lineair.
+Met een $p$ ussen $1$ en $2$ noemt men het superlineair.
+Een proces waarbij $p=2$ geldt, noemt men kwadratisch.
+
+
+\end{document}
