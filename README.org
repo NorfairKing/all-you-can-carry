@@ -9,7 +9,7 @@ Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
    Deze repository bevat heel veel informatie die het instuderen van numerieke wiskunde zou kunnen vergemakkelijken.
    Omdat het examen openboek is, kan het bovendien van pas komen om sommige van deze documenten af te drukken.
 
-   De bedoeling is dat alle informatie hier wordt gebundelt.
+   De bedoeling is dat alle informatie hier wordt gebundeld.
    We stellen alle tex code ter beschikking, zodat er verbeterd en verder aangevuld kan worden.
 ** Inhoud
     - Samenvatting
