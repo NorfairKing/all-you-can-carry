@@ -1,0 +1,58 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{todonotes}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\author{Tom Sydney Kerckhove}
+\title{Oefeningen Numerieke Wiskunde:\\ Oefenzitting 9}
+\date{29 maart 2014}
+
+\begin{document}
+\maketitle
+
+\section{Probleem 1}
+\[
+a_{0}t_1^3+b_0t_1^2+c_0t_1+d_0-a_{1}t_1^3+b_1t_1^2+c_1t_1+d_1=0
+\]
+Het stelsel $A$ ziet er dus als volgt uit.
+\[
+A=
+\left(
+\begin{array}{ccccccccccccccccc}
+t_1^3 & t_{1}^2 & t_{1} & 1 & -t_1^3 & -t_1^2 & -t_1 & -1 & 0 & 0 & 0 & 0 & \cdots \\
+0 & 0 & 0 & 0 & t_2^3 & t_{2}^2 & t_{2} & 1 & -t_2^3 & -t_2^2 & -t_2 & -1 & \cdots\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & t_3^3 & t_{3}^2 & t_{3} & 1 & \cdots\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \\
+3t_1^2 & 2t_{1} & 1 & 0 & -3t_1^2 & -2t_1 & -1 & 0 & 0 & 0 & 0 & 0 & \cdots \\
+0 & 0 & 0 & 0 & 3t_2^2 & 2t_{2} & 1 & 0 & -3t_2 & -2t_2 & -1 & 0 & \cdots\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 3t_3^2 & 2t_{3} & 1 & 0 & \cdots\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \\
+6t_1 & 2 & 0 & 0 & -6t_1 & -2 & 0 & 0 & 0 & 0 & 0 & 0 & \cdots \\
+0 & 0 & 0 & 0 & 6t_2 & 2 & 0 & 0 & -6t_2 & -2 & 0 & 0 & \cdots\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 6t_3 & 2 & 0 & 0 & \cdots\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \\
+\end{array}
+\right)
+\]
+
+\section{Probleem 2}
+Zie matlab
+
+\section{Probleem 3}
+\todo{evalspline}
+
+\section{Probleem 4}
+Zie matlab
+
+\section{Probleem 5}
+\todo{fix scripts}
+
+\end{document}
