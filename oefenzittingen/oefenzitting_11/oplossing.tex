@@ -18,24 +18,35 @@
 \begin{document}
 \maketitle
 
-\todo{probleem 1}
+\section{Probleem 1}
+Zie verbetering van Toledo.
 \section{Probleem 2}
 \subsection*{(a)}
+\subsubsection*{Consistentie}
 \begin{verbatim}
 http://www.wolframalpha.com/input/?i=-+log+x
 \end{verbatim}
 \[
 x + \log(x) = 0 \Leftrightarrow x = -\log(x)
+\Leftrightarrow F(x) = x
 \]
-We spreken dus van volledige convergentie.
-$F'(x) = \frac{1}{x}$
+We spreken dus van volledige consistentie.
+\subsubsection*{Convergentie}
+$$|F'(x^*)| = |\frac{1}{-x^*}| = |\frac{1}{0.56714}| \approx 1.7632 > 1$$
+Er gebeurt hier dus spiraalvorigme divergentie.
 
 \subsection*{(b)}
+\subsubsection*{Consistentie}
 \begin{verbatim}
 http://www.wolframalpha.com/input/?i=-e^x
 \end{verbatim}
 \[
-x + \log(x) = 0 \Leftrightarrow e^{-x}
+x + \log(x) = 0 \Leftrightarrow x = e^{-x} 
+\Leftrightarrow F(x) = x
 \]
-
+$$\Leftrightarrow -x = \log(x) \Leftrightarrow f(x) = 0$$
+Er is op nieuw volledige consistentie.
+\subsubsection*{Convergentie}
+$$|F'(x^*)| = |-e^{-x^*}| = e^{-0.56714} < 1$$
+Hier hebben we dus spiraalvormige convergentie want de afgeleide is kleiner dan nul.
 \end{document}
