@@ -23,6 +23,10 @@ Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
       - Foutenanalyse
       - Conditie en Stabiliteit
       - Kwadratuurformules  
+    - Extraatjse
+      - Afgeleiden en integralen
+      - Goniometrische cirkel en formules
+    _Neem zeker ook de cursus mee!_
 ** Andere bronnen:
    - Oplossingen examenvragen 2012
      https://github.com/JDevlieghere/NumeriekeWiskunde
