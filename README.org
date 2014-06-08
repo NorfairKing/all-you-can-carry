@@ -5,6 +5,11 @@ Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
    - De inhoud van deze repository is nog niet geschikt voor gebruik.
      De repository is publiek zodat er aan meegewerkt kan worden.
 
+** OPROEP
+   Deze repository is _open_. *iedereen* kan iets toevoegen of verbeteren. Dit is dan ook de bedoeling.
+   Niet alleen kan je zoals altijd de repository forken en pull requests doen, je kan de repository ook clonen en ernaar pushen.
+   Je hoeft dus zelfs geen contributor te zijn.
+
 ** De bedoeling
    Deze repository bevat heel veel informatie die het instuderen van numerieke wiskunde zou kunnen vergemakkelijken.
    Omdat het examen openboek is, kan het bovendien van pas komen om sommige van deze documenten af te drukken.
