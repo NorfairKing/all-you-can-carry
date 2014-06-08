@@ -12,4 +12,4 @@ oplossingen:
 		bash makeOplossing.sh $$number; \
         ((number = number + 1)) ; \
     done
-	pdfunite opgaven/opgaven_oefenzittingen.pdf oplossing_*.pdf oefenzittingen.pdf
+	pdfunite opgaven/opgaven_oefenzittingen.pdf oplossing_*.pdf oplossingen_door_assistenten.pdf oefenzittingen.pdf
