@@ -17,13 +17,15 @@ Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
    De bedoeling is dat alle informatie hier wordt gebundeld.
    We stellen alle tex code ter beschikking, zodat er verbeterd en verder aangevuld kan worden.
 ** Inhoud
+    Alle pdf's in deze repository kunnen samengevoegd worden met het make commando.
+    Je zal LaTeX, subfiles en latexmk nodig hebben om dit uit te voeren.
     - Samenvatting
     - Oplossingen Oefenzittingen
     - Tutorials
       - Foutenanalyse
       - Conditie en Stabiliteit
       - Kwadratuurformules  
-    - Extraatjse
+    - Extraatjes
       - Afgeleiden en integralen
       - Goniometrische cirkel en formules
     _Neem zeker ook de cursus mee!_
