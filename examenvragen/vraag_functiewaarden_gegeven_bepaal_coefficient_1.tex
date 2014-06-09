@@ -1,0 +1,70 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Functiewaarden gegeven, bepaal coe\"efficient.}
+\subsection{Opgave}
+Gegeven volgende informatie over een veelterm $p$ van graad $4$.
+\[
+p(x) = a_{0} + a_1x + a_2x^{2} +a_{3}x^{3}+a_{4}x^{4}
+\]
+\begin{multicols}{4}
+\begin{itemize}
+\item $p(0)=0$
+\item $p(1)=9$
+\item $p(2)=15$
+\item $p(3)=18$
+\end{itemize}
+\end{multicols}
+Alle gedeelde differenties van de vierde graad zijn bovendien $1$.
+Bereken de waarde van de derde co\"efficie\"ent $a_3$.
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 103: 9.3 Gedeelde differenties
+\end{itemize}
+\subsection{Antwoord}
+Alle gedeelde differenties van de vierde graad zijn $1$. Dus ook de gedeelde differentie van de eerste vijf co\"efficienten.
+\[
+p[x_{0},x_{1},x_{2},x_{3},x_{4}] = 1
+\]
+De nulde differenties zijn ook gegeven voor vier verschillende waarden van $x$. ($x_0,\cdots,x_3$)
+\begin{multicols}{4}
+\begin{itemize}
+\item $p[0]=0$
+\item $p[1]=9$
+\item $p[2]=15$
+\item $p[3]=18$
+\end{itemize}
+\end{multicols}
+\noindent We kunnen nu de gedeelde differenties van de eerste graad berekenen ...
+\[
+p[x,y] = \frac{p(y) - p(x)}{y-x}
+\]
+\begin{multicols}{3}
+\begin{itemize}
+\item $p[0,1] = 4$
+\item $p[1,2] = 6$
+\item $p[2,3] = 3$
+\end{itemize}
+\end{multicols}
+\noindent ... alsook de gedeelde differenties van de tweede graad.
+\begin{multicols}{2}
+\begin{itemize}
+\item $p[0,1,2] = 1$
+\item $p[1,2,3] = -\frac{3}{2}$
+\end{itemize}
+\end{multicols}
+Tenslotte berekenen we nog de gedeelde differenties van de derde graad.
+\[
+p[0,1,2,3] = -\frac{5}{6}
+\]
+We kunnen nu $p$ berekenen met interpolatie volgens newton.
+\[
+p(x) = 5+4(x-0)+1(x-0)(x-1)-\frac{5}{6}(x-0)(x-1)(x-2) + 1(x-0)(x-1)(x-2)(x-3)
+\]
+Werk dit uit om de derde co\"efficient $a_3$ af te lezen.
+\[
+a_3 = -6.833
+\]
+
+\end{document}
