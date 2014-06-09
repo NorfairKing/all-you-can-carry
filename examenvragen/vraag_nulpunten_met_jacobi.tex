@@ -1,0 +1,46 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Verschillende basis}
+\subsection{Opgave}
+Gegeven een tweedimensionaal lineair stelsel $Ax=b$.
+\[
+A = \begin{pmatrix}
+\alpha + 1 & 1 \\
+\alpha &1
+\end{pmatrix}
+\]
+Bij welke waarden voor $\alpha$ convergeert de methode van Jacobi om nulpunten te vinden?
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 271: 2 Convergentie van methodes
+\end{itemize}
+\subsection{Antwoord}
+De methode van Jacobi en Gauss-Seidel convergeren als $A$ \emph{diagonaal dominant} is. Dit betekent dat volgende ongelijkheid geldt.
+\[
+\forall k \in \{1,\cdots,n\}: |a_{kk}| \ge \sum_{j=1,j\neq k}|a_{kj}|
+\]
+In mensentaal betekent dit dat een element op de diagonaal in absolute waarde groter is dan de elementen op dezelfde rij samen.
+Voor elke rij krijgen we dus een ongelijkheid die moet gelden opdat de methode van Jacobi convergeert.
+\[
+\left\{
+\begin{array}{c c}
+|\alpha +1| > 1\\
+1 > |\alpha|
+\end{array}
+\right.
+\]
+We werken dit stelsel voorzichtig uit. Er zitten namelijk absolute-waardetekens in die wel een last kunnen geven.
+\[
+|\alpha+1|>1 \Leftrightarrow \alpha + 1 > 1 \vee \alpha + 1 < -1 \Leftrightarrow \alpha > 0 \vee \alpha < -2
+\]
+\[
+|\alpha|<1 \leftrightarrow \alpha < 1 \wedge \alpha > -1
+\]
+Nemen we deze samen, dan krijgen we het volgende interval voor $\alpha$.
+\[
+(\alpha > 0 \vee \alpha < -2) \wedge (\alpha < 1 \wedge \alpha > -1) \Leftrightarrow \alpha \in\ ]0,1[\ \cup\ ]-\infty,-2[
+\]
+
+\end{document}
