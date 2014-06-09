@@ -5,7 +5,9 @@ all:
 	make examenvragen
 	make oefenzittingen
 	make tutorials
-	pdfunite samenvatting/samenvatting.pdf examenvragen/examenvragen.pdf tutorials/foutenanalyse.pdf tutorials/conditie_en_stabiliteit.pdf  oefenzittingen/oefenzittingen.pdf extra/extra.pdf all-you-can-carry.pdf
+	make extra
+	make oud
+	pdfunite samenvatting/samenvatting.pdf examenvragen/examenvragen.pdf tutorials/foutenanalyse.pdf tutorials/conditie_en_stabiliteit.pdf  oefenzittingen/oefenzittingen.pdf extra/extra.pdf oud/oud.pdf all-you-can-carry.pdf
 
 samenvatting:
 	$(MAKE) -C samenvatting
@@ -21,3 +23,6 @@ tutorials:
 
 extra:
 	$(MAKE) -C extra
+
+oud:
+	$(MAKE) -C oud

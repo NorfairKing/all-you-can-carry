@@ -1,0 +1,57 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Programma verschil: Verklaar}
+\subsection{Opgave}
+Gegeven volgend programma met de output. Verklaar waarom het verschil plots niet meer gelijk is aan $0$. Waarvoor staat de nieuwe waarde van het verschil?
+\begin{lstlisting}
+som = 0.0
+for i = 0.0:0.1:1.0
+	verschil = i - som
+	print(verschil)
+	som = som + 0.1
+end
+\end{lstlisting}
+\begin{lstlisting}
+verschil = 0
+verschil = 0
+verschil = 0
+verschil = 0
+verschil = 0
+verschil = 0
+verschil = 1.1.. e-16
+verschil = 1.1.. e-16
+verschil = 1.1.. e-16
+verschil = 1.1.. e-16
+verschil = 1.1.. e-16
+\end{lstlisting}
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 22: 5.3 De machinenauwkeurigheid
+\item Oefenzitting 2: Probleem 1 tot 4
+\end{itemize}
+\subsection{Antwoord}
+We werken op de computer met een getallenvoorstelling in basis $b=2$ en een mantisse met een eindig aantal bits.
+Het getal $0.1$ kan dus niet exact worden voorgesteld.
+$0.1$ ziet er binair als volgt uit.
+\begin{verbatim}
+0.000110011001100110011001100110011001100110011001100110...
+\end{verbatim}
+In de machine moet dit getal dus worden afgerond of afgekapt, zodat er een fout gemaakt wordt. Die fout is klein maar bestaande.
+Telkens wanneer er $0.1$ bij `som' wordt opgeteld stapelt diezelfde fout zich op. In iteratie $j$ ziet `som' er wiskundig gezien zo uit. 
+\[
+som = j(0.1)(1+\epsilon) = 0.1j + j\epsilon
+\]
+Hier is bovendien $\epsilon$, in absolute waarde, kleiner dan de machineprecisie $\epsilon_{mach}$. ($\epsilon$ blijkt negatief te zijn.)
+Wanneer de waarde van `verschil' berekend wordt in iteratie $j$, blijven er eigenlijk enkel nog de opgestapelde fouten over.
+\[
+verschil = 0.1j - som = 0.1j - 0.1j -j\epsilon = -j\epsilon
+\]
+Wanneer `verschil' wordt afgedrukt wordt de waarde opnieuw omgezet naar het decimaal talstelsel. Als de opgestapelde fout dan nog kleiner is dan de machineprecisie $\epsilon_{mach}$ zal de uitvoer $0$ geven.
+Vanaf een bepaalde iteratie zal de opgestapelde fout $j\epsilon$ echter groter worden dan de machineprecisie $\epsilon_{mach}$. Bij de omzetting naar het decimaal stelsel zal de uitvoer niet meer $0$ geven, maar het eerstvolgende getal dat voorgesteld kan worden in de machine.
+
+Op het moment dat de opgestapelde fouten te groot worden, dus wanneer de uitvoer $1.1E-16$ geeft, is `som' (ongeveer) gelijk aan $0.5$. De afstand tussen $0.5$ en het volgende voorstelbaar getal in de machine is $eps(0.5) = 1.1E-16$. Dit is precies hetgeen de uitvoer geeft.
+
+
+\end{document}

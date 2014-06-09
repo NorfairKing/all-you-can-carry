@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{report}
+\documentclass[10pt,a4paper]{report}
 \usepackage[latin1]{inputenc}
 \usepackage[dutch]{babel}
 
@@ -15,9 +15,20 @@
 \input{titelblad}
 \pagebreak
 
+\renewcommand\chaptername{Deel}
+\renewcommand\thechapter{\arabic{chapter}}
+\renewcommand\thesection{Vraag \arabic{section}}
+\renewcommand\thesubsection{V \arabic{section}}
+
 \chapter{Directe Methodes}
 \subfile{vraag_verschillende_basis}
+\subfile{vraag_programma_verschil_verklaar}
+\subfile{vraag_functiewaarden_gegeven_bepaal_coefficient_1}
+\subfile{vraag_functiewaarden_gegeven_bepaal_coefficient_2}
+
 
 \chapter{Iteratieve Methodes}
+\subfile{vraag_matrix_met_dominante_eigenwaarde}
+
 
 \end{document}
