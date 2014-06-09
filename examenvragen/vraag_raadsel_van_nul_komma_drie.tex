@@ -1,0 +1,51 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Het raadsel van $0.3$}
+
+\subsection{Opgave}
+Gegeven volgend programma met de output. Leg in detail uit waarom het programma besluit dat $y$ niet gelijk is aan $0.3$.
+\begin{lstlisting}
+x = 0.1
+y = 3 * 0.1
+if y == 0.3
+then print "y is gelijk aan 0.3"
+else print "y is niet gelijk aan 0.3"
+\end{lstlisting}
+\begin{lstlisting}
+x = 1.0000000000E-1
+y = 3.0000000000E-1
+y is niet gelijk aan 0.3
+\end{lstlisting}
+
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 13: Hoofdstuk 2 Foutenanalyse
+\end{itemize}
+
+\subsection{Antwoord}
+Er worden in de eerste drie lijnen al drie fouten gemaakt in de machine.
+In lijn $1$ moet de machine $0.1$ afronden omdat $0.1$ binair niet correct voorgesteld kan worden in eindige precisie.
+\[
+\overline{x} = x(1+\epsilon_1) \text{ met } |\epsilon_{1}| \le \epsilon_{mach}
+\]
+Waneer $x$ wordt afgedrukt wordt $x$ eerst terug omgezet naar het decimaal talstelsel. De fout op $x$ is te klein (kleiner dan de machineprecisie) om een verschil te maken in het decimaal talstelsel in de machine.
+In de tweede lijn worden twee fouten gemaakt. Eerst wordt dezelfde fout gemaakt als in lijn $1$. $0.1$ wordt omgezet naar binair. Vervolgens word $0.1$ met $3$ vermenigvuldigt.
+\[
+\overline{y} = 0.3(1+\epsilon_1)(1+\epsilon_2) \text{ met } |\epsilon_{1}|,|\epsilon_{2}| \le \epsilon_{mach}
+\]
+In de derde lijn wordt $0.3$ omgezet naar binair. Op dit moment wordt er opnieuw een fout gemaakt.
+\[
+\overline{0.3} = 0.3(1+\epsilon_3) \text{ met }|\epsilon_{3}| \le \epsilon_{mach}
+\]
+Tenslotte wordt in de derde lijn $\overline{y}$ met $\overline{0.3}$ vergeleken.
+\[
+0.3(1+\epsilon_1)(1+\epsilon_2) - 0.3(1+\epsilon_3)
+=
+\epsilon_1+\epsilon_2-\epsilon_3 \neq 0
+\]
+Het verschil tussen $\overline{y}$ en $\overline{0.3}$ is groot genoeg om opgemerkt te worden door de machine. De machine beweert daarom dat $y$ niet gelijk is aan $0.3$.
+
+
+\end{document}

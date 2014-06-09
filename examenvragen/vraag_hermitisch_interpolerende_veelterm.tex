@@ -1,0 +1,50 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Verschillende basis}
+\subsection{Opgave}
+Gegeven volgende informatie over een functie $f$. Bepaalde Hermitisch interpolerende veelterm van graad $3$.
+\begin{multicols}{4}
+\begin{itemize}
+\item $f(x_0)$
+\item $f(x_1)$
+\item $f'(x_0)$
+\item $f'(x_1)$
+\end{itemize}
+\end{multicols}
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 122: 11 Hermite interpolatie
+\end{itemize}
+
+\subsection{Antwoord}
+We kunnen dit oplossen met de methode der onbepaalde co\"effici\"enten. We leggen vier interpolatievoorwaarden op voor de interpolerende veelterm van graad $3$.
+\[
+\left\{
+\begin{array}{ccccccccc}
+a_0 &+& a_1x_0 &+& a_2x_0^{2} &+& a_3x_{0}^{3} &=& f(x_0)\\
+a_0 &+& a_1x_1 &+& a_2x_1^{2} &+& a_3x_{1}^{3} &=& f(x_1)\\
+&& a_1 &+& 2a_2x_0 &+& 3a_3x_{0}^{2} &=& f'(x_0)\\
+&& a_1 &+& 2a_2x_1 &+& 3a_3x_{1}^{2} &=& f'(x_1)\\
+\end{array}
+\right.
+\]
+\[
+\begin{pmatrix}
+1 & x_0 & x_0^2 & x_0^3\\
+1 & x_0 & x_0^2 & x_0^3\\
+0 & 1 & 2x_0 & 3x_0^2\\
+0 & 1 & 2x_0 & 3x_0^2\\
+\end{pmatrix}
+\begin{pmatrix}
+a_0\\a_1\\a_2\\a_3
+\end{pmatrix}
+=
+\begin{pmatrix}
+f(x_0)\\f(x_1)\\f'(x_0)\\f'(x_1)
+\end{pmatrix}
+\]
+Dit stelsel kunnen we met de hand uitrekenen.
+
+\end{document}

@@ -1,0 +1,64 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Veeltermen met een zo laag mogelijke graad}
+\subsection{Opgave}
+Gegeven volgende informatie over een veelterm $p$.
+\begin{multicols}{2}
+\begin{itemize}
+\item $p(-1) = p(0) = p(1)$
+\item $p'(0) = 1$
+\end{itemize}
+\end{multicols}
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 122: 11.1 De methode der onbepaalde co\"effici\"enten.
+\end{itemize}
+\subsection{Antwoord}
+We zoeken een veeltem van zo laag mogelijke graad. Voor elke graad komt er in de methode der onbepaalde co\"efficienten \'e\'en interpolatievoorwaarde bij. We hebben vier interpolatievoorwaarden gegeven. Dit is misschien niet meteen duidelijk omdat we maar drie gelijkheden gegeven hebben, maar het zijn wel degelijk vier voorwaarden: ($c$ is een onbekende constante.)
+\[
+\left\{
+\begin{array}{c}
+p(-1) = c\\
+p(0) = c\\
+p(1) = c\\
+p'(c) = 1
+\end{array}
+\right.
+\]
+We zoeken dus een veelterm van graad $3$.
+\[
+p(x) = a_0 + a_1x + a_2x^2 + a_3x^3
+\]
+We kunnen nu een stelsel opstellen dat overeenkomt met de interpolatievoorwaarden.
+\[
+\begin{pmatrix}
+1 & -1 & 1 & -1\\
+1&0&0&0\\
+1 & 1 & 1 & -1\\
+0&1&0&0\\
+\end{pmatrix}
+\begin{pmatrix}
+a_0\\a_1\\a_2\\a_3
+\end{pmatrix}
+=
+\begin{pmatrix}
+c\\c\\c\\1
+\end{pmatrix}
+\]
+De oplossing van dit stelsel rekenen we met de hand uit.
+\[
+\begin{pmatrix}
+a_0\\a_1\\a_2\\a_3
+\end{pmatrix}
+=
+\begin{pmatrix}
+c \\1\\ 0\\ -1
+\end{pmatrix}
+\]
+Alle mogelijke veeltermen van de laagst mogelijke graad die aan de gegeven voorwaarden voldoen zijn de volgenden.
+\[
+\{ -x^3 + x + c \ |\ c \in \mathbb{R}\}
+\]
+\end{document}

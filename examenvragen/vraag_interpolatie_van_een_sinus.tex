@@ -1,0 +1,28 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Interpolatie van een sinus}
+\subsection{Opgave}
+De sinusfunctie op het interval $]-\pi,\pi$ wordt ge\"interpoleerd door een veelterm $p$ van graad $n$ in $n+1$ interpolatiepunten.
+Geef een bovengrens voro de interpolatie-fout
+
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 94: 6 De interpolatiefout
+\end{itemize}
+
+\subsection{Antwoord}
+De interpolatiefout wordt gegeven door volgende formule.
+\[
+E_{n}(x) = \frac{f^{n-1}(\xi)}{(n+1)!}\prod_{i=0}^{n}(x-x_i)
+\]
+Een bovengrens $|E_{max}|$ voor de interpolatiefout ziet er dan als volgt uit.
+\[
+|E_{max}| = \underset{x\in]-\pi,\pi[}{max}\frac{\left|\prod_{i=0}^{n}(x-x_i)\right|}{(n+1)!}\underset{x\in]-\pi,\pi[}{max}|f^{(n+1)}(x)|
+\]
+De tweede factor is maximaal $1$ omdat een afgeleide van de sinus steeds een sinus of een cosinus is.
+De eerste factor kunnen we niet meer vereenvoudigen zonder extra aannames.
+
+
+\end{document}
