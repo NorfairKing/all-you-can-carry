@@ -1,28 +1,22 @@
 \documentclass[12pt,a4paper]{report}
 \usepackage[latin1]{inputenc}
 \usepackage[dutch]{babel}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
-\let\stdsection\section
-\renewcommand\section{\newpage\stdsection}
-
-
+\newcommand{\sectionbreak}{\clearpage}
 
 \author{Tom Sydney Kerckhove}
 \title{Examenvragen Numerieke Wiskunde}
 
+\input{packages}
+
 \begin{document}
 
-\maketitle
+
+\input{titelblad}
 \pagebreak
 
 \chapter{Directe Methodes}
-\input{vraag_verschillende_basis}
+\subfile{vraag_verschillende_basis}
 
 \chapter{Iteratieve Methodes}
 
