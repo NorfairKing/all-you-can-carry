@@ -21,6 +21,7 @@ Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
     Je zal LaTeX, subfiles en latexmk nodig hebben om dit uit te voeren.
     - Samenvatting
     - Oplossingen Oefenzittingen
+    - Examenvragen
     - Tutorials
       - Foutenanalyse
       - Conditie en Stabiliteit
@@ -29,6 +30,8 @@ Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
       - Afgeleiden en integralen
       - Goniometrische cirkel en formules
     _Neem zeker ook de cursus mee!_
-** Andere bronnen:
-   - Oplossingen examenvragen 2012
-     https://github.com/JDevlieghere/NumeriekeWiskunde
+** Examenvragen
+   De examenvragen en oplossingen zijn overgenomen en vrij aangepast van volgende uitgave.
+   Alle credit voor de originele vragen en antwoorden gaat naar hen.
+   https://github.com/JDevlieghere/NumeriekeWiskunde
+   Deze uitgave is gelicenseerd met het apache license.
