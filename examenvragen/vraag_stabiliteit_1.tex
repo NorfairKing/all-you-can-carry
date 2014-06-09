@@ -1,0 +1,123 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Stabiliteit van een eenvoudig algoritme}
+\subsection{Opgave}
+Gegeven volgende functie $f$ en volgend algoritme $a$ om $f$ te evalueren in $x$.
+\[
+f(x) = e^{x^{2}}-1-x^{2}
+\]
+\begin{lstlisting}
+a = x^{2}
+b = e^a
+f = b-1-a
+\end{lstlisting}
+Is dit algoritme numeriek stabiel? Hoe zit het met de conditie van dit probleem?
+
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 33: 7.3 Numerieke stabiliteit van een methode
+\item Oefenzitting 2, 3 en 4 : Bewegende kommavoorstelling en foutenanalyse
+\item Tutorial: Foutenanalyse
+\end{itemize}
+
+\subsection{Oplossing}
+\[
+f'(x) = 2xe^{x^{2}}-2x
+\]
+\subsubsection{Conditie}
+\[
+\Delta_cy = f'(x)\Delta x = 2x\Delta x\left(e^{x^{2}}-1\right)
+\]
+Dit probleem is duideiljk slecht geconditioneerd voor grote waarden van $x$.
+
+\subsubsection{Stabiliteit}
+\begin{enumerate}
+\item
+\[
+\overline{y} =  fl\left(fl\left(fl\left(e^{fl\left(x^{2}\right)}\right)-1\right)-x^{2}\right)
+\]
+\[
+\overline{y} =  \left(\left(\left(e^{\left(x^{2}\right)(1+\epsilon_4)}\right)(1+\epsilon_3)-1\right)(1+\epsilon_2)-x^{2}\right)(1+\epsilon_1)
+\]
+
+\begin{itemize}
+\item 
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_1}(\epsilon_1,0,0,0) = e^{x^{2}}-1-x^{2}
+\]
+\item 
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_2}(0,\epsilon_2,0,0) = e^{x^{2}}-1
+\]
+\item 
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_3}(0,0,\epsilon_3,0) = e^{x^{2}}
+\]
+\item 
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_4}(0,0,0,\epsilon_4) = x^{2}e^{x^{2}(1+\epsilon_4)}
+\]
+\[
+\frac{\delta\overline{y}}{\delta\epsilon_4}(0,0,0,0) = x^{2}e^{x^{2}}
+\]
+\end{itemize}
+\item
+\[
+\overline{y} \approx y
++ \left(e^{x^{2}}-1-x^{2}\right)\epsilon_1
++ \left(e^{x^{2}}-1\right)\epsilon_2
++ \left(e^{x^{2}}\right)\epsilon_3
++ \left(x^{2}e^{x^{2}}\right)\epsilon_4
+\]
+\[
+\overline{y} \approx y
++ y\epsilon_1
++ \left(e^{x^{2}}-1\right)\epsilon_2
++ \left(e^{x^{2}}\right)\epsilon_3
++ \left(x^{2}e^{x^{2}}\right)\epsilon_4
+\]
+\item
+De absolute fout:
+\[
+\overline{y} - y \approx
+  \left(e^{x^{2}}-1-x^{2}\right)\epsilon_1
++ \left(e^{x^{2}}-1\right)\epsilon_2
++ \left(e^{x^{2}}\right)\epsilon_3
++ \left(x^{2}e^{x^{2}}\right)\epsilon_4
+\]
+De relatieve fout:
+\[
+\frac{\overline{y}-y}{y} \approx 
+ \epsilon_1
++ \frac{e^{x^{2}}-1}{e^{x^{2}}-1-x^{2}}\epsilon_2
++ \frac{e^{x^{2}}}{e^{x^{2}}-1-x^{2}}\epsilon_3
++ \frac{x^{2}e^{x^{2}}}{e^{x^{2}}-1-x^{2}}\epsilon_4
+\]
+\item
+\[
+\delta_sy=
+\frac{\overline{y}-y}{y} \le
+ \epsilon_{mach}
+ \left(
+ 1
+ + \frac{e^{x^{2}}-1}{e^{x^{2}}-1-x^{2}}
+ + \frac{e^{x^{2}}}{e^{x^{2}}-1-x^{2}}
+ +\frac{x^{2}e^{x^{2}}}{e^{x^{2}}-1-x^{2}}
+ \right)
+\]
+\[
+\delta_sy=
+\frac{\overline{y}-y}{y} \le
+ \left(
+ 1
+ + \frac{(x^2+2)e^{x^{2}}-1}{e^{x^{2}}-1-x^{2}}
+ \right)
+  \epsilon_{mach}
+\]
+Dit algoritme is dus onstabiel voor grote $x$ en wanneer $e^{x^{2}}\approx x^2+1$ geldt.
+\end{enumerate}
+Omdat $\Delta_sy$ niet klein is en $\Delta_cy$ en $\Delta_sy$ van dezelfde grootteorde zijn, besluiten we dat het algoritme zwak stabiel is.
+
+\end{document}
