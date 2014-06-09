@@ -3,5 +3,114 @@
 \begin{document}
 
 \section{Functiewaarden gegeven, bepaal coe\"efficient.}
+\subsection{Opgave}
+Gegeven de volgende informatie over een functie $f$.
+\begin{multicols}{4}
+\begin{itemize}
+\item $x_0 = 0$
+\item $x_1 = 1$
+\item $f(x_0) = 2$
+\item $f'(x_0) = 0$
+\item $f'(x_1) = 0$
+\item $f''(x_0) = 0$
+\item $f''(x_1) = 0$
+\item $f[x_0,x_0,x_1,x_1] = 1$
+\end{itemize}
+\end{multicols}
+Bereken de waarde van $f(x_1)$.
+
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 102: 9 Interpolatie volgens Newton
+\end{itemize}
+
+\subsection{Antwoord}
+Let op: We weten niet of de functie $f(x)$ een veeltermfunctie is of niet!
+De gedeelde differentie heeft natuurlijk iets te maken met een afgeleide.
+\[
+\lim_{x\rightarrow y}f[x,y] = \lim_{x\rightarrow y}\frac{f(y)-f(x)}{y-x} = f'(y)
+\]
+Op deze manier zullen we de gegeven waarden voor de afgeleiden kunnen gebruiken.
+We zullen de gegeven derdegraads gedeelde differentie schrijven als een limiet, om bovenstaande formule te kunnen gebruiken.
+\[
+f[x_0,x_0,x_1,x_1] = \lim_{x_2\rightarrow x_0, x_3 \rightarrow x_1}[x_2,x_0,x_1,x_3]
+\]
+We zullen nu de gegeven gedeelde differentie van graad $3$ uitwerken volgens de definitie, om een vergelijking te bekomen met $f(x_1)$ als onbekende.
+\[
+\lim_{x_2\rightarrow x_0, x_3 \rightarrow x_1}
+f[x_2,x_0,x_1,x_3]
+=
+\lim_{x_2\rightarrow x_0, x_3 \rightarrow x_1}
+\frac
+{f[x_2,x_0,x_1]-f[x_0,x_1,x_3]}
+{x_0-x_1}
+\]
+\[
+=
+\frac
+{\lim_{x_2\rightarrow x_0}f[x_2,x_0,x_1]-\lim_{x_3 \rightarrow x_1}f[x_0,x_1,x_3]}
+{x_0-x_1}
+=
+\frac
+{
+\lim_{x_2\rightarrow x_0}
+\frac{f[x_2,x_0]-f[x_0,x_1]}{x_2-x_1}
+-
+\lim_{x_3 \rightarrow x_1}\frac{f[x_0,x_1]-f[x_1,x_3]}{x_0-x_3}
+}
+{x_0-x_1}
+\]
+\[
+=
+\frac
+{
+\frac{\lim_{x_2\rightarrow x_0}f[x_2,x_0]-f[x_0,x_1]}{x_0-x_1}
+-
+\frac{f[x_0,x_1]-\lim_{x_3 \rightarrow x_1}f[x_1,x_3]}{x_0-x_1}
+}
+{x_0-x_1}
+\]
+\[
+=
+\frac
+{
+\frac{f'(x_0)-\frac{f(x_0)-f(x_1)}{x_0-x_1}}{x_0-x_1}
+-
+\frac{\frac{f(x_0)-f(x_1)}{x_0-x_1}-f'(x_1)}{x_0-x_1}
+}
+{x_0-x_1}
+\]
+Van deze uitdrukking weten we dat ze gelijk is aan $1$. (gegeven)
+Vul nu in wat verder nog gegeven is en werk uit om $f(x_1)$ te bekomen.
+\[
+1
+=
+\frac
+{
+\frac{f'(x_0)-\frac{f(x_0)-f(x_1)}{x_0-x_1}}{x_0-x_1}
+-
+\frac{\frac{f(x_0)-f(x_1)}{x_0-x_1}-f'(x_1)}{x_0-x_1}
+}
+{x_0-x_1}
+=
+\frac
+{
+\frac{0-\frac{2-f(x_1)}{-1}}{-1}
+-
+\frac{\frac{2-f(x_1)}{-1}-0}{-1}
+}
+{-1}
+\]
+\[
+1
+=
+2-f(x_1)+
+2-f(x_1)
+= 4-2f(x_1)
+\]
+\[
+f(x_1) = \frac{3}{2}
+\]
+
 
 \end{document}
