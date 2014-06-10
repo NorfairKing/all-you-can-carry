@@ -1,0 +1,59 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Voortplantende fout in veelterm interpolatie}
+\subsection{Opgave}
+Gegeven een tabel $\{x_i,f(x_i)\}$ van waarden $x_i$ en hun afbeelding $f(x_i)$ door een functie $f$. Er zit een fout in de tabel, op de afbeelding van de $k$-de waarde. Wanneer je de tabel van (voorwaartse) gedeelde differenties opstelt kan je zien hoe de fout zich propageert. Welk patroon herken je? Je mag ervan uitgaan dat de differenties met een hogere graad naar nul gaan. Hoe kan je vinden op welk punt de fout zat en hoe groot die is?
+
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 103: 9.3 Gedeelde differenties
+\end{itemize}
+
+\subsection{Antwoord}
+Noem de fout op $f(x_k)$ $\epsilon$. We kunnen nu de tabel der gedeelde differenties opstellen.
+\[
+\begin{array}{cccccccccc}
+x_0 & f(0) \\
+x_1 & f(1) \\
+\vdots\\
+x_{k-2} & f(k-2) \\
+&& f[x_{k-2},x_{k-1}]\\
+x_{k-1} & f(k-1) && f[x_{k-2},x_{k-1},x_{k}] + \frac{\epsilon}{(x_{k}-x_{k-1}(x_{k}-x_{k-2})}\\
+&& f[x_{k-1},x_{k}] + \frac{\epsilon}{x_k-x_{k-1}}\\
+x_{k} & f(k) +\epsilon && f[x_{k-1},x_{k},x_{k+1}] -\frac{\frac{\epsilon}{x_k-x_{k-1}}+\frac{\epsilon}{x_{k+1}-x_{k}}}{x_{k+1}-x_{k-1}}\\
+&& f[x_{k},x_{k+1}] - \frac{\epsilon}{x_{k+1}-x_{k}}\\
+x_{k+1} & f(k+1) && f[x_{k},x_{k+1},x_{k+2}] + \frac{\epsilon}{(x_{k+1}-x_{k})(x_{k+2}-x_{k})}\\\\
+&& f[x_{k+1},x_{k+2}]\\
+x_{k+2} & f(k+2) \\
+\vdots\\
+x_{n-1} & f(n-1) \\
+x_n & f(n) \\
+\end{array}
+\]
+Wanneer we nu deze tabel vereenvoudigen (en veronderstellen dat de punten equidistant zijn met breedte $h$) zodat we enkel nog de fout in de tabel zetten, dan wordt het veel makkelijker om een patroon op te merken.
+\[
+\begin{array}{cccccccccc}
+\vdots\\
+x_{k-3} & 0 \\
+&& 0 \\
+x_{k-2} & 0 && 0\\
+&& 0 && \frac{\epsilon}{h^3}\\
+x_{k-1} & 0 && \frac{\epsilon}{h^2}\\
+&& \frac{\epsilon}{h} && -\frac{3\epsilon}{h^3}\\
+x_{k} & \epsilon && -\frac{2\epsilon}{h^2}\\
+&& - \frac{\epsilon}{h}&& \frac{3\epsilon}{h^3}\\
+x_{k+1} & 0 && \frac{\epsilon}{h^2}\\\\
+&& 0 && -\frac{e}{h^3}\\
+x_{k+2} & 0 && 0\\
+&& 0\\
+x_{k+3} & 0 \\
+\vdots\\
+\end{array}
+\]
+Nu kunnen we wel degelijk een patroon zien. In een gedeelde differentie van de $i$-de graad zien we een fout van grootteorde $O(\frac{1}{h^{i}})$. Het teken alterneert op de diagonalen in de tabel. De fout wordt bovendien vermenigvuldigd met een factor die overeen komt met een waarde uit de tabel van het binomium van Newton en de driehoek van Pascal.
+
+Om te zien waar de fout gemaakt is in de tabel moeten we inderdaad veronderstellen dat gedeelde differenties van een hogere graad naar nul gaan. In absolute waarde zien we dat de gedeelde differenties symmetrisch zijn rond een bepaalde waarde $x_j$. De fout zit dan op de functiewaarde $f(x_{j})$ van $x_j$. 
+
+\end{document}
