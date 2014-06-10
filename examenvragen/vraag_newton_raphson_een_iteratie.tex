@@ -1,0 +1,43 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Newton Raphson: Exacte waarde na \'e\'en iteratie}
+\subsection{Opgave}
+Gegeven een Maple worksheet (die niet bijgevoegd zijn). De worksheet toont een uitvoering van de methode van Newton-Raphson. De methode vindt de exacte oplossing (een nulpunt) in dit geval na slechts \'e\'en iteratiestap. 
+\begin{itemize}
+\item Verklaar waarom de methode in dit geval de exacte oplossing vindt na \'e\'en iteratiestap.
+\item Wat is de orde van convergentie en de convergentiefactor? 
+\item Verklaar in detail waarom de totale stap vereenvoudigde Newton-Raphson zo traag convergeert.
+\end{itemize}
+
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 209: 6 De methode van Newton-Raphson
+\item Boek pagina 233: Tabel 2.9 Convergentiesnelheden
+\item Boek pagina 261: 3 De Newton-Raphson methode
+\item Boek pagina 263: 4 Vereenvoudigde Newton-Raphson methodes
+\end{itemize}
+
+\subsection{Antwoord}
+\begin{itemize}
+\item
+Newton-Raphson vindt de exacte oplossing in \'e\'en iteratiestap, ofwel toevallig (als de startwaarde zo gekozen is en de functie het toelaat), ofwel, en dit is hier het geval, is de functie een eerstegraads veelterm.
+Zij $p(x)$ een eerstegraads veelterm met $x^{*}$ als nulpunt en $x_0 = c$ de startwaarde voor Newton-Raphson.
+\[
+p(x) = ax+b \text{ dus } x^{*} = -\frac{b}{a}
+\]
+De waarde die Newton-Raphson vindt na \'e\'en iteratiestap $x_1$ is precies $x^*$.
+\[
+x_1 = F(x_0) = x_c = c - \frac{ac + b}{a} = -\frac{b}{a} = x^{*}
+\]
+
+\item De convergentiefactor voor Newton-Raphson is $0$ met orde $2$ als $x^{*}$ enkelvoudig is en $1-\frac{1}{m}$ met orde $1$ als $x^{*}$ $m$-voudig is.
+
+\item De vereenvoudigde methodes van Newton-Raphson ruilen rekentijd in voor convergentiesnelheid. De vereenvoudigde methodes convergeren veel trager (in het aantal stappen dat ze nodig hebben), maar de stappen kunnen veel sneller uitgerekend worden.
+
+
+\end{itemize}
+
+
+\end{document}
