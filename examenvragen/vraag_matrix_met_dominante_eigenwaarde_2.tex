@@ -1,0 +1,63 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Matrix met dominante eigenwaarde}
+\subsection{Opgave}
+Gegeven volgende matrix $A$ en startvector $x_0$.
+\[
+A =
+\begin{pmatrix}
+2 & 1 & -1\\
+0 & 3 & -5\\
+0 & 0 & -2
+\end{pmatrix}
+\text{ en }
+x_0 = 
+\begin{pmatrix}
+-1\\1\\1
+\end{pmatrix}
+\]
+Wat gebeurt als we de methode van `Von Mises' uitvoeren op de matrix $A$ met startvector $x_0$.
+
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 287: Hoofdstuk 6 Het berekenen van eigenwaarden.
+\item Boek pagina 290: Opmerking 5 (normalisatie)
+\item Boek pagina 292: 6 Slotbemerkingen en samenvatting puntje 5 (convergentie- orde en factor)
+\end{itemize}
+
+\subsection{Antwoord}
+De methode van `Von Mises' vermenigvuldigt de vector $x_0$ herhaalderlijk met $A$ tot er een dominante eigenvector overblijft.
+De eigenwaarden van $A$ zijn af te lezen op de hoofddiagonaal: $3$, $2$ en $-2$. De methode zal convergeren naar de eigenvector die bij $3$ hoort.
+\[
+\left(
+\begin{array}{ccc|c}
+-1 & 1 & -1 & 0\\
+0 & 0 & -5 & 0\\
+0 & 0 & -5 & 0\\
+\end{array}
+\right)
+\longrightarrow
+\left(
+\begin{array}{ccc|c}
+-1 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0\\
+\end{array}
+\right)
+\longrightarrow
+E = 
+t
+\begin{pmatrix}
+1\\1\\0
+\end{pmatrix}
+\]
+\subsubsection{Converentie snelheid}
+De convergentiefactor ziet er als volgt uit.
+\[
+\frac{\lambda_2}{\lambda_1} = \pm \frac{2}{3}
+\]
+Omdat de convergentiefactor niet nul is, is de convergentie hoogstens lineair.
+Er kan nog normalisatie gebruikt worden om overloop te voorkomen.
+\end{document}
