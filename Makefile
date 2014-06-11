@@ -7,7 +7,7 @@ all:
 	make tutorials
 	make extra
 	make oud
-	pdfunite samenvatting/samenvatting.pdf examenvragen/examenvragen.pdf tutorials/foutenanalyse.pdf tutorials/conditie_en_stabiliteit.pdf  oefenzittingen/oefenzittingen.pdf extra/extra.pdf oud/oud.pdf all-you-can-carry.pdf
+	pdfunite examenvragen/examenvragen.pdf samenvatting/samenvatting.pdf tutorials/foutenanalyse.pdf tutorials/conditie_en_stabiliteit.pdf  oefenzittingen/oefenzittingen.pdf extra/extra.pdf oud/oud.pdf all-you-can-carry.pdf
 
 samenvatting:
 	$(MAKE) -C samenvatting
