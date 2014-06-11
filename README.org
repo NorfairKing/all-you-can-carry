@@ -1,9 +1,17 @@
 * All You Can Carry
 Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
 
-** WAARSCHUWING
-   - De inhoud van deze repository is nog niet geschikt voor gebruik.
-     De repository is publiek zodat er aan meegewerkt kan worden.
+** Compileren
+    Aan dit project kon helaas geen InTeXration toegevoegd worden, daar het met een makefile werkt.
+    Om heel de bundel samen te stellen voer je de volgende procedure uit in je terminal.
+    #+BEGIN_EXAMPLE
+    git clone https://github.com/NorfairKing/all-you-can-carry.git
+    make
+    #+END_EXAMPLE
+    Na het invoeren van het make commando zie je een gigantische hoeveelheid tekst over je scherm vliegen.
+    Vereisten:
+      - Latexmk: http://users.phys.psu.edu/~collins/software/latexmk-jcc/
+      - pdfunite: Normaal standaard op linux
 
 ** OPROEP
    Deze repository is _open_. *iedereen* kan iets toevoegen of verbeteren. Dit is dan ook de bedoeling.
@@ -21,7 +29,7 @@ Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
     Je zal LaTeX, subfiles en latexmk nodig hebben om dit uit te voeren.
     - Samenvatting
     - Oplossingen Oefenzittingen
-    - Examenvragen
+    - Examen- vragen en antwoorden
     - Tutorials
       - Foutenanalyse
       - Conditie en Stabiliteit
@@ -29,6 +37,12 @@ Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
     - Extraatjes
       - Afgeleiden en integralen
       - Goniometrische cirkel en formules
+      - Meer over foutenanalyse
+      - QR-factorisatie
+      - Splines
+    - Oud
+      - De originele opgeloste examenvragen van Jonas Devlieghere
+      - Een voorbeeldexamen, opgelost door de prof.
     _Neem zeker ook de cursus mee!_
 ** Examenvragen
    De examenvragen en oplossingen zijn overgenomen en vrij aangepast van volgende uitgave.

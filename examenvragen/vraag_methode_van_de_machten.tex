@@ -1,0 +1,96 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Methode van de machten}
+
+\subsection{Opgave}
+Gegeven volgende matrix $A$.
+\[
+\begin{pmatrix}
+a & b\\
+c & d
+\end{pmatrix}
+\]
+\begin{multicols}{4}
+\begin{itemize}
+\item $a=10^{-5}$
+\item $b = 10^{-5}$
+\item $c = 3-a$
+\item $d = ab-\frac{2}{b}$
+\end{itemize}
+\end{multicols}
+Wat is het condititiegetal van deze matrix? Als we de methode van de machten gebruiken, wat is dan de orde van convergentie, en de convergentiefactor? 
+
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 67: 9.3 Het condititiegetal $\kappa(A)$
+\item Boek pagina 292: 6 Slotbemerkingen en samenvatting puntje 5
+\end{itemize}
+
+\subsection{Antwoord}
+\subsubsection{Condititegetal}
+Het conditiegetal van een matrix $A$ ziet er als volgt uit.
+\[
+\kappa(A) = \Vert A\Vert\Vert A^{-1}\Vert
+\]
+Lees $\Vert A\Vert$ als `de norm van $A$'. We kiezen hiervoor de \'e\'ennorm. De \'e\'ennorm het maximum van de somaties van de absolute waarden van de elementen per kolom.
+\[
+\Vert A\Vert_{1} = \max_{1\le i\le n}\sum_{j=1}^{n}|a_{ij}|
+\]
+In dit geval ziet dat er als volgt uit.
+\[
+\Vert A\Vert_{1} = \max \{|a|+|c|, |b|+|d|\} = |b|+|d| = b-ab+\frac{2}{b} \approx 2\cdot 10^{5}
+\]
+Om de norm van de inverse matrix $\Vert A^{-1} \Vert$ van $A$ te berekenen moeten we natuurlijk eerst de inverse matrix $A^{-1}$ van $A$ berekenen.
+\[
+A^{-1} = 
+\frac{1}{ad-bc}
+\begin{pmatrix}
+d & -b\\
+-c &a
+\end{pmatrix}
+\]
+\[
+\Vert A^{-1}\Vert_{1} = \max \left\{\frac{|d|+|c|}{|ad-bc|},\frac{|b|+|a|}{|ad-bc|}\right\}
+\]
+\[
+|ad-bc| = |10^{-15}-2- 3\cdot 10^{-5} + 10^{-10}| \approx 2
+\]
+\[
+\Vert A^{-1}\Vert_{1} \approx 10^{5}
+\]
+Het conditiegetal van $A$ is van grootteorde $10^{10}$. Deze matrix $A$ is dus verschrikkelijk geconditioneerd. Hier valt niets aan te doe.
+\subsubsection{Eigenwaarden}
+We zetten $A$ in echelonvorm om de eigenwaarden af te lezen op de hoofddiagonaal.
+\[
+\begin{pmatrix}
+a & b\\
+c & d\\
+\end{pmatrix}
+\longrightarrow
+\begin{pmatrix}
+a & b\\
+0 & \frac{da}{c}-b
+\end{pmatrix}
+\]
+De eigenwaarden van $A$ zijn dus de volgende $\lambda_i$.
+\[
+\lambda_1 = a = 10^{-5}
+\]
+\[
+\lambda_2 = \frac{da}{c}-b
+= \frac{(10^{-5}10^{-5}-\frac{2}{10^{-5}})10^{-5}}{3-10^{-5}}-10^{-5}
+= \frac{10^{-15}-2-3\cdot10^{-5}+10^{-10}}{3-10^{-5}} \approx -\frac{2}{3}
+\]
+De tweede eigenwaarde $\lambda_2$ is hier dominant. 
+\subsubsection{Convergentie}
+De methode van de machten zal convergeren naar de eigenvector $E_2$ die bij $\lambda_2$ hoort. De convergentiefactor $\rho$ ziet er dan als volgt uit.
+\[
+\frac{\lambda_1}{\lambda_2} \approx \frac{-3\cdot 10^{-5}}{2}
+\]
+De convergentieorde is \'e\'en.
+
+
+
+\end{document}

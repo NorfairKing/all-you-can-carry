@@ -1,0 +1,37 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Verschillende basis}
+
+\subsection{Opgave}
+Gegeven de volgende tweedegraads functie $f(x)$.
+\[
+f(x) = x^{2} + 2x + c \text{ met } c < 1
+\]
+Bespreek de conditie van de nulpunten van deze functie $f(x)$.
+
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 238: 18 De conditite van een wortel
+\item Boek pagina 239: Figuur 2.11 Conditie van het snijpunt $x^{*}$
+\end{itemize}
+
+\subsection{Antwoord}
+Hoe dichter de afgeleide van de functie $f'(x)$ bij nul komt rond $x^{*}$, hoe slechter het nulpunt geconditioneerd is. Met andere woorden, hoe vlakker de functie bij het nulpunt, hoe slechter de conditie.
+We onderzoeken hoe de afgeleide van de functie zich gedraagt bij de nulpunten.
+Eerst berekenen we de nulpunten.
+\[
+x = \frac{-2 \pm \sqrt{4-4c}}{2}
+\]
+Vervolgens berekenen we de afgeleide van $f(x)$.
+\[
+f'(x) = 2x+2
+\]
+Tenslotte vullen we het nulpunt in in de afgeleide om te zien hoe die zich er gedraagt.
+\[
+f'(x^*) = 2 \frac{-2 \pm \sqrt{4-4c}}{2} + 2 = -2 \pm \sqrt{4-4c} + 2 = \pm 2\sqrt{1+c}
+\]
+Hier zien we dat de nulpunten slecht geconditioneerd is wanneer $c$ dicht bij $1$ ligt. Dit is natuurlijk precies wanneer het nulpunt tweevoudig is.
+
+\end{document}

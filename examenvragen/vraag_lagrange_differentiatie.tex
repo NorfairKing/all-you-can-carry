@@ -1,0 +1,35 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Numerieke differentiatie volgens Lagrange}
+
+\subsection{Opgave} 
+Zij $f$ een functie die we interpoleren op het interval $]-h,h[$ met de volgende formule.
+\[
+f'(x) = \frac{1}{h^2}\left( \frac{2x-h}{2}f(-h) - 2xf(0) + \frac{2x+h}{2}f(h) \right) + D(x)
+\]
+Geef een uitdrukking voor $D(x)$ en een bovengrens. Waar is de differentiatiefout het grootst?
+
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 131: Hoofdstuk 5 Numerieke differentiatie
+\end{itemize}
+
+\subsection{Antwoord}
+Dit valt allemaal letterlijk in de cursus op te zoeken.
+De differentiatiefout wordt gegeven door volgende formule.
+\[
+D_{n}(x_{i}) = \frac{\pi'(x_{i})}{(n+1)!}f^{(n+1)}(\xi(x_{i})) 
+\]
+We hebben echter te maken met equidistante interpolatiepunten.
+\[
+D_{n}(x_i) = (-1)^{n-i}\frac{i!(n-i)!}{(n+1)!}h^{n}f^{(n+1)}(\xi(x_i))
+\]
+Een bovengrens voor de interpolatiefout is dan de volgende.
+\[
+|D_{n}(x_i)| \le \frac{|\pi'(x_i)|}{(n+1)!}\max_{x\in]-h,h[}|f^{(n+1)}(x)
+\]
+De differentiatiefout is het grootst in de buurt van de interpolatiepunten.
+
+\end{document}
