@@ -1,0 +1,92 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Convergentie van een substitutiemethode}
+
+\subsection{Opgave}
+Gegeven volgende substutiemethode.
+\[
+x_{k+1} = F(x_{k}) = (x_{k}-a)^2-1 \text{ met } a>0
+\]
+Voor welke re\"ele waarden van $x_0$ en $a$ treedt er convergentie op? Naar welke waarde voor $x$ convergeert de methode dan?
+In welke gevallen gebeurt de convergentie quadratisch?
+
+\subsection{Informatie}
+\begin{itemize}
+\item Boek pagina 221: 12.1 Meetkundige interpretatie van substitutiemethodes
+\item Boek pagina 229: De convergentiefactor voor een substitutiemethode
+\item Boek pagina 231: 15.2 Orde van convergentie
+\end{itemize}
+\subsection{Antwoord}
+Allereerst berekenen we het vast punt van de iteratiefunctie.
+\[
+x = F(x) \Leftrightarrow x = (x-a)^2-1
+\]
+\[
+\Leftrightarrow 0 = x^2-(1+2a)x+a^2-1
+\]
+\[
+D = (1+2a)^2 - 4\cdot1\cdot(a^2-1) = 1+4a+4a^2-4a^2+4 = 4a+5
+\]
+Als de discriminant $D$ kleiner dan nul is, dit is wanneer $a < - \frac{5}{4}$ geldt, is er geen vast punt. Als de discriminant nul is, wanneer $a=-\frac{5}{4}$ geldt, is er precies \'e\'en vast punt. 
+\[
+x^{*} = \frac{1+2a}{2}
+\]
+Anders zijn er twee vaste punten $x^{*}_{1}$ en $x^{*}_{2}$.
+\[
+x^{*}_1 = \frac{2a+1 +\sqrt{4a+5}}{2} \text{ en } x^{*}_{2}= \frac{2a+1 -\sqrt{4a+5}}{2}
+\]
+In wat voglt gaan we er dus van uit dat $a$ groter of gelijk is aaan $-\frac{5}{4}$.
+Om nu de convergentie te berekenen, hebben we de afgeleide van de iteratiefunctie nodig.
+\[
+F'(x) = 2x-2a
+\]
+Wanneer deze afgeleide in het vast punt, in absolute waarde, groter is dan \'e\'en is er divergentie. Wanneer ze negatief is is er spiraalconvergentie terwijl een positieve waarde voor de afgeleide in het vast punt op monotone convergentie duidt
+\[
+F'(x^{*}_1) = 1 +  \sqrt{4a+5} \text{ en } F'(x^{*}_2) = 1-\sqrt{4a+5}
+\]
+\begin{itemize}
+\item $x_{1}^{*}$
+\[
+|1 + \sqrt{4a+5}| > 1 \Leftrightarrow 1 + \sqrt{4a+5} > 1 \vee  1 + \sqrt{4a+5} < -1
+\]
+\[
+True \vee False \Leftrightarrow True
+\]
+De substitutiemethode convergeert dus niet voor het eerste vaste punt $x_1^{*}$.
+\item $x_{2}^{*}$
+\[
+|1-\sqrt{4a+5}| > 1 \Leftrightarrow  1-\sqrt{4a+5} > 1 \vee 1-\sqrt{4a+5} <-1
+\]
+\[
+False \vee a > -\frac{1}{4} \Leftrightarrow a > -\frac{1}{4}
+\]
+De substitutiemethode divergeert dus ook voor het tweede vaste punt, maar enkel als $a$ groter is dan $-\frac{1}{4}$.
+Wanneer $a$ kleiner is dan $-\frac{1}{4}$ maken we nog een onderscheid tussen spiraalconvergentie en monotone convergentie.
+\[
+1-\sqrt{4a+5} < 0 \wedge a < -\frac{1}{4} \Leftrightarrow a\ \in\  ]-1,-\frac{1}{4}[
+\]
+Voor $a\ \in\  ]-1,-\frac{1}{4}[$ is er dus spiraalconvergentie.
+\[
+1-\sqrt{4a+5} > 0 \wedge a < -\frac{1}{4} \Leftrightarrow a\ \in\ ]-\frac{5}{4},-1[
+\]
+\end{itemize}
+De waarde van de afgeleide in het vast punt $F'(x^*)$ is bovendien gelijk aan de convergentiefactor. Wanneer die waarde nul is convergeert de methode kwadratisch ($a = -1$), anders convergeert ze lineair.
+\subsubsection{Samenvatting}
+\begin{itemize}
+\item $a < -\frac{5}{4}$: Geen vaste punten.
+\item $a = -\frac{5}{4}$: \'e\'en vast punt $\frac{1+2a}{2}$
+\item $a < -\frac{5}{4}$: Twee vaste punten.
+\[
+x^{*}_1 = \frac{2a+1 +\sqrt{4a+5}}{2} \text{ en } x^{*}_{2}= \frac{2a+1 -\sqrt{4a+5}}{2}
+\]
+Er is steeds divergentie voor $x^{*}-1$. 
+Voor $x^{*}_{2}$ is er convergentie wanneer $a< -\frac{1}{4}$ geldt.
+\begin{itemize}
+\item $a \ \in\  ]-1,-\frac{1}{4}[$: Spiraalconvergentie
+\item $a=1$: Kwadratische convergentie
+\item $a\ \in\ ]-\frac{5}{4},-1[$: Monotone convergentie
+\end{itemize} 
+\end{itemize}
+\end{document}
