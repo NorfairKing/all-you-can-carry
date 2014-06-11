@@ -1,0 +1,44 @@
+\documentclass[examenvragen.tex]{subfiles}
+
+\begin{document}
+
+\section{Kwadratuurformule met een zo hoog mogelijke nauwkeurigheidsgraad}
+\subsection{Opgave}
+Bepaal de gewichten $H_i$ van volgende kwadratuurformule zodat ze de hoogst mogelijke nauwkeurigheidsgraad heeft. Welke nauwkeurigheidsgraad is dat?
+\[
+\int_{a-h}^{a+h}f(x)dx = H_{-\frac{1}{2}}f\left(a-\frac{h}{2}\right) + H_0f(a) + H_\frac{1}{2}f\left(a+\frac{h}{2}\right)
+\]
+
+\subsection{Informatie}
+\begin{itemize}
+\item Tutorial: Kwadratuurformules
+\item Boek pagina 139: 1 Interpolerende kwadratuurformules
+\end{itemize}
+
+\subsection{Antwoord}
+Noem $d$ de minimale nauwkeurigheidsgraad. Noem de exacte integraal $I(f)$ en de kwadratuurformule $I_{k}(f)$.
+Voor elke veelterm $p$ van een graad kleiner dan $d$ geldt dat de kwadratuurformule de integraal exact benadert.
+Er bestaat minstens \'e\'en veelterm van graad $d+1$ die niet exact wordt benaderd door de kwadratuurformule. We kunnen $a$ in de oorsprong leggen zonder verlies van algemeenheid (door de grafiek mee te verschuiven). Er zijn drie gewichten in de kwadratuurformule, dus we leggen een nauwkeurigheidsgraad van $d=2$ op.
+We lossen nu volgend stelsel op.
+\[
+\left\{
+\begin{array}{ccl}
+I_k(1) &= H_{-\frac{1}{2}} + H_0 + H_\frac{1}{2} &= 2h\\
+I_k(x) &= -\frac{h}{2}H_{-\frac{1}{2}} + \frac{h}{2} H_\frac{1}{2} &= 0\\
+I_k(x^2) &= \frac{h^2}{4}H_{-\frac{1}{2}} + \frac{h^2}{4} H_\frac{1}{2} &= \frac{2h^3}{3}\\
+\end{array}
+\right.
+\]
+Lossen we nu dit stelsel op, dan krijgen we voor de gewichten de volgende waarden.
+\[
+H_{-\frac{1}{2}} = H_\frac{1}{2} = \frac{4h}{3} \text{ en } H_0 = -\frac{2h}{3}
+\]
+Deze kwadratuurformule heeft dus minstens een nauwkeurigheidsgraad van $2$.
+\[
+\int_{a-h}^{a+h}f(x)dx =
+\frac{4h}{3}f\left(a-\frac{h}{2}\right)- \frac{2h}{3}f(a) + \frac{4h}{3}f\left(a+\frac{h}{2}\right)
+\]
+Het blijkt zo te zijn dat de formule veeltermen van graad drie ook nog exact integreert, maar niet alle veeltermen van graad vier. De nauwkeurigheidsgraad van deze formule is dus $3$.
+
+
+\end{document}
