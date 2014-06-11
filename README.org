@@ -12,6 +12,10 @@ Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
     Vereisten:
       - Latexmk: http://users.phys.psu.edu/~collins/software/latexmk-jcc/
       - pdfunite: Normaal standaard op linux
+      - Latex
+        - Subfiles
+
+    Het compilatieproces is uitvoerig getest. Enig probleem hiermee is, wel.. uw probleem.
 
 ** OPROEP
    Deze repository is _open_. *iedereen* kan iets toevoegen of verbeteren. Dit is dan ook de bedoeling.
