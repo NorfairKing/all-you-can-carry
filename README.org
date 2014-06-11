@@ -33,7 +33,7 @@ Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
     Je zal LaTeX, subfiles en latexmk nodig hebben om dit uit te voeren.
     - Samenvatting
     - Oplossingen Oefenzittingen
-    - Examen- vragen en antwoorden
+    - Examenvragen en -antwoorden
     - Tutorials
       - Foutenanalyse
       - Conditie en Stabiliteit
