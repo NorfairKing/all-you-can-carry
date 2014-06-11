@@ -7,7 +7,7 @@
 \subsection{Opgave}
 Gegeven volgende substutiemethode.
 \[
-x_{k+1} = F(x_{k}) = (x_{k}-a)^2-1 \text{ met } a>0
+x_{k+1} = F(x_{k}) = (x_{k}-a)^2-1
 \]
 Voor welke re\"ele waarden van $x_0$ en $a$ treedt er convergentie op? Naar welke waarde voor $x$ convergeert de methode dan?
 In welke gevallen gebeurt de convergentie quadratisch?
@@ -37,7 +37,7 @@ Anders zijn er twee vaste punten $x^{*}_{1}$ en $x^{*}_{2}$.
 \[
 x^{*}_1 = \frac{2a+1 +\sqrt{4a+5}}{2} \text{ en } x^{*}_{2}= \frac{2a+1 -\sqrt{4a+5}}{2}
 \]
-In wat voglt gaan we er dus van uit dat $a$ groter of gelijk is aaan $-\frac{5}{4}$.
+In wat volgt gaan we er dus van uit dat $a$ groter of gelijk is aan $-\frac{5}{4}$.
 Om nu de convergentie te berekenen, hebben we de afgeleide van de iteratiefunctie nodig.
 \[
 F'(x) = 2x-2a
@@ -71,6 +71,7 @@ Voor $a\ \in\  ]-1,-\frac{1}{4}[$ is er dus spiraalconvergentie.
 \[
 1-\sqrt{4a+5} > 0 \wedge a < -\frac{1}{4} \Leftrightarrow a\ \in\ ]-\frac{5}{4},-1[
 \]
+Voor $a\ \in\ ]-\frac{5}{4},-1[$ is er monotone convergentie.
 \end{itemize}
 De waarde van de afgeleide in het vast punt $F'(x^*)$ is bovendien gelijk aan de convergentiefactor. Wanneer die waarde nul is convergeert de methode kwadratisch ($a = -1$), anders convergeert ze lineair.
 \subsubsection{Samenvatting}
@@ -81,7 +82,7 @@ De waarde van de afgeleide in het vast punt $F'(x^*)$ is bovendien gelijk aan de
 \[
 x^{*}_1 = \frac{2a+1 +\sqrt{4a+5}}{2} \text{ en } x^{*}_{2}= \frac{2a+1 -\sqrt{4a+5}}{2}
 \]
-Er is steeds divergentie voor $x^{*}-1$. 
+Er is steeds divergentie voor $x^{*}_1$. 
 Voor $x^{*}_{2}$ is er convergentie wanneer $a< -\frac{1}{4}$ geldt.
 \begin{itemize}
 \item $a \ \in\  ]-1,-\frac{1}{4}[$: Spiraalconvergentie
