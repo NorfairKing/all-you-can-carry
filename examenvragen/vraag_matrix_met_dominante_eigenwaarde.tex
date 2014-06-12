@@ -4,7 +4,7 @@
 
 \section{Matrix met dominante eigenwaarde}
 \subsection{Opgave}
-Gegeven de bijgevoegde Maple worksheet. Verklaar de grafieken. Wat is de orde van convergentie en de convergentiefactor? Wat zou er egebeuren als we in de methode geen normalisatie zouden gebruiken?
+Gegeven de bijgevoegde Maple worksheet. Verklaar de grafieken. Wat is de orde van convergentie en de convergentiefactor? Wat zou er gebeuren als we in de methode geen normalisatie zouden gebruiken?
 
 \subsection{Informatie}
 \begin{itemize}
@@ -39,7 +39,7 @@ We berekenen eerst de eigenwaarden en eigenvectoren. De eigenwaarden vallen af t
 \[
 \lambda_{3} = 8 \text{ en } E_{3} = \begin{pmatrix}-3\\5\\2\end{pmatrix} 
 \]
-De eigenvectoren vormen een en basis, dus $x_0$ kan uitgedrukt worden als een lineaire combinatie van de eigenvectoren $E_i$ met co\"efficienten $\alpha_i$.
+De eigenvectoren vormen een basis, dus $x_0$ kan uitgedrukt worden als een lineaire combinatie van de eigenvectoren $E_i$ met co\"efficienten $\alpha_i$.
 \[
 x_{0} = \alpha_{1}E_1 + \alpha_2E_2 + \alpha_{3}E_3
 \]
@@ -73,11 +73,11 @@ De convergentiefactor berekenen we als $\frac{\lambda_{2}}{\lambda_{1}}$
 \]
 We kunnen dit ook uit de grafiek aflezen.
 \[
-\epsilon_{40} = 10^{-2} \text{ en } \epsilon_{100} = 10^{-6}
+\epsilon_{40} = 10^{-3} \text{ en } \epsilon_{100} = 10^{-6}
 \]
 De verhouding van de fout in iteratiestap $j$ ten opzichte van de fout in iteratiestap $i$ is (ongeveer) de $j-i$-de macht van $\rho$.
 \[
-\rho^{100-40} \approx \frac{10_{-6}}{10^{-3}} = 10^{-3}
+\rho^{100-40} \approx \frac{10^{-6}}{10^{-3}} = 10^{-3}
 \]
 \[
 \rho \approx 0.89125

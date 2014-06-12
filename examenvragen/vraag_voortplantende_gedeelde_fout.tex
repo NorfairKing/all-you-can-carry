@@ -39,20 +39,20 @@ Wanneer we nu deze tabel vereenvoudigen (en veronderstellen dat de punten equidi
 x_{k-3} & 0 \\
 && 0 \\
 x_{k-2} & 0 && 0\\
-&& 0 && \frac{\epsilon}{h^3}\\
-x_{k-1} & 0 && \frac{\epsilon}{h^2}\\
-&& \frac{\epsilon}{h} && -\frac{3\epsilon}{h^3}\\
-x_{k} & \epsilon && -\frac{2\epsilon}{h^2}\\
-&& - \frac{\epsilon}{h}&& \frac{3\epsilon}{h^3}\\
-x_{k+1} & 0 && \frac{\epsilon}{h^2}\\\\
-&& 0 && -\frac{e}{h^3}\\
+&& 0 && \frac{\epsilon}{6h^3}\\
+x_{k-1} & 0 && \frac{\epsilon}{2h^2}\\
+&& \frac{\epsilon}{h} && -\frac{3\epsilon}{6h^3}\\
+x_{k} & \epsilon && -\frac{2\epsilon}{2h^2}\\
+&& - \frac{\epsilon}{h}&& \frac{3\epsilon}{6h^3}\\
+x_{k+1} & 0 && \frac{\epsilon}{2h^2}\\\\
+&& 0 && -\frac{e}{6h^3}\\
 x_{k+2} & 0 && 0\\
 && 0\\
 x_{k+3} & 0 \\
 \vdots\\
 \end{array}
 \]
-Nu kunnen we wel degelijk een patroon zien. In een gedeelde differentie van de $i$-de graad zien we een fout van grootteorde $O(\frac{1}{h^{i}})$. Het teken alterneert op de diagonalen in de tabel. De fout wordt bovendien vermenigvuldigd met een factor die overeen komt met een waarde uit de tabel van het binomium van Newton en de driehoek van Pascal.
+Nu kunnen we wel degelijk een patroon zien. In een gedeelde differentie van de $i$-de graad zien we een fout van grootteorde $O(\frac{1}{i!h^{i}})$. Het teken alterneert op de diagonalen in de tabel. De fout wordt bovendien vermenigvuldigd met een factor die overeen komt met een waarde uit de tabel van het binomium van Newton en de driehoek van Pascal.
 
 Om te zien waar de fout gemaakt is in de tabel moeten we inderdaad veronderstellen dat gedeelde differenties van een hogere graad naar nul gaan. In absolute waarde zien we dat de gedeelde differenties symmetrisch zijn rond een bepaalde waarde $x_j$. De fout zit dan op de functiewaarde $f(x_{j})$ van $x_j$. 
 
