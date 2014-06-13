@@ -6,6 +6,7 @@ Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
     Om heel de bundel samen te stellen voer je de volgende procedure uit in je terminal.
     #+BEGIN_EXAMPLE
     git clone https://github.com/NorfairKing/all-you-can-carry.git
+    cd all-you-can-carry
     make
     #+END_EXAMPLE
     Na het invoeren van het make commando zie je een gigantische hoeveelheid tekst over je scherm vliegen.
