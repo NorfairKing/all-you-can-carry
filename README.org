@@ -2,7 +2,7 @@
 Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
 
 ** Compileren
-    Aan dit project kon helaas geen InTeXration toegevoegd worden, daar het met een makefile werkt.
+    Aan dit project kon helaas geen continuous integration toegevoegd worden.
     Om heel de bundel samen te stellen voer je de volgende procedure uit in je terminal.
     #+BEGIN_EXAMPLE
     git clone https://github.com/NorfairKing/all-you-can-carry.git
@@ -16,7 +16,7 @@ Een verzameling van nuttige documenten voor het examen van numerieke wiskunde.
       - Latex
         - Subfiles
 
-    Het compilatieproces is uitvoerig getest. Enig probleem hiermee is, wel.. uw probleem.
+    Het compilatieproces is uitvoerig getest. Enig probleem hiermee is, wel..., uw probleem.
 
 ** OPROEP
    Deze repository is _open_. *iedereen* kan iets toevoegen of verbeteren. Dit is dan ook de bedoeling.
