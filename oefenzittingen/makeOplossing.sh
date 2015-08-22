@@ -10,7 +10,6 @@ file="$dir/oplossing.tex"
 if [ -f $file ]
 then
     cd $dir
-    rm -f "$(pwd)/oplossing.pdf"
     latexmk -pdf "$(pwd)/oplossing.tex"
     cp oplossing.pdf ../oplossing_$1.pdf
     cd ..
